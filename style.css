@@ -1,20 +1,22 @@
+/* Default style  */
 * {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 a {
-    width: fit-content;
+    text-decoration: none;
 }
 
 .container {
-    padding: 0 10px;
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
-.card-container,
-.box-container,
-.carousel-container {
-    border: 2px solid #333;
-    margin-bottom: 16px;
+@media (max-width: 768px) {
+    .container {
+        margin: 0 20px;
+    }
 }
