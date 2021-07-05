@@ -1,0 +1,160 @@
+/* general style */
+/* 
+focus: box-shadow
+active: background-color
+*/
+
+.button {
+    display: block;
+    width: 130px;
+    height: 35px;
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background-color: rgb(170, 170, 170);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.button:focus {
+    box-shadow: 0 0 6px rgb(0, 0, 0, .6);
+}
+
+.button:active {
+    background-color: rgb(153, 153, 153);
+}
+
+.button:hover {
+    color: rgb(0, 0, 0, 0.6);
+    background-color: rgb(187, 187, 187, 0.85);
+    box-shadow: 0 0 10px rgb(0, 0, 0, .3);
+}
+
+/* active button style */
+
+.button.active-btn {
+    background-color: #ffdb00;
+}
+
+.button.active-btn:focus {
+    box-shadow: 0 0 6px #ffa600;
+}
+
+.button.active-btn:active {
+    background-color: #ffc400;
+}
+
+.button.active-btn:hover {
+    background-color: #ffe23e;
+    box-shadow: 0 0 10px #ffdb00;
+}
+
+/* form submit button */
+
+.submit-btn {
+    width: 100%;
+}
+
+/* label/input button animation */
+
+label.button {
+    position: relative;
+    width: 180px;
+    height: auto;
+    min-height: 35px;
+    border: 2px solid #ffdd00;
+    background-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+label.button:hover {
+    background-color: transparent;
+    color: black;
+    box-shadow: 0 0 12px #ffdb00;
+}
+
+label.button:focus {
+    box-shadow: 0 0 8px #b87700;
+}
+
+label.button:active {
+    box-shadow: 0 0 12px #ffdd00;
+}
+
+input[type="checkbox"]#checkbox-button {
+    position: absolute;
+    opacity: 0;
+}
+
+label.button .label-text {
+    display: block;
+    width: 100%;
+    height: 31px;
+    line-height: 31px;
+    text-align: center;
+    
+}
+
+/* "focus" of label */
+#checkbox-button:focus ~ .label-text::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 8px #b87700;
+    z-index: -1;
+}
+
+label.button .sign::before,
+label.button .sign::after {
+    content: "";
+    display: inline-block;
+    transition: .4s;
+    background-color: #ffdb00;
+}
+
+label.button .sign::before {
+    width: 2px;
+    height: 10px;
+}
+
+label.button .sign::after {
+    width: 10px;
+    height: 2px;
+    margin: 0 6px 4px -6px;
+}
+
+#checkbox-button:checked ~ span .sign::before  {
+    transform: rotate(-90deg);
+}
+
+.dropdown-content {
+    height: 0;
+    overflow: hidden;
+}
+
+#checkbox-button:checked ~ .dropdown-content {
+    height: auto;
+}
+
+.button .arrow {
+    display: inline-block;
+}
+
+.button:hover .arrow {
+    animation: arrow-anima 1s ease-in-out infinite;
+}
+
+@keyframes arrow-anima {
+    50% {
+        transform: translateX(5px);
+    }
+}
