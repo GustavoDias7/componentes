@@ -15,6 +15,23 @@ a {
     margin: 0 auto;
 }
 
+/* remove later */
+.container-buttons {
+    margin: 20px;
+}
+
+form {
+    padding: 20px;
+    width: 217px;
+    border: 2px solid grey;
+}
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+/* remove later */
+
 @media (max-width: 768px) {
     .container {
         margin: 0 20px;
