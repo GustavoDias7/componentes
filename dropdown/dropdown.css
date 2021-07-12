@@ -1,0 +1,100 @@
+/* ================ */
+/* === DROPDOWN === */
+/* ================ */
+
+/* + DROPDOWN LABEL BUTTON + */
+.dropdown-lb {
+    position: relative;
+    display: block;
+    width: 180px;
+    height: auto;
+    min-height: 35px;
+    font-size: 1rem;
+    color: #000000;
+    outline: none;
+    border-radius: 4px;
+    border: 2px solid #ffdd00;
+    background-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.dropdown-lb:hover {
+    background-color: transparent;
+    color: black;
+    box-shadow: 0 0 12px #ffdb00;
+}
+
+input[type="checkbox"]#dropdown-lb {
+    position: absolute;
+    opacity: 0;
+}
+
+.dropdown-lb .dropdown-name {
+    display: block;
+    width: 100%;
+    height: 31px;
+    line-height: 31px;
+    text-align: center;
+    
+}
+
+/* "focus" of .dropdown-lb */
+.dropdown-lb .dropdown-name::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: .4s;
+    box-shadow: 0 0 8px transparent;
+}
+#dropdown-lb:focus ~ .dropdown-name::after {
+    box-shadow: 0 0 8px #b87700;
+}
+
+/* sign style and animation */
+
+.dropdown-lb .sign::before,
+.dropdown-lb .sign::after {
+    content: "";
+    display: inline-block;
+    transition: .4s;
+    background-color: #ffdb00;
+}
+
+.dropdown-lb .sign::before {
+    width: 2px;
+    height: 10px;
+}
+
+.dropdown-lb .sign::after {
+    width: 10px;
+    height: 2px;
+    margin: 0 6px 4px -6px;
+}
+
+#dropdown-lb:checked ~ span .sign::before  {
+    transform: rotate(-90deg);
+}
+
+/* dropdown content */
+
+.dropdown-lb .dropdown-content {
+    height: 0;
+    overflow: hidden;
+}
+
+#dropdown-lb:checked ~ .dropdown-content {
+    height: auto;
+}
+
+.dropdown-content-padding {
+    padding: 10px;
+}
