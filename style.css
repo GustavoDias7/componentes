@@ -11,11 +11,10 @@ a {
 }
 
 .container {
-    max-width: 1080px;
+    max-width: 768px;
     margin: 0 auto;
 }
 
-/* remove later */
 .container-buttons {
     margin: 20px;
 }
@@ -30,7 +29,6 @@ form input {
     padding: 10px;
     margin-bottom: 10px;
 }
-/* remove later */
 
 @media (max-width: 768px) {
     .container {
