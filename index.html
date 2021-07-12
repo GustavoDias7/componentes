@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./carousel/carousel.css" />
     <link rel="stylesheet" href="./generic button/generic-button.css" />
+    <link rel="stylesheet" href="./dropdown/dropdown.css" />
   </head>
 
   <body>
@@ -45,11 +46,27 @@
         </form>
         <br />
 
-        <label class="button" for="checkbox-button">
-          <input type="checkbox" id="checkbox-button" />
-          <span class="label-text"> <span class="sign"></span>Label span </span>
+        <button class="button">
+          Animation <span class="arrow">&#9658;</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="container-dropdowns">
+      <div class="container">
+        <div>
+          <h2>Dropdown</h2>
+          <br />
+        </div>
+
+        <h3>Dropdown Label Button - HTML/CSS</h3>
+        <label class="dropdown-lb" for="dropdown-lb">
+          <input type="checkbox" id="dropdown-lb" />
+          <span class="dropdown-name">
+            <span class="sign"></span>Dropdown Label
+          </span>
           <div class="dropdown-content">
-            <div class="dropdown-container">
+            <div class="dropdown-content-padding">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Necessitatibus explicabo molestiae amet facilis ipsam, ut
@@ -61,9 +78,8 @@
         </label>
         <br />
 
-        <button class="button">
-          Animation <span class="arrow">&#9658;</span>
-        </button>
+        <h3>Dropdown Button - JavaScript</h3>
+        
       </div>
     </section>
   </body>
