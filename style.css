@@ -6,6 +6,14 @@
     box-sizing: border-box;
 }
 
+body {
+    padding-bottom: 50vh;
+}
+
+h1, h2, h3 {
+    margin: 20px 0;
+}
+
 a {
     text-decoration: none;
 }
@@ -13,6 +21,7 @@ a {
 .container {
     max-width: 768px;
     margin: 0 auto;
+    border-top: 2px solid grey;
 }
 
 .container-buttons {
