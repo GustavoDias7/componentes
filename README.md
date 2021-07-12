@@ -2,8 +2,9 @@
 
 <h2>To do list</h2>
 [x] Generic button style
-[] Accessible dropdown using html/css <br>
+[x] Accessible dropdown using html/css <br>
 [] Accessible dropdown using javascript <br>
+[] details and summary style <br>
 [] Accordion using html/css <br>
 [] Accordion using javascript <br>
 [] Custom checkbox and radio using html/css <br>
