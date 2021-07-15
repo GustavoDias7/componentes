@@ -98,3 +98,58 @@ input[type="checkbox"]#dropdown-lb {
 .dropdown-content-padding {
     padding: 10px;
 }
+
+/* + DROPDOWN BUTTON JS + */
+
+.dropdown-btn {
+    width: 180px;
+    height: auto;
+    font-size: 1rem;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid #ffdd00;
+    background-color: transparent;
+    outline: none;
+    transition: .4s;
+}
+
+.dropdown-btn:focus {
+    box-shadow: 0 0 6px #ffa600;
+}
+
+.dropdown-btn:hover {
+    box-shadow: 0 0 10px #ffdb00;
+}
+
+.dropdown-btn-name {
+    line-height: 31px;
+}
+
+/* arrow animation */
+
+.dropdown-btn-arrow {
+    display: inline-block;
+    color: #ffdd00;
+    transition: .2s;
+}
+
+.dropdown-btn-open .dropdown-btn-arrow {
+    transform: rotate(90deg);
+}
+
+/* open content */
+
+.dropdown-btn-content {
+    height: 0;
+    overflow: hidden;
+}
+
+.dropdown-btn-open .dropdown-btn-content {
+    height: auto;
+}
+
+.dropdown-btn-content-padding {
+    padding: 10px;
+}
+
