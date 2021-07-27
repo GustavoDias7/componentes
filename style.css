@@ -10,30 +10,29 @@ body {
     padding-bottom: 50vh;
 }
 
-h1, h2, h3 {
-    margin: 20px 0;
-}
-
 a {
     text-decoration: none;
+}
+
+section {
+    border-bottom: 2px solid grey;
 }
 
 .container {
     max-width: 768px;
     margin: 0 auto;
-    border-top: 2px solid grey;
 }
 
 .container-buttons {
     margin: 20px;
 }
 
-form {
+.container-buttons form {
     padding: 20px;
     width: 217px;
     border: 2px solid grey;
 }
-form input {
+.container-buttons form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
