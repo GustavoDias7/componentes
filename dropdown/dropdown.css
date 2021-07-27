@@ -153,3 +153,47 @@ input[type="checkbox"]#dropdown-lb {
     padding: 10px;
 }
 
+/* + DROPDOWN MENU JavaScript + */
+
+.dropdown-menu {
+    display: block;
+    position: relative;
+    width: 130px;
+    line-height: 40px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: #ffdb00;
+}
+.dropdown-menu:focus,
+.dropdown-menu:hover {
+    background-color: #ffe53a;
+}
+.dropdown-menu ul {
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    left: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-10px);
+    transition: 0.2s;
+    background-color: #fdea6c;
+}
+.dropdown-active ul {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0px);
+}
+.dropdown-menu ul li {
+    transition: 0.2s;
+}
+.dropdown-menu ul li:hover {
+    background-color: #fcf0a2;
+}
+.dropdown-menu ul li a {
+    display: block;
+    line-height: 40px;
+    color: #000000;
+}
