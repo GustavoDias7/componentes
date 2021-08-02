@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./generic button/generic-button.css" />
     <link rel="stylesheet" href="./dropdown/dropdown.css" />
     <link rel="stylesheet" href="./accordion/accordion.css" />
-    <link rel="stylesheet" href="./header-patterns/header-patterns.css">
+    <link rel="stylesheet" href="./header-patterns/header-patterns.css" />
   </head>
 
   <body>
@@ -22,35 +22,31 @@
           <br />
         </div>
 
-        <button class="button">Generic</button>
-        <br />
+        <h3>Generic Button</h3>
+        <div class="example">
+          <button class="button">Generic</button>
+        </div>
 
-        <button class="button active-btn">Active</button>
-        <br />
+        <h3>Actived Button</h3>
+        <div class="example">
+          <button class="button active-btn">Active</button>
+        </div>
 
-        <form action="">
-          <h3>Form buttons</h3>
-          <input type="text" placeholder="Name" />
-          <br />
-          <button
-            class="button submit-btn active-btn"
-            type="submit"
-            class="submit-btn"
-          >
-            Button Type Submit
+        <h3>Type submit/button</h3>
+        <div class="example">
+          <form action="">
+            <button class="button active-btn" type="submit">Button</button>
+            <br />
+            <input class="button active-btn" type="submit" value="Input" />
+          </form>
+        </div>
+
+        <h3>Animation</h3>
+        <div class="example">
+          <button class="button">
+            Animation <span class="arrow">&#9658;</span>
           </button>
-          <br />
-          <input
-            class="button submit-btn active-btn"
-            type="submit"
-            value="Input Type Submit"
-          />
-        </form>
-        <br />
-
-        <button class="button">
-          Animation <span class="arrow">&#9658;</span>
-        </button>
+        </div>
       </div>
     </section>
 
@@ -62,52 +58,58 @@
         </div>
 
         <h3>Dropdown Label Button - HTML/CSS</h3>
-        <label class="dropdown-lb" for="dropdown-lb">
-          <input type="checkbox" id="dropdown-lb" />
-          <span class="dropdown-name">
-            <span class="sign"></span>Dropdown Label
-          </span>
-          <div class="dropdown-content">
-            <div class="dropdown-content-padding">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Necessitatibus explicabo molestiae amet facilis ipsam, ut
-                incidunt eaque? Et, ullam, cupiditate impedit, fugiat architecto
-                cum est veniam excepturi hic illum laboriosam.
-              </p>
+        <div class="example">
+          <label class="dropdown-lb" for="dropdown-lb">
+            <input type="checkbox" id="dropdown-lb" />
+            <span class="dropdown-name">
+              <span class="sign"></span>Dropdown Label
+            </span>
+            <div class="dropdown-content">
+              <div class="dropdown-content-padding">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Necessitatibus explicabo molestiae amet facilis ipsam, ut
+                  incidunt eaque? Et, ullam, cupiditate impedit, fugiat
+                  architecto cum est veniam excepturi hic illum laboriosam.
+                </p>
+              </div>
             </div>
-          </div>
-        </label>
+          </label>
+        </div>
         <br />
 
         <h3>Dropdown Button - JavaScript</h3>
-        <button class="dropdown-btn">
-          <span class="dropdown-btn-name">
-            <span class="dropdown-btn-arrow">&#9658;</span> Dropdown Button
-          </span>
-          <div class="dropdown-btn-content">
-            <div class="dropdown-btn-content-padding">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Necessitatibus explicabo molestiae amet facilis ipsam, ut
-                incidunt eaque? Et, ullam, cupiditate impedit, fugiat architecto
-                cum est veniam excepturi hic illum laboriosam.
-              </p>
+        <div class="example">
+          <button class="dropdown-btn">
+            <span class="dropdown-btn-name">
+              <span class="dropdown-btn-arrow">&#9658;</span> Dropdown Button
+            </span>
+            <div class="dropdown-btn-content">
+              <div class="dropdown-btn-content-padding">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Necessitatibus explicabo molestiae amet facilis ipsam, ut
+                  incidunt eaque? Et, ullam, cupiditate impedit, fugiat
+                  architecto cum est veniam excepturi hic illum laboriosam.
+                </p>
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        </div>
 
         <!--
         <h3>Dropdown menu - JavaScript</h3>
-        <div style="display: flex;">
-          <button class="dropdown-menu">
-            Dropdown 1
-            <ul>
-              <li><a href="#">Item 1</a></li>
-              <li><a href="#">Item 2</a></li>
-              <li><a href="#">Item 3</a></li>
-            </ul>
-          </button>
+        <div class="example">
+          <div style="display: flex">
+            <button class="dropdown-menu">
+              Dropdown 1
+              <ul>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+              </ul>
+            </button>
+          </div>
         </div>
         -->
       </div>
@@ -121,23 +123,31 @@
         </div>
 
         <h3>Accordion input checkbox and label - HTML/CSS</h3>
-        <label class="accordion" for="accordion-check">
-          <input type="checkbox" class="accordion-input" id="accordion-check">
-          <div class="accordion-header">
-            <h3>Accordion 01</h3>
-          </div>
-          <div class="accordion-content">
-            <div>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit corrupti ut dignissimos magni delectus! Cupiditate ratione quo minima incidunt voluptas?
-              </p>
+        <div class="example">
+          <label class="accordion" for="accordion-check">
+            <input
+              type="checkbox"
+              class="accordion-input"
+              id="accordion-check"
+            />
+            <div class="accordion-header">
+              <h3>Accordion 01</h3>
             </div>
-          </div>
-        </label>
+            <div class="accordion-content">
+              <div>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Fugit corrupti ut dignissimos magni delectus! Cupiditate
+                  ratione quo minima incidunt voluptas?
+                </p>
+              </div>
+            </div>
+          </label>
+        </div>
       </div>
     </section>
 
     <script src="./dropdown/dropdown-btn.js"></script>
-    <!-- <script src="./dropdown/dropdown-menu.js"></script> -->
+    <script src="./dropdown/dropdown-menu.js"></script>
   </body>
 </html>
