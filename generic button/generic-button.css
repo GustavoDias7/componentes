@@ -55,6 +55,12 @@ active: background-color
   box-shadow: 0 0 10px #ffdb00;
 }
 
+/* disabled button */
+.button:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
 /* button animation */
 
 .button .arrow {
