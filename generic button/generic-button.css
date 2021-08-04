@@ -61,6 +61,51 @@ active: background-color
   pointer-events: none;
 }
 
+/* label button */
+label.button input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  pointer-events: none;
+}
+
+/* multiple label buttons */
+.mult-btns-container {
+  display: flex;
+  max-width: 160px;
+  justify-content: space-between;
+}
+
+.mult-btns-container li input {
+  position: absolute;
+  clip: rect(0,0,0,0);
+}
+
+.mult-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #aaaaaa;
+  transition: 0.4s;
+}
+
+.mult-button:hover {
+  background-color: #bbbbbbd9;
+  box-shadow: 0 0 8px #0000004d;
+}
+
+input:checked ~ .mult-button {
+  background-color: #ffdb00;
+}
+
+input:checked ~ .mult-button:hover {
+  background-color: #ffe23e;
+  box-shadow: 0 0 8px #ffdb00;
+}
+
 /* button animation */
 
 .button .arrow {
