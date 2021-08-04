@@ -6,7 +6,7 @@
 [X] Dropdown button using JavaScript <br>
 [X] Accordion using html/css <br>
 [x] Generic button using anchor tag <br>
-[] Style of the disabled attribute <br>
+[x] Style of the disabled attribute <br>
 [] Accordion using javascript <br>
 [] Custom checkbox and radio using html/css <br>
 [] Custom checkbox and radio using javascript <br>
