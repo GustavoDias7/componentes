@@ -8,10 +8,12 @@ active: background-color
   display: block;
   width: 140px;
   height: 35px;
+  line-height: 35px;
   padding: 0 20px;
   font-size: 1rem;
   color: #000000;
   text-align: center;
+  text-decoration: none;
   border-radius: 4px;
   border: none;
   outline: none;
