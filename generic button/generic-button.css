@@ -58,7 +58,13 @@ active: background-color
 /* disabled button */
 .button:disabled {
   opacity: 0.4;
-  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.button:disabled:hover {
+  box-shadow: none;
+  color: #000000;
+  background-color: #aaaaaa;
 }
 
 /* label button */
