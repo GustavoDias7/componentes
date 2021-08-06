@@ -7,11 +7,9 @@ active: background-color
 .button {
   display: block;
   width: 140px;
-  height: 35px;
-  line-height: 35px;
+  min-height: 35px;
   font-size: 1rem;
   color: #000000;
-  text-align: center;
   text-decoration: none;
   border-radius: 4px;
   border: none;
@@ -67,6 +65,11 @@ active: background-color
 }
 
 /* label button */
+label.button {
+  line-height: 35px;
+  text-align: center;
+}
+
 label.button input[type="checkbox"] {
   position: absolute;
   clip: rect(0,0,0,0);
@@ -113,6 +116,13 @@ input:checked ~ .mult-button {
 input:checked ~ .mult-button:hover {
   background-color: #ffe23e;
   box-shadow: 0 0 8px #ffdb00;
+}
+
+/* link button */
+a.button {
+  text-decoration: none;
+  text-align: center;
+  line-height: 35px;
 }
 
 /* button animation */
