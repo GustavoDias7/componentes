@@ -81,6 +81,10 @@ label.button input[type="checkbox"] {
   justify-content: space-between;
 }
 
+.mult-btns-container li {
+  list-style-type: none;
+}
+
 .mult-btns-container li input {
   position: absolute;
   clip: rect(0,0,0,0);
