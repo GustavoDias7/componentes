@@ -1,6 +1,6 @@
 /* general style */
 /* 
-focus: box-shadow
+focus: background-color
 active: background-color
 */
 
@@ -22,7 +22,7 @@ active: background-color
 }
 
 .button:focus {
-  box-shadow: 0 0 6px #00000099;
+  background-color: #888888;
 }
 
 .button:active {
@@ -42,7 +42,7 @@ active: background-color
 }
 
 .button.active-btn:focus {
-  box-shadow: 0 0 6px #ffa600;
+  background-color: #ffa600;
 }
 
 .button.active-btn:active {
