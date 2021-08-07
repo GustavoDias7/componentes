@@ -8,8 +8,8 @@ active: background-color
   display: block;
   width: 140px;
   height: 35px;
-  line-height: 35px;
-  padding: 0 20px;
+  /* line-height: 35px; */
+  /* padding: 0 20px; */
   font-size: 1rem;
   color: #000000;
   text-align: center;
@@ -110,6 +110,30 @@ input:checked ~ .mult-button {
 input:checked ~ .mult-button:hover {
   background-color: #ffe23e;
   box-shadow: 0 0 8px #ffdb00;
+}
+
+/* button with subtext */
+
+.subtext {
+  min-height: auto;
+  height: auto;
+  padding: 7px 0;
+}
+
+.subtext span {
+  display: block;
+}
+
+.subtext .main {
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: normal;
+}
+
+.subtext .sub {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-style: normal;
 }
 
 /* button animation */
