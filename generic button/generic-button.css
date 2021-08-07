@@ -1,6 +1,6 @@
 /* general style */
 /* 
-focus: box-shadow
+focus: background-color
 active: background-color
 */
 
@@ -8,11 +8,9 @@ active: background-color
   display: block;
   width: 140px;
   height: 35px;
-  /* line-height: 35px; */
-  /* padding: 0 20px; */
+  min-height: 35px;
   font-size: 1rem;
   color: #000000;
-  text-align: center;
   text-decoration: none;
   border-radius: 4px;
   border: none;
@@ -23,7 +21,7 @@ active: background-color
 }
 
 .button:focus {
-  box-shadow: 0 0 6px #00000099;
+  background-color: #888888;
 }
 
 .button:active {
@@ -43,7 +41,7 @@ active: background-color
 }
 
 .button.active-btn:focus {
-  box-shadow: 0 0 6px #ffa600;
+  background-color: #ffa600;
 }
 
 .button.active-btn:active {
@@ -68,6 +66,11 @@ active: background-color
 }
 
 /* label button */
+label.button {
+  line-height: 35px;
+  text-align: center;
+}
+
 label.button input[type="checkbox"] {
   position: absolute;
   clip: rect(0,0,0,0);
@@ -79,6 +82,10 @@ label.button input[type="checkbox"] {
   display: flex;
   max-width: 160px;
   justify-content: space-between;
+}
+
+.mult-btns-container li {
+  list-style-type: none;
 }
 
 .mult-btns-container li input {
@@ -134,6 +141,13 @@ input:checked ~ .mult-button:hover {
   font-size: 0.75rem;
   line-height: 0.75rem;
   font-style: normal;
+}
+
+/* link button */
+a.button {
+  text-decoration: none;
+  text-align: center;
+  line-height: 35px;
 }
 
 /* button animation */
