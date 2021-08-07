@@ -15,12 +15,11 @@
 }
 
 .accordion .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
     transition: .2s;
-}
-
-.accordion .accordion-input:checked ~ .accordion-header {
-    background-color: #ffee81;
 }
 
 .accordion .accordion-header h3 {
@@ -32,13 +31,27 @@
     color: #ffa600;
 }
 
+.accordion .accordion-header .arrow {
+    width: 22px;
+    height: 22px;
+    background-image: url(../accordion/arrow.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transition: .2s;
+}
+
+.accordion .accordion-input:checked ~ .accordion-header .arrow {
+    transform: rotate(180deg);
+}
+
 .accordion .accordion-content {
     height: 0;
     overflow: hidden;
 }
 
-.accordion .accordion-content div {
-    padding: 20px;
+.accordion .accordion-content > div {
+    padding: 0 20px 20px;
 }
 
 .accordion .accordion-input:checked ~ .accordion-content {
@@ -49,10 +62,10 @@
 
 @keyframes accordion-anima {
     from {
-        transform: translate(-10px);
+        transform: translateY(-10px);
     }
     to {
         opacity: 1;
-        transform: translate(0px);
+        transform: translateY(0px);
     }
 }
