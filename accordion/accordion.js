@@ -1,9 +1,21 @@
-function accordion(selector) {
-  const accordions = document.querySelectorAll(selector);
-  accordions.forEach((accordion) => {
+function accordion(selectorName, onlyOneOpen = false) {
+  const accordions = document.querySelectorAll(selectorName);
+  let lastOpen = 0
+  let setLastOpen = (newValue) => {
+    lastOpen = newValue;
+  };
+
+  accordions.forEach((accordion, index) => {
     accordion.addEventListener('click', (event) => {
-      event.currentTarget.classList.toggle('show');
+      event.currentTarget.toggleAttribute('show');
+      if (onlyOneOpen === false) return;
+      let isDifferent = accordions[lastOpen] != accordion;
+      if (isDifferent) {
+        accordions[lastOpen].removeAttribute('show');
+        setLastOpen(index);
+      }
     })
   })
 }
-accordion('.accordion-js');
+accordion('[data-accordion]');
+accordion('[data-only]', true);
