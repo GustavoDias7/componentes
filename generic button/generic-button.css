@@ -77,23 +77,23 @@ label.button input[type="checkbox"] {
   pointer-events: none;
 }
 
-/* multiple label buttons */
-.mult-btns-container {
+/* option button - using label */
+.option-container {
   display: flex;
   max-width: 160px;
   justify-content: space-between;
 }
 
-.mult-btns-container li {
+.option-container li {
   list-style-type: none;
 }
 
-.mult-btns-container li input {
+.option-container li input {
   position: absolute;
   clip: rect(0,0,0,0);
 }
 
-.mult-button {
+.option-button {
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -105,16 +105,16 @@ label.button input[type="checkbox"] {
   transition: 0.4s;
 }
 
-.mult-button:hover {
+.option-button:hover {
   background-color: #bbbbbbd9;
   box-shadow: 0 0 8px #0000004d;
 }
 
-input:checked ~ .mult-button {
+input:checked ~ .option-button {
   background-color: #ffdb00;
 }
 
-input:checked ~ .mult-button:hover {
+input:checked ~ .option-button:hover {
   background-color: #ffe23e;
   box-shadow: 0 0 8px #ffdb00;
 }
