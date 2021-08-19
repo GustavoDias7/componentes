@@ -21,6 +21,51 @@
           <br />
         </div>
 
+        <div class="explanations">
+          <h3>Use estes código para evitar espaçamentos padrões indesejáveis.</h3>
+          <div class="example">
+<pre>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</pre>
+          </div> 
+          <h3>Cole este estilo genérico junto com os outros estilos especificos.</h3>
+            <div class="example">
+<pre>
+.button {
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  font-size: 1rem;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: #aaaaaa;
+  transition: 0.4s;
+}
+
+.button:focus {
+  background-color: #888888;
+}
+
+.button:active {
+  background-color: #999999;
+}
+
+.button:hover {
+  color: #00000099;
+  background-color: #bbbbbbd9;
+  box-shadow: 0 0 10px #0000004d;
+}
+</pre>
+          </div>
+        </div>
+
         <h3>Generic Button</h3>
         <div class="example">
           <button class="button">Generic</button>
@@ -137,22 +182,6 @@
             </div>
           </button>
         </div>
-
-        <!--
-        <h3>Dropdown menu - JavaScript</h3>
-        <div class="example">
-          <div style="display: flex">
-            <button class="dropdown-menu">
-              Dropdown 1
-              <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-              </ul>
-            </button>
-          </div>
-        </div>
-        -->
       </div>
     </section>
 
