@@ -22,70 +22,86 @@
         </div>
 
         <div class="explanations">
-          <h3>Use estes código para evitar espaçamentos padrões indesejáveis.</h3>
+          <h3>Use o código abaixo para evitar espaçamentos padrões indesejáveis.</h3>
           <div class="example">
-<pre>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-</pre>
+            <div class="code-example">
+              <div>
+                <pre class="code"></pre>
+              </div>
+            </div>
           </div> 
-          <h3>Cole este estilo genérico junto com os outros estilos especificos.</h3>
+          <h3>Cole o estilo genérico abaixo antes dos próximos estilos.</h3>
             <div class="example">
-<pre>
-.button {
-  display: block;
-  width: 100%;
-  max-width: 150px;
-  font-size: 1rem;
-  color: #000000;
-  cursor: pointer;
-  border-radius: 4px;
-  border: none;
-  outline: none;
-  background-color: #aaaaaa;
-  transition: 0.4s;
-}
-
-.button:focus {
-  background-color: #888888;
-}
-
-.button:active {
-  background-color: #999999;
-}
-
-.button:hover {
-  color: #00000099;
-  background-color: #bbbbbbd9;
-  box-shadow: 0 0 10px #0000004d;
-}
-</pre>
+            <div class="code-example">
+              <div>
+              <pre class="code"></pre>
+            </div>
+            </div>
           </div>
         </div>
 
         <h3>Generic Button</h3>
         <div class="example">
           <button class="button">Generic</button>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
 
         <h3>Actived Button</h3>
         <div class="example">
           <button class="button active-btn">Active</button>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
 
         <h3>Disabled Button</h3>
         <div class="example">
           <button class="button" disabled>Disabled</button>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
 
         <h3>Input type button/submit</h3>
-        <div class="example inline-items">
-          <input class="button" type="button" value="Input/button" />
-          <span class="space"></span>
-          <input class="button" type="submit" value="Input/submit" />
+        <div class="example">
+          <div class="inline-items">
+            <input class="button" type="button" value="Input/button" />
+            <span class="space"></span>
+            <input class="button" type="submit" value="Input/submit" />
+          </div>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
 
         <h3>Label Button</h3>
@@ -94,6 +110,16 @@
             <input type="checkbox" id="label-button" />
             Label button
           </label>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
 
         <h3>Option Button using label</h3>
@@ -112,11 +138,31 @@
               <label class="option-button" for="opt-3">3</label>
             </li>
           </ul>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </form>
 
         <h3>Link button</h3>
         <div class="example">
           <a href="#" class="button">Link button</a>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
 
         <h3>Button with subtext</h3>
@@ -125,6 +171,16 @@
             <span class="main">Main text</span>
             <span class="sub">Subtext</span>
           </button>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
 
         <h3>Animations</h3>
@@ -132,6 +188,16 @@
           <button class="button">
             Animation <span class="arrow">&#9658;</span>
           </button>
+          <div class="code-example">
+            <h4>HTML</h4>
+            <div>
+              <pre class="code-html"></pre>
+            </div>
+            <h4>CSS</h4>
+            <div>
+              <pre class="code-css"></pre>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -306,7 +372,10 @@
       </div>
     </section>
 
+    <div class="alert-copied">Copied!</div>
+
     <script src="./dropdown/dropdown-btn.js"></script>
     <script src="./accordion/accordion.js"></script>
+    <script src="./code-example.js"></script>
   </body>
 </html>

@@ -17,10 +17,6 @@
   background-color: #888888;
 }
 
-.button:active {
-  background-color: #999999;
-}
-
 .button:hover {
   color: #00000099;
   background-color: #bbbbbbd9;
