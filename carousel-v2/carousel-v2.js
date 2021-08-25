@@ -23,7 +23,7 @@ class Carousel {
       this.settings = settings;
       this.$crsContainer = null;
       this.$crsInner = null;
-      this.$crsItems = null;
+      this.$crsItemContainer = null;
       this.$crsItemList = null;
       this.$crsArrowContainer = null;
       this.$crsDot = null;
@@ -42,21 +42,21 @@ class Carousel {
     const crsInner = document.createElement('div');
     crsInner.setAttribute('class', crsInnerSelector);
     
-    const crsItemsSelector = 'crs-items';
-    const crsItems = document.createElement('div');
-    crsItems.setAttribute('class', crsItemsSelector);
+    const crsItemContainerSelector = 'crs-item-container';
+    const crsItemContainer = document.createElement('div');
+    crsItemContainer.setAttribute('class', crsItemContainerSelector);
     
-    crsItems.innerHTML = initialContent;
-    crsInner.appendChild(crsItems);
+    crsItemContainer.innerHTML = initialContent;
+    crsInner.appendChild(crsItemContainer);
     this.$crsContainer.appendChild(crsInner);
     this.$crsInner = document.querySelector(`.${crsInnerSelector}`);
-    this.$crsItems = document.querySelector(`.${crsItemsSelector}`);
+    this.$crsItemContainer = document.querySelector(`.${crsItemContainerSelector}`);
     
     const crsItemListSelector = 'crs-item';
-    for(let item of this.$crsItems.children) {
+    for(let item of this.$crsItemContainer.children) {
       item.classList.add(crsItemListSelector)
     }
-    this.$crsItemList = this.$crsItems.querySelectorAll(`.${crsItemListSelector}`);
+    this.$crsItemList = this.$crsItemContainer.querySelectorAll(`.${crsItemListSelector}`);
 
     // create arrows and dots
     this.createArrows();
