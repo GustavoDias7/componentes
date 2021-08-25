@@ -8,10 +8,13 @@
     max-width: 768px;
 }
 
-.crs-inner {
-    max-width: auto;
+.crs-overflow {
     overflow: hidden;
     background-color: rgb(180, 104, 255);
+}
+
+.crs-inner {
+    width: max-content;
 }
 
 .crs-inner * {

@@ -22,6 +22,7 @@ class Carousel {
       this.selector = selector;
       this.settings = settings;
       this.$crsContainer = null;
+      this.$crsOverflow = null;
       this.$crsInner = null;
       this.$crsItemContainer = null;
       this.$crsItemList = null;
@@ -38,6 +39,10 @@ class Carousel {
     const initialContent = this.$crsContainer.innerHTML;
     this.$crsContainer.innerHTML = '';
 
+    const crsOverflowSelector = 'crs-overflow';
+    const crsOverflow = document.createElement('div');
+    crsOverflow.setAttribute('class', crsOverflowSelector);
+
     const crsInnerSelector = 'crs-inner';
     const crsInner = document.createElement('div');
     crsInner.setAttribute('class', crsInnerSelector);
@@ -48,7 +53,10 @@ class Carousel {
     
     crsItemContainer.innerHTML = initialContent;
     crsInner.appendChild(crsItemContainer);
-    this.$crsContainer.appendChild(crsInner);
+    crsOverflow.appendChild(crsInner);
+    this.$crsContainer.appendChild(crsOverflow);
+
+    this.$crsOverflow = document.querySelector(`.${crsOverflowSelector}`)
     this.$crsInner = document.querySelector(`.${crsInnerSelector}`);
     this.$crsItemContainer = document.querySelector(`.${crsItemContainerSelector}`);
     
