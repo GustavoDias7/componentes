@@ -29,7 +29,9 @@ class Carousel {
       this.$crsDot = null;
       this.$crsDotContainer = null;
       this.$crsDot = null;
-      this.createStructure(selector);
+      this.widthCrsItem = '';
+      this.createStructure(this.selector);
+      this.handleWidthSlides(this.settings);
   }
   createStructure(mainContainer) {
     this.$crsContainer = document.querySelector(mainContainer);
@@ -98,6 +100,16 @@ class Carousel {
     this.$crsDotContainer = document.querySelector(crsDotContainerSelector);
     this.$crsDot = document.querySelectorAll(crsDotSelector);
   }
+  handleWidthSlides({ slidesToShow }) {
+    // set width of each element
+    const totalWidth = this.$crsContainer.clientWidth;
+    this.widthCrsItem = totalWidth / slidesToShow;
+    this.$crsItemList.forEach(item => {
+      item.style.width = `${this.widthCrsItem}px`
+    })
+  }
 }
 
-new Carousel('.crs-carousel', {});
+new Carousel('.crs-carousel', {
+  slidesToShow: 3,
+});
