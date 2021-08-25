@@ -1,0 +1,112 @@
+.offers {
+    box-sizing: border-box;
+    margin: 30px 0;
+}
+
+.crs-carousel {
+    position: relative;
+    max-width: 768px;
+}
+
+.crs-inner {
+    max-width: 100%;
+    overflow: hidden;
+    background-color: rgb(180, 104, 255);
+}
+
+.crs-inner * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.crs-items {
+    transition: .5s;
+}
+
+.crs-item {
+    display: block;
+    float: left;
+    position: relative;
+    height: auto;
+    border: 1px solid black;
+}
+
+/* remove later */
+.card-content {
+    max-width: 360px;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(250, 53, 53);
+}
+/* remove later */
+
+.crs-arrow-container {
+
+}
+
+.crs-arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: auto;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    transition: .2s;
+    background-color: #000000b6;
+}
+
+.crs-arrow:hover {
+    background-color: #3f3f3fb6;
+}
+
+.crs-arrow.prev {
+    left: 0;
+}
+
+.crs-arrow.next {
+    right: 0;
+}
+
+.crs-dot-container {
+    display: flex;
+    width: min-content;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -26px;
+    margin: auto;
+}
+
+.crs-dot {
+    display: inline-block;
+    margin-right: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    border: none;
+    background-color: green;
+    cursor: pointer;
+}
+
+.crs-dot:hover {
+    background-color: rgb(36, 189, 36);
+}
+
+.crs-dot:last-child {
+    margin-right: 0;
+}
+
+@media (max-width: 499px) {
+    .carousel-item {
+        position: relative;
+        min-width: 50%;
+        padding-top: 50%;
+    }
+}
