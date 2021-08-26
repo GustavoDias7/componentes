@@ -15,6 +15,7 @@
 
 .crs-inner {
     width: max-content;
+    transition: 0.4s;
 }
 
 .crs-inner * {
