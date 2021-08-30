@@ -10,6 +10,7 @@ class Carousel {
     this.$crsArrowContainer = null;
     this.$crsArrow = null;
     this.widthOffsetInner = 0;
+    this.limitWidthOffset = 0;
     this.currentWidthOffsetInner = 0;
     this.$crsDotContainer = null;
     this.$crsDot = null;
@@ -105,7 +106,8 @@ class Carousel {
     this.$crsItemList.forEach((item) => {
       item.style.width = `${this.widthCrsItem}px`;
     });
-    this.widthOffsetInner = this.widthCrsItem * slidesToScroll;
+    this.widthOffsetInner = this.widthCrsItem * slidesToScroll;  
+    this.limitWidthOffset = (this.$crsItemList.length - this.settings.slidesToShow) * this.widthCrsItem;
   }
   handleArrows() {
     this.$crsArrow.forEach((arrow) => {
@@ -120,12 +122,20 @@ class Carousel {
   }
   setTranslate = (arrow) => {
     if (arrow === 'next') {
-      this.currentWidthOffsetInner += this.widthOffsetInner;
-      this.$crsInner.style.transform = `translate(${-this.currentWidthOffsetInner}px)`;
+      if (this.currentWidthOffsetInner < this.limitWidthOffset) {
+        this.currentWidthOffsetInner += this.widthOffsetInner;
+        // se for o ultimo click, lidar como os espaços em branco
+        if (this.currentWidthOffsetInner > this.limitWidthOffset) {
+          this.$crsInner.style.transform = `translate(${-this.limitWidthOffset}px)`;
+        } else {
+          this.$crsInner.style.transform = `translate(${-this.currentWidthOffsetInner}px)`;
+        }
+      }
     } else {
-      if (this.currentWidthOffsetInner === 0) return;
-      this.currentWidthOffsetInner += -this.widthOffsetInner;
-      this.$crsInner.style.transform = `translate(${-this.currentWidthOffsetInner}px)`;
+      if (this.currentWidthOffsetInner > 0) {
+        this.currentWidthOffsetInner += -this.widthOffsetInner;
+        this.$crsInner.style.transform = `translate(${-this.currentWidthOffsetInner}px)`;
+      }
     }
   };
 }
