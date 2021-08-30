@@ -41,6 +41,7 @@
 .accordion .accordion-header .arrow {
     width: 22px;
     height: 22px;
+    margin-left: 20px;
     background-image: url(../accordion/arrow.svg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -114,6 +115,7 @@
 .accordion-js .accordion-js-header .arrow {
     width: 22px;
     height: 22px;
+    margin-left: 20px;
     background-image: url(../accordion/arrow.svg);
     background-repeat: no-repeat;
     background-size: contain;

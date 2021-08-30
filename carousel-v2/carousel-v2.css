@@ -3,29 +3,33 @@
     margin: 30px 0;
 }
 
-.carousel {
+.crs-carousel {
     position: relative;
     max-width: 768px;
 }
 
-.carousel-inner {
-    max-width: 100%;
+.crs-overflow {
     overflow: hidden;
     background-color: rgb(180, 104, 255);
 }
 
-.carousel-items * {
+.crs-inner {
+    width: max-content;
+    transition: 0.4s;
+}
+
+.crs-inner * {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.carousel-items {
+.crs-item-container {
     transition: .5s;
 }
 
-.carousel-item {
+.crs-item {
     display: block;
     float: left;
     position: relative;
@@ -35,7 +39,6 @@
 
 /* remove later */
 .card-content {
-    max-width: 360px;
     margin: 10px;
     text-align: center;
     padding: 10px;
@@ -43,7 +46,11 @@
 }
 /* remove later */
 
-.carousel-btn {
+.crs-arrow-container {
+
+}
+
+.crs-arrow {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -54,24 +61,23 @@
     cursor: pointer;
     color: #fff;
     border: none;
-    font-family: Calibri, sans-serif;
     transition: .2s;
     background-color: #000000b6;
 }
 
-.carousel-btn:hover {
+.crs-arrow:hover {
     background-color: #3f3f3fb6;
 }
 
-.left-btn {
+.crs-arrow.prev {
     left: 0;
 }
 
-.right-btn {
+.crs-arrow.next {
     right: 0;
 }
 
-.dot-container {
+.crs-dot-container {
     display: flex;
     width: min-content;
     position: absolute;
@@ -81,22 +87,22 @@
     margin: auto;
 }
 
-.carousel-dot {
+.crs-dot {
     display: inline-block;
-    margin-right: 4px;
-    width: 22px;
-    height: 22px;
-    border-radius: 22px;
+    margin-right: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
     border: none;
     background-color: green;
     cursor: pointer;
 }
 
-.carousel-dot:hover {
+.crs-dot:hover {
     background-color: rgb(36, 189, 36);
 }
 
-.carousel-dot:last-child {
+.crs-dot:last-child {
     margin-right: 0;
 }
 

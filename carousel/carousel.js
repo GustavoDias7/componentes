@@ -1,35 +1,38 @@
-function carousel(carouselSlide) {
-    let carouselInner = document.querySelector(carouselSlide);
-    let widthOffset = carouselInner.clientWidth;
-    let counterOffset = 0;
-    let counterClicks = 0;
+carousel('.carousel', {
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    arrows: true,
+});
 
-    let breakpoints = {
-        small: 450,
-        big: 900,
-    }
-
-    function setLimitOfRightClicks(breakpoint) {
-        const isMobile = window.matchMedia(`(max-width: ${breakpoint.small}px)`).matches;
-        const isDesk = window.matchMedia(`(min-width: ${breakpoint.big}px)`).matches;
-
-        let limitOfRightClicks;
-        if (isMobile) {
-            limitOfRightClicks = 5;
-        } 
-        else if (isDesk) {
-            limitOfRightClicks = 2;
-        }
-        
-        return limitOfRightClicks;
-    }
-    let limitOfRightClicks = setLimitOfRightClicks(breakpoints);
+function carousel(selectorName, settings) {
+    const carousel = document.querySelector(selectorName);
     
-    function createBtns(rightBtnName, leftBtnName, containerToInject) {
+    // prevent scroll be greater than show
+    if (settings.slidesToScroll > settings.slidesToShow) {
+        settings.slidesToScroll = settings.slidesToShow;
+    }
+
+    // set width and height of .carousel-item
+    const carouselItemList = carousel.querySelectorAll('.carousel-item');
+    const widthContainer = carousel.clientWidth;
+    const widthItems = widthContainer / settings.slidesToShow;
+    carouselItemList.forEach((item) => {
+        item.style.width = `${widthItems}px`;
+    })
+
+    // set width of carousel-inner
+    const quantiItems = carouselItemList.length
+    const carouselItemsWidth = widthItems * quantiItems;
+    const carouselItems = carousel.querySelector('.carousel-items');
+    carouselItems.style.width = `${carouselItemsWidth}px`;
+    
+    createBtns(settings.arrows, 'right-btn', 'left-btn', 'carousel');
+    function createBtns(hasArrows, rightBtnName, leftBtnName, containerToInject) {
+        if(!hasArrows) return;
         // create button element
         const genreicBtn = document.createElement('button');
         genreicBtn.setAttribute('class', 'carousel-btn');
-
+        
         // create right button
         const rightBtn = genreicBtn.cloneNode(true);
         rightBtn.classList.add(rightBtnName);
@@ -41,7 +44,7 @@ function carousel(carouselSlide) {
         leftBtn.classList.add(leftBtnName);
         leftBtn.setAttribute('id', leftBtnName);
         leftBtn.innerHTML = '&#60';
-
+        
         // create a general container
         const carouselBtnContainer = document.createElement('div');
         carouselBtnContainer.setAttribute('class', 'btn-container');
@@ -51,39 +54,28 @@ function carousel(carouselSlide) {
         // inject buttons on document
         const containerInject = document.querySelector(`.${containerToInject}`);
         containerInject.appendChild(carouselBtnContainer);
-
-        addEventButtons(rightBtn, leftBtn);
-    }
-    createBtns('right-btn', 'left-btn', 'carousel');
-
-    function addEventButtons(rightBtn, leftBtn) {
-        rightBtn.addEventListener('click', () => {
-            if (counterClicks >= limitOfRightClicks) {
-                counterOffset = 0;
-                counterClicks = 0;
-                carouselInner.style.transform = `translateX(-${counterOffset}px)`;
-            } else {
-                counterOffset += widthOffset;
-                carouselInner.style.transform = `translateX(-${counterOffset}px)`;
-                counterClicks++;
-            }
-        });
         
-        leftBtn.addEventListener('click', () => {
-            if (counterClicks === 0) return;
-            counterOffset -= widthOffset;
-            carouselInner.style.transform = `translateX(-${counterOffset}px)`;
-            counterClicks--;
-        });
+        addEventButtons(rightBtn, leftBtn);
+        function addEventButtons(rightBtn, leftBtn) {
+            const limiteClicks = Math.ceil((quantiItems - settings.slidesToShow) / settings.slidesToScroll);
+            let counterClicks = 0;
+            const offset = -widthItems * settings.slidesToScroll;
+            let currentOffset = 0;
+            const lastOffset = (quantiItems - ((limiteClicks * settings.slidesToScroll) + settings.slidesToShow)) * widthItems;
+            
+            rightBtn.addEventListener('click', () => {
+                if (counterClicks === limiteClicks) return;
+                currentOffset+=offset;
+                const translateX = counterClicks === limiteClicks - 1 ? currentOffset - lastOffset : currentOffset;
+                carouselItems.style.transform = `translateX(${translateX}px)`;
+                counterClicks++;
+            });
+            leftBtn.addEventListener('click', () => {
+                if (counterClicks === 0) return;
+                currentOffset-=offset;
+                carouselItems.style.transform = `translateX(${currentOffset}px)`;
+                counterClicks--;
+            });
+        }
     }
-    
-    window.addEventListener('resize', () => {
-        widthOffset = carouselInner.clientWidth;
-        counterOffset = 0;
-        counterClicks = 0;
-        limitOfRightClicks = setLimitOfRightClicks(breakpoints);
-        carouselInner.style.transform = `translateX(0px)`;
-    });
 }
-
-carousel('#carousel-inner', '#left-btn', '#right-btn');
