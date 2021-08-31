@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Patterns</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./layout-patterns/header-patterns/header-patterns.css" />
+    <link rel="stylesheet" href="./layout-patterns/form-patterns/generic-form.css" />
+    <link rel="stylesheet" href="./layout-patterns/form-patterns/contact-form.css" />
+    <style>
+      h2, h3 {
+        margin: 20px 0;
+      }
+      hr {
+        margin: 40px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <div class="container">
+        <h2>Header Patterns</h2>
+      </div>
+
+      <header id="header-1">
+        <div class="container">
+          <a href="#" class="logo">
+            <img src="./layout-patterns/header-patterns/header-logo.svg" alt="Logo" />
+          </a>
+          <ul>
+            <li><p>Item 1</p></li>
+            <li><a class="link" href="#">Item 2</a></li>
+            <li><a class="link" href="#">Item 3</a></li>
+            <li><a class="link" href="#">Item 4</a></li>
+            <li><a class="link" href="#">Item 5</a></li>
+            <li>
+              <a class="cta-button" href="#">Item 6</a>
+            </li>
+          </ul>
+        </div>
+      </header>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Form Patterns</h2>
+      </div>
+      
+      <div class="container">
+        <div class="checkout">
+          <form action="">
+            <h3>Checkout Form</h3>
+            <ul>
+              <li>
+                <label for="usarname">Username</label>
+                <input type="text" id="usarname" placeholder="Enter username" />
+                <p class="invalid-message">This field is invalid.</p>
+              </li>
+              <li>
+                <label for="password">Password</label>
+                <input
+                  class="valid"
+                  type="password"
+                  id="password"
+                  placeholder="Enter password"
+                />
+                <small>Your password is between 4 and 12 characters</small>
+                <p class="invalid-message">This field is invalid.</p>
+              </li>
+              <li>
+                <label for="error-input">Error input</label>
+                <input
+                  class="invalid"
+                  type="text"
+                  id="error-input"
+                  placeholder="Error example"
+                />
+                <p class="invalid-message">This field is invalid.</p>
+              </li>
+              <li class="columns">
+                <div class="column">
+                  <label for="cols-01">Column input 1</label>
+                  <input
+                    type="text"
+                    id="cols-01"
+                    placeholder="Column input 1"
+                  />
+                  <p class="invalid-message">This field is invalid.</p>
+                </div>
+                <div class="column">
+                  <label for="cols-02">Column input 2</label>
+                  <input
+                    type="text"
+                    id="cols-02"
+                    placeholder="Column input 2"
+                  />
+                  <p class="invalid-message">This field is invalid.</p>
+                </div>
+              </li>
+              <li>
+                <label class="custom-check" for="custom-checkbox">
+                  <input type="checkbox" id="custom-checkbox" />
+                  <span class="custom-check-marker"></span>
+                  <span class="custom-check-text">Custom checkbox</span>
+                </label>
+              </li>
+              <li>
+                <label class="custom-check" for="custom-radio-1">
+                  <input type="radio" name="custom-radio" id="custom-radio-1" />
+                  <span class="custom-check-marker"></span>
+                  <span class="custom-check-text">Custom radio 1</span>
+                </label>
+                <label class="custom-check" for="custom-radio-2">
+                  <input type="radio" name="custom-radio" id="custom-radio-2" />
+                  <span class="custom-check-marker"></span>
+                  <span class="custom-check-text">Custom radio 2</span>
+                </label>
+              </li>
+              <li>
+                <label for="selects">Select options</label>
+                <select name="selects" id="selects">
+                  <option value="item-01">Item 1</option>
+                  <option value="item-02">Item 2</option>
+                  <option value="item-02">Item 3</option>
+                </select>
+              </li>
+            </ul>
+            <button class="form-btn active-btn" type="button">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="container">
+        <div class="contact-form">
+          <form action="">
+            <h3>Contato</h3>
+            <div class="sides">
+              <ul class="left">
+                <li>
+                  <input id="name" type="text" placeholder="Name">
+                </li>
+                <li>
+                  <input id="tel" type="tel" placeholder="Telephone">
+                </li>
+                <li>
+                  <input id="email" type="email" placeholder="Email" class="invalid">
+                  <p class="invalid-message">Invalid field</p>
+                </li>
+              </ul>
+              <ul class="right">
+                <li>
+                  <select name="subject" id="subject">
+                    <option disabled checked>Select</option>
+                    <option value="subject-1">Subject 1</option>
+                    <option value="subject-2">Subject 2</option>
+                    <option value="subject-3">Subject 3</option>
+                  </select>
+                </li>
+                <li>
+                  <textarea placeholder="Message"></textarea>
+                </li>
+                <li>
+                  <button class="contact-submit">Submit</button>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
