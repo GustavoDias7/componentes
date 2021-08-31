@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58.977" height="58" viewBox="0 0 58.977 58">
+    <g id="Group_2" data-name="Group 2" transform="translate(-371 -243.5)">
+      <g id="Group_1" data-name="Group 1">
+        <path id="Path_1" data-name="Path 1" d="M0,0V58" transform="translate(373.5 243.5)" fill="none" stroke="#FE4066" stroke-width="5"/>
+        <path id="Path_2" data-name="Path 2" d="M0,0V58" transform="translate(427.477 243.5)" fill="none" stroke="#FE4066" stroke-width="5"/>
+        <path id="Path_3" data-name="Path 3" d="M0,20.977V0" transform="translate(410.977 272.5) rotate(90)" fill="none" stroke="#FE4066" stroke-width="5"/>
+        <path id="Path_4" data-name="Path 4" d="M0,13.693V0" transform="translate(429.466 246) rotate(90)" fill="none" stroke="#FE4066" stroke-width="5"/>
+        <path id="Path_5" data-name="Path 5" d="M0,13.693V0" transform="translate(385.466 246) rotate(90)" fill="none" stroke="#FE4066" stroke-width="5"/>
+      </g>
+      <path id="Path_6" data-name="Path 6" d="M0,13.693V0" transform="translate(385.466 299) rotate(90)" fill="none" stroke="#FE4066" stroke-width="5"/>
+      <path id="Path_7" data-name="Path 7" d="M0,13.693V0" transform="translate(429.466 299) rotate(90)" fill="none" stroke="#FE4066" stroke-width="5"/>
+    </g>
+</svg>

@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+.container {
+  max-width: 1080px;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+
+#header-1 {
+  background-color: #eeeeee;
+}
+#header-1 .container {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+#header-1 .logo {
+  font-size: 0;
+  transition: 0.4s;
+}
+#header-1 .logo:hover {
+  opacity: 0.8;
+}
+#header-1 ul {
+  display: flex;
+}
+#header-1 ul li {
+  margin-left: 20px;
+  line-height: 100%;
+}
+#header-1 ul li:first-child {
+  margin-left: 0px;
+}
+#header-1 ul li .link,
+#header-1 ul li p {
+  position: relative;
+  display: inline-block;
+  color: #222222;
+  transition: 0.2s;
+  line-height: 40px;
+  outline: none;
+}
+#header-1 ul li .link:hover {
+  color: #999999;
+}
+#header-1 ul li .link:focus {
+  color: #999999;
+}
+#header-1 ul li:first-child {
+  margin-left: 0;
+}
+#header-1 .cta-button {
+  display: block;
+  width: 130px;
+  line-height: 40px;
+  font-size: 1rem;
+  color: #222222;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: #ffdb00;
+  transition: 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+#header-1 .cta-button:focus {
+  box-shadow: 0 0 6px #ffdb00;
+}
+
+#header-1 .cta-button:active {
+  background-color: #ffc400;
+}
+
+#header-1 .cta-button:hover {
+  background-color: #ffe23e;
+  box-shadow: 0 0 10px #ffdb00;
+}
