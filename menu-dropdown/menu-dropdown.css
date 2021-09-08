@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+.container {
+  max-width: 1080px;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+
+#header {
+  background-color: #eeeeee;
+}
+#header .container {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+#header .logo {
+  font-size: 0;
+  transition: 0.4s;
+}
+#header .logo:hover {
+  opacity: 0.8;
+}
+#header .list-item {
+  display: flex;
+}
+#header .list-item > li {
+  margin-left: 20px;
+  line-height: 100%;
+}
+#header .list-item > li:first-child {
+  margin-left: 0px;
+}
+#header .link,
+#header .list-item > li p {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  color: #222222;
+  transition: 0.2s;
+  line-height: 40px;
+  outline: none;
+  border: none;
+}
+#header .link:hover,
+#header .link:focus {
+  color: #999999;
+}
+#header .link {
+  cursor: pointer;
+}
+#header ul li:first-child {
+  margin-left: 0;
+}
+#header .cta-button {
+  display: block;
+  width: 130px;
+  line-height: 40px;
+  font-size: 1rem;
+  color: #222222;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: #ffdb00;
+  transition: 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+#header .cta-button:focus {
+  box-shadow: 0 0 6px #ffdb00;
+}
+
+#header .cta-button:hover {
+  background-color: #ffe23e;
+  box-shadow: 0 0 10px #ffdb00;
+}
+
+.menu-dropdown {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.menu-dropdown > ul {
+  display: none;
+  position: absolute;
+  top: 38px;
+  width: 90px;
+  background-color: #aaa;
+}
+.menu-dropdown.active > ul {
+  display: block;
+  animation: left-right .2s;
+}
+@keyframes left-right {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.menu-dropdown > ul a {
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  transition: .2s;
+  color: #222222;
+}
+.menu-dropdown > ul li:hover a {
+  color: #eeeeee;
+}
