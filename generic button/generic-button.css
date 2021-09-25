@@ -1,8 +1,9 @@
 /* generic style */
-.button {
+.gn-button {
   display: block;
   width: 100%;
   max-width: 150px;
+  min-height: 35px;
   font-size: 1rem;
   color: #000000;
   cursor: pointer;
@@ -13,46 +14,48 @@
   transition: 0.4s;
 }
 
-.button:focus {
+.gn-button:focus {
   background-color: #888888;
 }
 
-.button:hover {
+.gn-button:hover {
   color: #00000099;
   background-color: #bbbbbbd9;
   box-shadow: 0 0 10px #0000004d;
 }
 
+/* link button */
+a.gn-button {
+  text-decoration: none;
+  text-align: center;
+  line-height: 35px;
+}
+
 /* active button style */
 
-.button.active-btn {
+.gn-button.active-btn {
   background-color: #ffdb00;
 }
 
-.button.active-btn:focus {
+.gn-button.active-btn:focus {
   background-color: #ffa600;
 }
 
-.button.active-btn:hover {
+.gn-button.active-btn:hover {
   background-color: #ffe23e;
   box-shadow: 0 0 10px #ffdb00;
 }
 
 /* disabled button */
-.button:disabled {
+.gn-button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-.button:disabled:hover {
+.gn-button:disabled:hover {
   box-shadow: none;
   color: #000000;
   background-color: #aaaaaa;
-}
-
-/* button style */
-button.button {
-  min-height: 35px;
 }
 
 /* Input type button/submit */
@@ -62,15 +65,15 @@ input[type="submit"] {
 }
 
 /* label button */
-label.button {
+label.gn-button {
   line-height: 35px;
   text-align: center;
   cursor: pointer;
 }
 
-label.button input[type="checkbox"] {
+label.gn-button input[type="checkbox"] {
   position: absolute;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
 
@@ -89,7 +92,7 @@ label.button input[type="checkbox"] {
 
 .option-container li input {
   position: absolute;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
 }
 
 .option-button {
@@ -141,20 +144,13 @@ input:checked ~ .option-button:hover {
   font-style: normal;
 }
 
-/* link button */
-a.button {
-  text-decoration: none;
-  text-align: center;
-  line-height: 35px;
-}
-
 /* button animation */
 
-.button .arrow {
+.gn-button .arrow {
   display: inline-block;
 }
 
-.button:hover .arrow {
+.gn-button:hover .arrow {
   animation: arrow-anima 1s ease-in-out infinite;
 }
 
