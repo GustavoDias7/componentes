@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./inactive-user/inactive-user.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Inactive User</title>
+    <style>
+      pre[class^="code-"] {
+        max-height: 205px;
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Inactive User</h1>
+      <p>
+        Activate a popup when the user is inactive for the defined time. When
+        there are no touch, key press, scroll, or mouse movement events on the
+        page.
+      </p>
+      <small> * The function is already running. Wait 3 seconds. </small>
+
+      <div class="example">
+        <div class="code-example">
+          <h4>JavaScript</h4>
+          <div>
+            <pre class="code-js"></pre>
+          </div>
+          <h4>HTML</h4>
+          <div>
+            <pre class="code-html"></pre>
+          </div>
+          <h4>CSS</h4>
+          <div>
+            <pre class="code-css"></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup" id="popup-01">
+        <div class="content">
+          <button class="close-btn">X</button>
+          <h2>Inactive User</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-copied">Copied!</div>
+
+    <script src="./inactive-user/inactive-user.js"></script>
+    <script>
+      // get the js code
+      const jsCode = fetch("./inactive-user/inactive-user.js")
+        .then((response) => response.text())
+        .then((js) => {
+          document.querySelector(".code-example pre.code-js").innerText = js;
+        });
+
+      // get the html code
+      const preCodeHTML = document.querySelector("pre.code-html");
+      const htmlCode = document.querySelector("#popup-01");
+      preCodeHTML.innerText = htmlCode.outerHTML;
+
+      // get the css code
+      const cssCode = fetch("./inactive-user/inactive-user.css")
+        .then((response) => response.text())
+        .then((css) => {
+          document.querySelector(".code-example pre.code-css").innerText = css;
+        });
+
+      // copy-code button
+      const copyCodeBTN = document.createElement("button");
+      copyCodeBTN.setAttribute("class", "copy-code");
+      copyCodeBTN.innerText = "Copy";
+      const allCodeExamples = document.querySelectorAll(".code-example > div");
+      allCodeExamples.forEach((codeExample) => {
+        const copyCodeClone = copyCodeBTN.cloneNode(true);
+        copyCodeClone.onclick = (event) => {
+          const button = event.currentTarget;
+          const preTag = button.previousElementSibling;
+          const innerCode = preTag.innerText;
+          navigator.clipboard.writeText(innerCode);
+          AlertCopy();
+        };
+        codeExample.appendChild(copyCodeClone);
+      });
+      function AlertCopy() {
+        const alertCopied = document.querySelector(".alert-copied");
+        alertCopied.setAttribute("show", "");
+        setTimeout(() => {
+          alertCopied.removeAttribute("show");
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
