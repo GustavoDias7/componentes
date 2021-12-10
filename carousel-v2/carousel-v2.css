@@ -94,16 +94,24 @@
     height: 12px;
     border-radius: 12px;
     border: none;
-    background-color: green;
+    background-color: #24bd24;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .crs-dot:hover {
-    background-color: rgb(36, 189, 36);
+    background-color: #4ed84e;
 }
 
 .crs-dot:last-child {
     margin-right: 0;
+}
+
+.crs-dot.active {
+    background-color: #008000;
+}
+.crs-dot.active:hover {
+    background-color: #129912;
 }
 
 @media (max-width: 499px) {

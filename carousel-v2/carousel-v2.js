@@ -18,6 +18,7 @@ class Carousel {
     this.createStructure(this.selector);
     this.handleWidthSlides(this.settings);
     this.handleArrows();
+    this.handleDots();
   }
   createStructure(mainContainer) {
     this.$crsContainer = document.querySelector(mainContainer);
@@ -80,6 +81,7 @@ class Carousel {
     this.$crsArrow = document.querySelectorAll('.crs-arrow');
   }
   createDots() {
+    if (this.settings.slidesToShow === this.$crsItemList.length) return;
     const crsDotContainer = document.createElement('div');
     const crsDotContainerSelector = 'crs-dot-container';
     crsDotContainer.classList.add(crsDotContainerSelector);
@@ -88,8 +90,10 @@ class Carousel {
     const crsDotSelector = 'crs-dot';
     crsDot.classList.add(crsDotSelector);
 
-    for (let i = 0; i < this.$crsItemList.length; i++) {
-      crsDotContainer.appendChild(crsDot.cloneNode(true));
+    const quantOfDots = this.$crsItemList.length - this.settings.slidesToShow;
+    for (let i = 0; i <= quantOfDots; i++) {
+      const clonedDot = crsDot.cloneNode(true);
+      crsDotContainer.appendChild(clonedDot);
     }
 
     this.$crsContainer.appendChild(crsDotContainer);
@@ -138,6 +142,21 @@ class Carousel {
       }
     }
   };
+  handleDots() {
+    if (this.$crsDot === null) return;
+    let lastClick = 0;
+    this.$crsDot[lastClick].classList.add('active');
+    this.$crsDot.forEach((dot, index) => {
+      dot.addEventListener('click', ({ target }) => {
+        this.$crsInner.style.transform = `translate(${-this.widthCrsItem * index}px)`;
+        target.classList.add('active');
+        if (lastClick !== index) {
+          this.$crsDot[lastClick].classList.remove('active');
+        }
+        lastClick = index;
+      })
+    })
+  }
 }
 
 new Carousel('.crs-carousel', {
