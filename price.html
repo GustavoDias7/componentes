@@ -24,23 +24,15 @@
               <u>/mês</u>
             </span>
           </p>
-          <div class="code-example">
-            <h4>HTML</h4>
-            <div>
-              <pre class="code-html"></pre>
-            </div>
-            <h4>CSS</h4>
-            <div>
-              <pre class="code-css"></pre>
-            </div>
-          </div>
         </div>
       </div>
     </section>
     <script src="./setExamples.js"></script>
     <script>
-      setCSS("./price/price.css");
-      setHTML(".price");
+      setCodeExample({
+        cssPathFile: "./price/price.css",
+        componentSelector: ".price",
+      });
     </script>
   </body>
 </html>
