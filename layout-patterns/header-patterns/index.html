@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Layout Patterns</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./layout-patterns/header-patterns/header-patterns.css" />
-    <link rel="stylesheet" href="./layout-patterns/form-patterns/generic-form.css" />
-    <link rel="stylesheet" href="./layout-patterns/form-patterns/contact-form.css" />
+    <link rel="stylesheet" href="./header-patterns/header-patterns.css" />
+    <link rel="stylesheet" href="./form-patterns/generic-form.css" />
+    <link rel="stylesheet" href="./form-patterns/contact-form.css" />
     <style>
-      h2, h3 {
+      h2,
+      h3 {
         margin: 20px 0;
       }
       hr {
@@ -28,7 +29,7 @@
       <header id="header-1">
         <div class="container">
           <a href="#" class="logo">
-            <img src="./layout-patterns/header-patterns/header-logo.svg" alt="Logo" />
+            <img src="./header-patterns/header-logo.svg" alt="Logo" />
           </a>
           <ul>
             <li><p>Item 1</p></li>
@@ -48,7 +49,7 @@
       <div class="container">
         <h2>Form Patterns</h2>
       </div>
-      
+
       <div class="container">
         <div class="checkout">
           <form action="">
@@ -133,7 +134,7 @@
         </div>
       </div>
 
-      <hr>
+      <hr />
 
       <div class="container">
         <div class="contact-form">
@@ -142,13 +143,18 @@
             <div class="sides">
               <ul class="left">
                 <li>
-                  <input id="name" type="text" placeholder="Name">
+                  <input id="name" type="text" placeholder="Name" />
                 </li>
                 <li>
-                  <input id="tel" type="tel" placeholder="Telephone">
+                  <input id="tel" type="tel" placeholder="Telephone" />
                 </li>
                 <li>
-                  <input id="email" type="email" placeholder="Email" class="invalid">
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    class="invalid"
+                  />
                   <p class="invalid-message">Invalid field</p>
                 </li>
               </ul>

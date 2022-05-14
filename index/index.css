@@ -55,13 +55,10 @@ a.button {
 .group-button {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
   width: -moz-fit-content;
   width: fit-content;
+  max-width: 825px;
   margin: auto;
-}
-.group-button li {
-  margin-right: 15px;
-}
-.group-button li:last-child {
-  margin-right: 0;
 }
