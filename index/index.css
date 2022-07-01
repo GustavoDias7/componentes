@@ -41,13 +41,9 @@ a.button {
   text-align: center;
   background-color: #fff5bb;
   height: 100vh;
-}
-.hero .content {
-  position: absolute;
-  top: 40%;
-  left: 0;
-  right: 0;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero .content h1 {
   margin-bottom: 20px;
@@ -60,5 +56,5 @@ a.button {
   width: -moz-fit-content;
   width: fit-content;
   max-width: 825px;
-  margin: auto;
+  margin: 0px auto 32px;
 }
