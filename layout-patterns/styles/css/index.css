@@ -1,0 +1,33 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; }
+
+img {
+  display: block; }
+
+.container {
+  max-width: 1140px;
+  margin: 0px auto; }
+
+.banner {
+  background-color: #eee; }
+  .banner .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    text-align: center; }
+  .banner .content {
+    max-width: 800px; }
+    .banner .content .image {
+      width: 90px;
+      height: 90px;
+      margin: 0px auto 16px; }
+    .banner .content .title {
+      font-size: 64px;
+      margin-bottom: 16px; }
+    .banner .content .subtitle {
+      font-size: 20px; }
+
+/*# sourceMappingURL=index.css.map */
