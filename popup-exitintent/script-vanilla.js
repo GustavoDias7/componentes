@@ -1,17 +1,20 @@
-function initExitIntent({
+async function initExitIntent({
   popup,
   closeButton,
   activeClass,
   oneTime = true,
   mobileBreakpoint = 768,
+  startDelay = 0,
 }) {
-  var deviceWidth = document.querySelector("html").offsetWidth;
+  await delay(startDelay);
+  var html = document.querySelector("html");
+  var deviceWidth = html.offsetWidth;
   var isMobileDevice = deviceWidth <= mobileBreakpoint;
 
   if (isMobileDevice) {
-    document.addEventListener("scroll", scrollSpeed);
+    html.addEventListener("scroll", scrollSpeed);
   } else {
-    document.addEventListener("mouseleave", mouseleave);
+    html.addEventListener("mouseleave", mouseleave);
   }
 
   const $closeButton = document.querySelector(closeButton);
@@ -34,9 +37,20 @@ function initExitIntent({
     if (oneTime) document.removeEventListener(event, fn);
   }
 
-  function mouseleave() {
-    showPopup();
-    removeEvent("mouseleave", mouseleave);
+  function mouseleave(e) {
+    var cordenadas = {
+      top: e.clientY,
+      left: e.clientX,
+      deviceWidth,
+    };
+    if (
+      cordenadas.top < 0 ||
+      cordenadas.left < 0 ||
+      cordenadas.left > cordenadas.deviceWidth
+    ) {
+      showPopup();
+      removeEvent("mouseleave", mouseleave);
+    }
   }
 
   async function scrollSpeed() {
@@ -55,9 +69,8 @@ function initExitIntent({
   }
 }
 
-initExitIntent({
-  popup: ".initExitIntent",
-  closeButton: ".close",
-  activeClass: "active",
-  oneTime: true,
-});
+async function delay(time) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time);
+  });
+}
