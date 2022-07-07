@@ -7,9 +7,9 @@ async function initExitIntent({
   startDelay = 0,
 }) {
   await delay(startDelay);
-  var html = document.querySelector("html");
-  var deviceWidth = html.offsetWidth;
-  var isMobileDevice = deviceWidth <= mobileBreakpoint;
+  const html = document.querySelector("html");
+  const deviceWidth = html.offsetWidth;
+  const isMobileDevice = deviceWidth <= mobileBreakpoint;
 
   if (isMobileDevice) {
     html.addEventListener("scroll", scrollSpeed);
@@ -38,7 +38,7 @@ async function initExitIntent({
   }
 
   function mouseleave(e) {
-    var cordenadas = {
+    const cordenadas = {
       top: e.clientY,
       left: e.clientX,
       deviceWidth,
@@ -54,12 +54,12 @@ async function initExitIntent({
   }
 
   async function scrollSpeed() {
-    var lastPosition = window.scrollY;
-    var speed = 320;
+    const lastPosition = window.scrollY;
+    const speed = 320;
 
     setTimeout(() => {
-      let newPosition = window.scrollY;
-      let currentSpeed = lastPosition - newPosition;
+      const newPosition = window.scrollY;
+      const currentSpeed = lastPosition - newPosition;
 
       if (currentSpeed > speed) {
         showPopup();

@@ -55,8 +55,8 @@ async function initExitIntent({
     var speed = 320;
 
     setTimeout(() => {
-      let newPosition = window.scrollY;
-      let currentSpeed = lastPosition - newPosition;
+      var newPosition = window.scrollY;
+      var currentSpeed = lastPosition - newPosition;
 
       if (currentSpeed > speed) {
         showPopup();
