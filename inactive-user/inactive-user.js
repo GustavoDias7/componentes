@@ -1,17 +1,17 @@
 function inactiveUser({
   maxIdleTime = 10000,
   popup = "",
-  classToActive = "active",
+  activeClass = "active",
   btnToClosePopup = "",
 }) {
   const $popup = document.querySelector(popup);
   $popup.addEventListener("click", ({ target, currentTarget }) => {
     //close popup when clicked outside the popup content
-    if (target === currentTarget) $popup.classList.remove(classToActive);
+    if (target === currentTarget) $popup.classList.remove(activeClass);
   });
 
   function displayPopup() {
-    $popup.classList.add(classToActive);
+    $popup.classList.add(activeClass);
   }
   let timeout = setTimeout(displayPopup, maxIdleTime);
 
@@ -26,13 +26,13 @@ function inactiveUser({
   const $btnToClosePopup = document.querySelector(btnToClosePopup);
   $btnToClosePopup.addEventListener("click", (e) => {
     e.preventDefault();
-    $popup.classList.remove(classToActive);
+    $popup.classList.remove(activeClass);
   });
 }
 
 inactiveUser({
   maxIdleTime: 3000,
   popup: "#popup-01",
-  classToActive: "active",
+  activeClass: "active",
   btnToClosePopup: "#popup-01 .close-btn",
 });
