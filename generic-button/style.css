@@ -1,0 +1,161 @@
+/* generic style */
+.gn-button {
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  min-height: 35px;
+  font-size: 1rem;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: #aaaaaa;
+  transition: 0.4s;
+}
+
+.gn-button:focus {
+  background-color: #888888;
+}
+
+.gn-button:hover {
+  color: #00000099;
+  background-color: #bbbbbbd9;
+  box-shadow: 0 0 10px #0000004d;
+}
+
+/* link button */
+a.gn-button {
+  text-decoration: none;
+  text-align: center;
+  line-height: 35px;
+}
+
+/* active button style */
+
+.gn-button.active-btn {
+  background-color: #ffdb00;
+}
+
+.gn-button.active-btn:focus {
+  background-color: #ffa600;
+}
+
+.gn-button.active-btn:hover {
+  background-color: #ffe23e;
+  box-shadow: 0 0 10px #ffdb00;
+}
+
+/* disabled button */
+.gn-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gn-button:disabled:hover {
+  box-shadow: none;
+  color: #000000;
+  background-color: #aaaaaa;
+}
+
+/* Input type button/submit */
+input[type="button"],
+input[type="submit"] {
+  line-height: 35px;
+}
+
+/* label button */
+label.gn-button {
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+}
+
+label.gn-button input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
+
+/* option button - using label */
+.option-container {
+  display: flex;
+  max-width: 160px;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.option-container li {
+  list-style-type: none;
+}
+
+.option-container li input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+.option-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #aaaaaa;
+  transition: 0.4s;
+}
+
+.option-button:hover {
+  background-color: #bbbbbbd9;
+  box-shadow: 0 0 8px #0000004d;
+}
+
+input:checked ~ .option-button {
+  background-color: #ffdb00;
+}
+
+input:checked ~ .option-button:hover {
+  background-color: #ffe23e;
+  box-shadow: 0 0 8px #ffdb00;
+}
+
+/* button with subtext */
+.subtext {
+  min-height: auto;
+  height: auto;
+  padding: 7px 0;
+}
+
+.subtext span {
+  display: block;
+}
+
+.subtext .main {
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: normal;
+}
+
+.subtext .sub {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-style: normal;
+}
+
+/* button animation */
+
+.gn-button .arrow {
+  display: inline-block;
+}
+
+.gn-button:hover .arrow {
+  animation: arrow-anima 1s ease-in-out infinite;
+}
+
+@keyframes arrow-anima {
+  50% {
+    transform: translateX(5px);
+  }
+}

@@ -1,0 +1,27 @@
+.banner {
+  background-color: $netral-light;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    text-align: center;
+  }
+  .content {
+    max-width: 800px;
+
+    .image {
+      width: $pixel;
+      height: $pixel;
+      margin: 0px auto $margin-bottom;
+    }
+    .title {
+      @include title;
+      margin-bottom: $margin-bottom;
+    }
+    .subtitle {
+      @include subtitle;
+    }
+  }
+}

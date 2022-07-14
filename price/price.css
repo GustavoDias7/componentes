@@ -1,0 +1,21 @@
+.price {
+  display: flex;
+  align-items: flex-end;
+  line-height: 0.9;
+}
+.price u {
+  display: block;
+  text-decoration: none;
+}
+
+.price > em {
+  font-style: normal;
+  font-size: 0.875rem;
+}
+.price > strong {
+  font-size: 2rem;
+  margin: 0px 3px;
+}
+.price > span {
+  font-size: 0.875rem;
+}

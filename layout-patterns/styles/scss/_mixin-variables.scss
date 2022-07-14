@@ -1,0 +1,11 @@
+$netral-light: #eee;
+
+$pixel: 90px;
+$margin-bottom: 16px;
+
+@mixin title {
+  font-size: 64px;
+}
+@mixin subtitle {
+  font-size: 20px;
+}

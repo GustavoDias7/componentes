@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./modal.css" />
+    <title>Modal</title>
+    <style>
+      .modal h2 {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: fit-content;
+        width: -moz-fit-content;
+        height: min-content;
+        margin: auto;
+        font-size: 3rem;
+      }
+      button {
+        display: block;
+        width: 100%;
+        min-height: 35px;
+        max-width: 150px;
+        font-size: 1rem;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        border-radius: 4px;
+        border: medium none;
+        outline: currentcolor none medium;
+        background-color: rgb(170, 170, 170);
+        transition: all 0.4s ease 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <h1>Modal</h1>
+        <br />
+        <h2>Regular modal</h2>
+        <div class="example">
+          <button id="modal-active1">Active modal</button>
+          <br />
+          <h4>Example HTML & JavaScript</h4>
+          <div>
+            <pre class="code">
+&#60;button id="modal-active1"&#62;Active modal&#60;/button&#62;
+&#60;div class="modal" id="modal1"&#62;
+  &#60;div class="modal-content"&#62;
+    &#60;a href="#" class="modal-close" id="modal-close1"&#62;&#60;/a&#62;
+    &#60;!-- put here your tags... --&#62;
+  &#60;/div&#62;
+&#60;/div&#62;
+
+&#60;script src="./modal/modal.js"&#62;&#60;/script&#62;
+&#60;script&#62;
+  initModal({
+    btnToActiveModal: "selectorName",
+    modalContainer: "selectorName",
+    btnToCloseModal: "selectorName",
+    activeModalOnLoad: boolean,
+    activeModalOnTrigger: {
+      enable: boolean,
+      elements: {
+        trigger: "selctorName",
+        target: "selectorName",
+      },
+      eventListener: "eventName",
+    },
+  })
+&#60;/script&#62;</pre
+            >
+          </div>
+          <small>Instructions and explanations in ./modal/README.md</small>
+        </div>
+      </div>
+    </section>
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <a href="#" class="modal-close" id="modal-close1">x</a>
+        <h2>Regular modal</h2>
+      </div>
+    </div>
+    <div class="modal" id="modal2">
+      <div class="modal-content">
+        <a href="#" class="modal-close" id="modal-close2">x</a>
+        <h2>
+          Onload - pop up <br />
+          Trigger - pop up
+        </h2>
+      </div>
+    </div>
+    <script src="./modal.js"></script>
+  </body>
+</html>
