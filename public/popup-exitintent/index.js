@@ -8,7 +8,7 @@ $(document).ready(function () {
     popup: ".initExitIntent",
     closeButton: ".close",
     activeClass: "active",
-    timesToShow: 1,
+    timesToShow: 2,
     startDelay: 0,
     mouseleave: {
       active: true,
@@ -20,7 +20,7 @@ $(document).ready(function () {
     },
     userInactive: {
       active: true,
-      maxIdleTime: 10000,
+      maxIdleTime: 1000,
       breakpoint: breakpoints.mobile,
     },
   });

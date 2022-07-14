@@ -4,7 +4,6 @@ async function initExitIntent({
   activeClass,
   timesToShow = 1,
   startDelay = 0,
-  oneTime = true,
   mouseleave = {
     active: false,
     breakpoint: [769],
@@ -20,26 +19,46 @@ async function initExitIntent({
   },
 }) {
   await delay(startDelay);
-  let times = 0;
+  let timesCounter = 0;
 
   function setTimes(counter) {
-    times = counter;
+    timesCounter = counter;
   }
 
   if (handleBreakpoints(scrollSpeed)) {
-    $(document).on("scroll", initScrollSpeed);
+    setEvents("scroll", initScrollSpeed);
   }
 
   if (handleBreakpoints(mouseleave)) {
-    $(document).on("mouseleave", initMouseleave);
+    setEvents("mouseleave", initMouseleave);
   }
 
-  initUserInactive({
-    userInactive: { ...userInactive },
-    popup: popup,
-    oneTime: oneTime,
-    activeClass: activeClass,
-  });
+  var removeEvent;
+
+  function setEvents(name = "", fn = () => {}) {
+    $(document).on(name, fn);
+    removeEvent = () => {
+      var mustRemove = timesCounter >= timesToShow;
+
+      if (mustRemove) {
+        $(document).off(name, fn);
+      } else {
+        setTimes(timesCounter + 1);
+      }
+
+      return mustRemove;
+    };
+  }
+
+  if (handleBreakpoints(userInactive)) {
+    initUserInactive({
+      userInactive: { ...userInactive },
+      popup: popup,
+      timesCounter: timesCounter,
+      timesToShow: timesToShow,
+      activeClass: activeClass,
+    });
+  }
 
   $(closeButton).on("click", hidePopup);
 
@@ -55,18 +74,6 @@ async function initExitIntent({
     else $(popup).removeClass(activeClass);
   }
 
-  function removeEvent(event, fn) {
-    var mustRemove = times >= timesToShow;
-
-    if (mustRemove) {
-      $(document).off(event, fn);
-    } else {
-      setTimes(times + 1);
-    }
-
-    return mustRemove;
-  }
-
   function initMouseleave(e) {
     var cordenadas = {
       top: e.clientY,
@@ -78,8 +85,8 @@ async function initExitIntent({
       cordenadas.left < 0 ||
       cordenadas.left > cordenadas.deviceWidth
     ) {
-      if (removeEvent("mouseleave", initMouseleave)) return;
-      showPopup();
+      if (removeEvent()) return;
+      else showPopup();
     }
   }
 
@@ -92,8 +99,8 @@ async function initExitIntent({
       var currentSpeed = lastPosition - newPosition;
 
       if (currentSpeed > speed) {
-        if (removeEvent("scroll", initScrollSpeed)) return;
-        showPopup();
+        if (removeEvent()) return;
+        else showPopup();
       }
     }, 100);
   }
@@ -128,29 +135,32 @@ function initUserInactive({
   oneTime = true,
   activeClass = "active",
 }) {
-  var { maxIdleTime } = userInactive;
-  if (!handleBreakpoints(userInactive)) return;
+  // set events
+  var events = ["mousemove", "mousedown", "click", "scroll", "keypress"];
+  events.forEach((event) => $(document).on(event, resetTimer));
+
+  function createTimeout({ maxIdleTime, showPopup }) {
+    return () => setTimeout(showPopup, maxIdleTime);
+  }
+
+  var handleTimeout = createTimeout({
+    showPopup,
+    ...userInactive,
+  });
+
+  var timeout = handleTimeout();
+
+  function resetTimer() {
+    clearTimeout(timeout);
+    timeout = handleTimeout();
+  }
 
   function showPopup() {
     $(popup).addClass(activeClass);
     if (oneTime) deleteEvents(events);
   }
 
-  var timeout = setTimeout(showPopup, maxIdleTime);
-
-  var events = ["mousemove", "mousedown", "click", "scroll", "keypress"];
-
-  function setEvents(events) {
-    events.forEach((event) => $(document).on(event, resetTimer));
-  }
-  setEvents(events);
-
   function deleteEvents(events) {
     events.forEach((event) => $(document).off(event, resetTimer));
-  }
-
-  function resetTimer() {
-    clearTimeout(timeout);
-    timeout = setTimeout(showPopup, maxIdleTime);
   }
 }
