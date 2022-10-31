@@ -24,7 +24,7 @@ async function initExitIntent({
   if (!activeClass) $popup.style.display = "none";
 
   function showPopup() {
-    if (!activeClass) $popup.$popup.style.display = "block";
+    if (!activeClass) $popup.style.display = "block";
     else $popup.classList.add(activeClass);
   }
 

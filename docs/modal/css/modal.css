@@ -15,17 +15,11 @@
   transition: 0.2s;
   background-color: rgba(0, 0, 0, 0.6);
 }
-
-.modal-active {
+.modal.active {
   opacity: 1;
   pointer-events: all;
 }
-
-.modal-active .modal-content {
-  /* animation */
-}
-
-.modal-content {
+.modal .content {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -37,8 +31,7 @@
   padding: 20px;
   background-color: #fff;
 }
-
-.modal-close {
+.modal .close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -48,5 +41,11 @@
   text-align: center;
   text-decoration: none;
   border-radius: 20px;
-  border: 2px solid #111111;
+  border: none;
 }
+
+.modal-active .modal-content {
+  /* animation */
+}
+
+/*# sourceMappingURL=modal.css.map */

@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../generic-button/style.css" />
-    <link rel="stylesheet" href="./css/modal.css" />
-    <script src="./ts/modal2.js" defer></script>
+    <link rel="stylesheet" href="./modal.css" />
     <title>Modal</title>
     <style>
       .modal h2 {
@@ -22,6 +20,20 @@
         height: min-content;
         margin: auto;
         font-size: 3rem;
+      }
+      button {
+        display: block;
+        width: 100%;
+        min-height: 35px;
+        max-width: 150px;
+        font-size: 1rem;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        border-radius: 4px;
+        border: medium none;
+        outline: currentcolor none medium;
+        background-color: rgb(170, 170, 170);
+        transition: all 0.4s ease 0s;
       }
     </style>
   </head>
@@ -90,5 +102,17 @@
         <h2>Regular modal 2</h2>
       </div>
     </div>
+
+    <!-- modal 2 -->
+    <!-- <div class="modal" id="modal2">
+      <div class="content">
+        <button class="close" data-modal-close="#modal2"></button>
+        <h2>
+          Onload - pop up <br />
+          Trigger - pop up
+        </h2>
+      </div>
+    </div> -->
+    <script src="./modal2.js"></script>
   </body>
 </html>
