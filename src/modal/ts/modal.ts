@@ -94,7 +94,7 @@ function initModal({
   const hasWayToOpen = Boolean($btnToOpenModal.length) || activeModalOnLoad;
   if (!hasWayToOpen) return errorMessageOpen();
 
-  // handles
+  // listeners
   if (activeModalOnLoad) $modalContainer.classList.add(activeClass);
 
   $modalContainer.addEventListener("click", (event: Event) => {
@@ -114,6 +114,7 @@ function initModal({
     });
   });
 
+  // trigger
   handleTrigger(activeModalOnTrigger, activeClass);
 
   return true;
