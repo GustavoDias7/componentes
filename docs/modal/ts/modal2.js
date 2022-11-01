@@ -1,49 +1,20 @@
-function initModal(_a) {
-    var _b = _a.modal, modal = _b === void 0 ? "" : _b, _c = _a.activeModalOnLoad, activeModalOnLoad = _c === void 0 ? false : _c, _d = _a.activeModalOnTrigger, activeModalOnTrigger = _d === void 0 ? {
-        enable: false,
-        elements: {
-            trigger: "",
-            target: "",
-        },
-        eventListener: "click",
-    } : _d, _e = _a.inactiveUser, inactiveUser = _e === void 0 ? { enable: false, maxIdleTime: 1000 } : _e, _f = _a.activeClass, activeClass = _f === void 0 ? "active" : _f;
-    var $modalContainer = document.querySelector(modal);
-    if (!$modalContainer)
-        return;
-    $modalContainer.addEventListener("click", function (event) {
-        if (event.target !== event.currentTarget)
-            return;
-        $modalContainer.classList.toggle(activeClass);
-    });
-    var activeSelector = "[data-modal-active=\"".concat(modal, "\"]");
-    var $btnToActiveModal = document.querySelectorAll(activeSelector);
-    if (!$btnToActiveModal)
-        return;
-    $btnToActiveModal.forEach(function (event) {
-        event.addEventListener("click", toggleModal);
-    });
-    var closeSelector = "[data-modal-close=\"".concat(modal, "\"]");
-    var $btnToCloseModal = document.querySelectorAll(closeSelector);
-    if (!$btnToCloseModal)
-        return;
-    $btnToCloseModal.forEach(function (event) {
-        event.addEventListener("click", toggleModal);
-    });
-    function toggleModal(event) {
-        if (event.target !== event.currentTarget)
-            return;
-        $modalContainer === null || $modalContainer === void 0 ? void 0 : $modalContainer.classList.toggle(activeClass);
-    }
-    if (activeModalOnLoad) {
-        $modalContainer.classList.add(activeClass);
-    }
+function errorMessageElement(elementName) {
+    console.error("The element '".concat(elementName, "' does not exist!"));
+    return false;
+}
+function errorMessageOpen() {
+    console.error("There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.");
+    return false;
+}
+function handleTrigger(activeModalOnTrigger, activeClass) {
+    var _a, _b;
     if (activeModalOnTrigger.enable) {
-        var triggerSelector = activeModalOnTrigger.elements.trigger;
+        var triggerSelector = (_a = activeModalOnTrigger === null || activeModalOnTrigger === void 0 ? void 0 : activeModalOnTrigger.elements) === null || _a === void 0 ? void 0 : _a.trigger;
         var $modalTrigger = document.querySelector(triggerSelector);
-        var targetSelector = activeModalOnTrigger.elements.target;
+        var targetSelector = (_b = activeModalOnTrigger === null || activeModalOnTrigger === void 0 ? void 0 : activeModalOnTrigger.elements) === null || _b === void 0 ? void 0 : _b.target;
         var $modalTarget_1 = document.querySelector(targetSelector);
-        if ($modalTrigger && $modalTarget_1) {
-            var eventName = activeModalOnTrigger.eventListener;
+        var eventName = activeModalOnTrigger === null || activeModalOnTrigger === void 0 ? void 0 : activeModalOnTrigger.eventListener;
+        if ($modalTrigger && $modalTarget_1 && eventName) {
             $modalTrigger.addEventListener(eventName, function (event) {
                 if (event.target === event.currentTarget) {
                     $modalTarget_1.classList.add(activeClass);
@@ -51,21 +22,63 @@ function initModal(_a) {
             });
         }
     }
-    if (inactiveUser.enable) {
-        var maxIdleTime_1 = inactiveUser.maxIdleTime;
-        var timeout_1 = setTimeout(displayPopup, maxIdleTime_1);
-        function displayPopup() {
-            $modalContainer === null || $modalContainer === void 0 ? void 0 : $modalContainer.classList.add(activeClass);
-        }
-        var events = ["mousemove", "mouseDown", "click", "scroll", "keypress"];
-        events.forEach(function (event) { return window.addEventListener(event, resetTimer); });
-        function resetTimer() {
-            clearTimeout(timeout_1);
-            timeout_1 = setTimeout(displayPopup, maxIdleTime_1);
-        }
-    }
 }
-initModal({
-    modal: "#modal1",
-    inactiveUser: { enable: true, maxIdleTime: 2000 },
+function initModal(_a) {
+    var _b = _a.modal, modal = _b === void 0 ? "" : _b, _c = _a.activeModalOnLoad, activeModalOnLoad = _c === void 0 ? false : _c, _d = _a.activeModalOnTrigger, activeModalOnTrigger = _d === void 0 ? {
+        enable: false,
+        elements: {
+            trigger: "",
+            target: ""
+        },
+        eventListener: "click"
+    } : _d, _e = _a.activeClass, activeClass = _e === void 0 ? "active" : _e;
+    // selectors
+    var $modalContainer;
+    var $btnToOpenModal;
+    var $btnToCloseModal;
+    var openSelector = "[data-modal-open=\"".concat(modal, "\"]");
+    var closeSelector = "[data-modal-close=\"".concat(modal, "\"]");
+    try {
+        $modalContainer = document.querySelector(modal);
+        $btnToOpenModal = document.querySelectorAll(openSelector);
+        $btnToCloseModal = document.querySelectorAll(closeSelector);
+    }
+    catch (err) {
+        console.error(err);
+        return false;
+    }
+    // validation
+    var hasModal = Boolean($modalContainer);
+    if (!hasModal)
+        return errorMessageElement(modal);
+    var hasBtnClose = Boolean($btnToCloseModal.length);
+    if (!hasBtnClose)
+        return errorMessageElement(closeSelector);
+    var hasWayToOpen = Boolean($btnToOpenModal.length) || activeModalOnLoad;
+    if (!hasWayToOpen)
+        return errorMessageOpen();
+    // handles
+    if (activeModalOnLoad)
+        $modalContainer.classList.add(activeClass);
+    $modalContainer.addEventListener("click", function (event) {
+        if (event.target !== event.currentTarget)
+            return;
+        $modalContainer.classList.toggle(activeClass);
+    });
+    $btnToOpenModal.forEach(function (event) {
+        event.addEventListener("click", function () {
+            $modalContainer.classList.add(activeClass);
+        });
+    });
+    $btnToCloseModal.forEach(function (event) {
+        event.addEventListener("click", function () {
+            $modalContainer.classList.remove(activeClass);
+        });
+    });
+    handleTrigger(activeModalOnTrigger, activeClass);
+    return true;
+}
+var $modals = document.querySelectorAll(".modal");
+$modals.forEach(function (modal) {
+    initModal({ modal: "#".concat(modal === null || modal === void 0 ? void 0 : modal.id) });
 });
