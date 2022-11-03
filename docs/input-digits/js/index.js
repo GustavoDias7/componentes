@@ -1,12 +1,3 @@
-function hasElement(element, elementSelector = "") {
-  if (Boolean(element)) {
-    return true;
-  } else {
-    console.log(`The selector "${elementSelector}" not exist!`);
-    return false;
-  }
-}
-
 function errorMessageElement(elementName) {
   console.error(`The element '${elementName}' does not exist!`);
   return false;
@@ -56,6 +47,7 @@ function handleInputDigits({ fieldSelector = "", fieldHiddenSelector = "" }) {
   let $fieldHidden;
 
   try {
+    // get invalid selectors
     $fields = document.querySelectorAll(fieldSelector);
     $fieldHidden = document.querySelector(fieldHiddenSelector);
   } catch (err) {
@@ -63,7 +55,7 @@ function handleInputDigits({ fieldSelector = "", fieldHiddenSelector = "" }) {
     return false;
   }
 
-  // validation
+  // validations of elements
   const hasFields = Boolean($fields.length);
   if (!hasFields) return errorMessageElement(fieldSelector);
 
@@ -76,22 +68,19 @@ function handleInputDigits({ fieldSelector = "", fieldHiddenSelector = "" }) {
 
   $fields.forEach((field, fieldIndex, arr) => {
     // set empty value at first time
-    // reset values when refresh page
+    // reset value when refresh page
     field.value = "";
 
     field.addEventListener("input", (e) => {
       const oneDigit = setOneChar(e.data);
 
-      if (isNumber(oneDigit)) {
-        e.target.value = oneDigit;
-      } else if (isEmptyString(oneDigit)) {
-        e.target.value = "";
-      } else {
-        if (isSpace(fieldHiddenValue[fieldIndex])) {
-          e.target.value = "";
-        } else {
-          e.target.value = fieldHiddenValue[fieldIndex];
-        }
+      // mask
+      if (isNumber(oneDigit)) e.target.value = oneDigit;
+      else if (isEmptyString(oneDigit)) e.target.value = "";
+      else {
+        // is letter
+        if (isSpace(fieldHiddenValue[fieldIndex])) e.target.value = "";
+        else e.target.value = fieldHiddenValue[fieldIndex];
       }
 
       const currDigit = e.target.value;
@@ -127,6 +116,6 @@ function handleInputDigits({ fieldSelector = "", fieldHiddenSelector = "" }) {
 }
 
 handleInputDigits({
-  fieldSelector: "input.digit",
-  fieldHiddenSelector: "input#digits",
+  fieldSelector: ".digit",
+  fieldHiddenSelector: "#digits",
 });
