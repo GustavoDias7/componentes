@@ -1,0 +1,77 @@
+/* accordion html/css */
+
+.accordion {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 2px solid #ffdb00;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  background-color: transparent;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    transition: 0.2s;
+
+    h3 {
+      transition: 0.2s;
+    }
+
+    .arrow {
+      width: 22px;
+      height: 22px;
+      margin-left: 20px;
+      background-image: url(../accordion/arrow.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      transition: 0.2s;
+    }
+  }
+
+  &.active .header h3,
+  &:focus .header h3,
+  &:hover .header h3 {
+    color: #ffa600;
+  }
+
+  &.active .arrow {
+    transform: rotate(-180deg);
+  }
+
+  .content {
+    height: 0;
+    overflow: hidden;
+
+    & > div {
+      padding: 0 20px 20px;
+    }
+  }
+
+  &.active .content {
+    height: auto;
+    animation: accordion-anima 0.4s forwards;
+  }
+}
+
+@keyframes accordion-anima {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

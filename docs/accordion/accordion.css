@@ -1,145 +1,54 @@
 /* accordion html/css */
-
 .accordion {
-    display: block;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: .2s;
-    border: 2px solid #ffdb00;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.accordion:last-child {
-    margin-bottom: 0px;
-}
-
-.accordion .accordion-input {
-    position: absolute;
-    clip: rect(0,0,0,0);
-}
-
-.accordion .accordion-header {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 2px solid #ffdb00;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  background-color: transparent; }
+  .accordion:last-child {
+    margin-bottom: 0px; }
+  .accordion .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    transition: .2s;
-}
-
-.accordion .accordion-header h3 {
-    transition: .2s;
-}
-
-.accordion .accordion-input:active ~ .accordion-header h3,
-.accordion .accordion-input:focus ~ .accordion-header h3 {
-    color: #ffa600;
-}
-
-.accordion .accordion-header .arrow {
-    width: 22px;
-    height: 22px;
-    margin-left: 20px;
-    background-image: url(../accordion/arrow.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    transition: .2s;
-}
-
-.accordion .accordion-input:checked ~ .accordion-header .arrow {
-    transform: rotate(-180deg);
-}
-
-.accordion .accordion-content {
+    transition: 0.2s; }
+    .accordion .header h3 {
+      transition: 0.2s; }
+    .accordion .header .arrow {
+      width: 22px;
+      height: 22px;
+      margin-left: 20px;
+      background-image: url(../accordion/arrow.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      transition: 0.2s; }
+  .accordion.active .header h3, .accordion:focus .header h3, .accordion:hover .header h3 {
+    color: #ffa600; }
+  .accordion.active .arrow {
+    transform: rotate(-180deg); }
+  .accordion .content {
     height: 0;
-    overflow: hidden;
-}
-
-.accordion .accordion-content > div {
-    padding: 0 20px 20px;
-}
-
-.accordion .accordion-input:checked ~ .accordion-content {
+    overflow: hidden; }
+    .accordion .content > div {
+      padding: 0 20px 20px; }
+  .accordion.active .content {
     height: auto;
-    animation: accordion-anima .4s forwards;
-}
+    animation: accordion-anima 0.4s forwards; }
 
 @keyframes accordion-anima {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
+  from {
+    opacity: 0;
+    transform: translateY(-10px); }
+  to {
+    opacity: 1;
+    transform: translateY(0px); } }
 
-/* accordion js */
-
-.accordion-js {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: left;
-    transition: .2s;
-    outline: none;
-    border: 2px solid #ffdb00;
-    background-color: transparent;
-}
-
-.accordion-js:last-child {
-    margin-bottom: 0px;
-}
-
-.accordion-js .accordion-js-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.accordion-js .accordion-js-header h3 {
-    font-size: 18px;
-    transition: 0.2s;
-}
-
-.accordion-js:focus .accordion-js-header h3 {
-    color: #ffa600;
-}
-
-.accordion-js .accordion-js-header .arrow {
-    width: 22px;
-    height: 22px;
-    margin-left: 20px;
-    background-image: url(../accordion/arrow.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    transition: .2s;
-}
-
-.accordion-js[show] .accordion-js-header .arrow {
-    transform: rotate(-180deg);
-}
-
-.accordion-js .accordion-js-content {
-    height: 0;
-    overflow: hidden;
-}
-
-.accordion-js[show] .accordion-js-content {
-    height: auto;
-}
-
-.accordion-js .accordion-js-content > div {
-    padding: 0 20px 20px;
-}
-
-.accordion-js[show] .accordion-js-content > div {
-    animation: accordion-anima .4s forwards;
-}
+/*# sourceMappingURL=accordion.css.map */
