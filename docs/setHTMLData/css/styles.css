@@ -1,0 +1,12 @@
+body {
+  background-color: #333;
+  color: #fff;
+}
+
+.error {
+  display: none;
+  color: #e45555;
+}
+.error.active {
+  display: block;
+}
