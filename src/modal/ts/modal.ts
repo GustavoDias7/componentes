@@ -21,16 +21,22 @@ interface Trigger {
   eventListener: string;
 }
 
+interface Return {
+  open?: () => void;
+  close?: () => void;
+  message?: string;
+}
+
 function errorMessageElement(elementName: string) {
-  console.error(`The element '${elementName}' does not exist!`);
-  return false;
+  const message = `The element '${elementName}' does not exist!`;
+  console.error(message);
+  return { message };
 }
 
 function errorMessageOpen() {
-  console.error(
-    `There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.`
-  );
-  return false;
+  const message = `There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.`;
+  console.error(message);
+  return { message };
 }
 
 function handleTrigger(
@@ -66,7 +72,7 @@ function initModal({
     eventListener: "click",
   },
   activeClass = "active",
-}: Modal): boolean {
+}: Modal): Return {
   // selectors
   let $modalContainer: HTMLElement;
   let $btnToOpenModal: NodeList;
@@ -81,7 +87,7 @@ function initModal({
     $btnToCloseModal = document.querySelectorAll(closeSelector);
   } catch (err) {
     console.error(err);
-    return false;
+    return { message: err.message };
   }
 
   // validation
@@ -117,5 +123,16 @@ function initModal({
   // trigger
   handleTrigger(activeModalOnTrigger, activeClass);
 
-  return true;
+  // utils
+  function open(): void {
+    $modalContainer.classList.add(activeClass);
+  }
+  function close(): void {
+    $modalContainer.classList.remove(activeClass);
+  }
+
+  return {
+    open,
+    close,
+  };
 }

@@ -1,10 +1,12 @@
 function errorMessageElement(elementName) {
-    console.error("The element '".concat(elementName, "' does not exist!"));
-    return false;
+    var message = "The element '".concat(elementName, "' does not exist!");
+    console.error(message);
+    return { message: message };
 }
 function errorMessageOpen() {
-    console.error("There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.");
-    return false;
+    var message = "There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.";
+    console.error(message);
+    return { message: message };
 }
 function handleTrigger(activeModalOnTrigger, activeClass) {
     var _a, _b;
@@ -45,7 +47,7 @@ function initModal(_a) {
     }
     catch (err) {
         console.error(err);
-        return false;
+        return { message: err.message };
     }
     // validation
     var hasModal = Boolean($modalContainer);
@@ -77,5 +79,15 @@ function initModal(_a) {
     });
     // trigger
     handleTrigger(activeModalOnTrigger, activeClass);
-    return true;
+    // utils
+    function open() {
+        $modalContainer.classList.add(activeClass);
+    }
+    function close() {
+        $modalContainer.classList.remove(activeClass);
+    }
+    return {
+        open: open,
+        close: close
+    };
 }
