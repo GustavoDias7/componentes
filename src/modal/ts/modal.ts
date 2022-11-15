@@ -4,15 +4,6 @@ interface Modal {
   activeClass?: string;
 }
 
-interface Trigger {
-  enable: boolean;
-  elements: {
-    trigger: string;
-    target: string;
-  };
-  eventListener: string;
-}
-
 interface Return {
   open?: () => void;
   close?: () => void;
