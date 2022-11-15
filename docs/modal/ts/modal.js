@@ -12,15 +12,15 @@ function errorFactory(message, hasModalContainer) {
     return { message: message, hasModal: function () { return hasModalContainer; } };
 }
 function initModal(_a) {
-    var _b = _a.modal, modal = _b === void 0 ? "" : _b, _c = _a.activeModalOnLoad, activeModalOnLoad = _c === void 0 ? false : _c, _d = _a.activeClass, activeClass = _d === void 0 ? "active" : _d, _e = _a.debug, debug = _e === void 0 ? false : _e;
+    var _b = _a.selector, modalSelector = _b === void 0 ? "" : _b, _c = _a.activeModalOnLoad, activeModalOnLoad = _c === void 0 ? false : _c, _d = _a.activeClass, activeClass = _d === void 0 ? "active" : _d, _e = _a.debug, debug = _e === void 0 ? false : _e;
     // selectors
     var $modalContainer;
     var $btnToOpenModal;
     var $btnToCloseModal;
-    var openSelector = "[data-modal-open=\"".concat(modal, "\"]");
-    var closeSelector = "[data-modal-close=\"".concat(modal, "\"]");
+    var openSelector = "[data-modal-open=\"".concat(modalSelector, "\"]");
+    var closeSelector = "[data-modal-close=\"".concat(modalSelector, "\"]");
     try {
-        $modalContainer = document.querySelector(modal);
+        $modalContainer = document.querySelector(modalSelector);
         $btnToOpenModal = document.querySelectorAll(openSelector);
         $btnToCloseModal = document.querySelectorAll(closeSelector);
     }
@@ -31,7 +31,7 @@ function initModal(_a) {
     // validation
     var hasModalContainer = Boolean($modalContainer);
     if (!hasModalContainer)
-        return errorMessageElement(modal, debug);
+        return errorMessageElement(modalSelector, debug);
     var hasBtnClose = Boolean($btnToCloseModal.length);
     if (!hasBtnClose)
         return errorMessageElement(closeSelector, debug);

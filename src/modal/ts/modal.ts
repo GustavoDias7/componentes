@@ -1,5 +1,5 @@
 interface Modal {
-  modal: string;
+  selector: string;
   activeModalOnLoad?: boolean;
   activeClass?: string;
   debug?: boolean;
@@ -29,7 +29,7 @@ function errorFactory(message: string, hasModalContainer: boolean) {
 }
 
 function initModal({
-  modal = "",
+  selector: modalSelector = "",
   activeModalOnLoad = false,
   activeClass = "active",
   debug = false,
@@ -39,11 +39,11 @@ function initModal({
   let $btnToOpenModal: NodeList;
   let $btnToCloseModal: NodeList;
 
-  const openSelector = `[data-modal-open="${modal}"]`;
-  const closeSelector = `[data-modal-close="${modal}"]`;
+  const openSelector = `[data-modal-open="${modalSelector}"]`;
+  const closeSelector = `[data-modal-close="${modalSelector}"]`;
 
   try {
-    $modalContainer = document.querySelector(modal);
+    $modalContainer = document.querySelector(modalSelector);
     $btnToOpenModal = document.querySelectorAll(openSelector);
     $btnToCloseModal = document.querySelectorAll(closeSelector);
   } catch (err) {
@@ -53,7 +53,7 @@ function initModal({
 
   // validation
   const hasModalContainer = Boolean($modalContainer);
-  if (!hasModalContainer) return errorMessageElement(modal, debug);
+  if (!hasModalContainer) return errorMessageElement(modalSelector, debug);
 
   const hasBtnClose = Boolean($btnToCloseModal.length);
   if (!hasBtnClose) return errorMessageElement(closeSelector, debug);
