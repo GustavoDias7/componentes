@@ -4,3 +4,6 @@ $modals.forEach(function (modal) {
     if ((modal === null || modal === void 0 ? void 0 : modal.id) === "modal2")
         modalInit.open();
 });
+var modalInit = initModal({ modal: "#modalTest" });
+if (!modalInit.hasModal())
+    console.log(modalInit.message);

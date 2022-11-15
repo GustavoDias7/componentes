@@ -25,18 +25,19 @@ interface Return {
   open?: () => void;
   close?: () => void;
   message?: string;
+  hasModal: () => boolean;
 }
 
 function errorMessageElement(elementName: string) {
   const message = `The element '${elementName}' does not exist!`;
   console.error(message);
-  return { message };
+  return errorFactory(message, false);
 }
 
 function errorMessageOpen() {
   const message = `There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.`;
   console.error(message);
-  return { message };
+  return errorFactory(message, false);
 }
 
 function handleTrigger(
@@ -58,6 +59,10 @@ function handleTrigger(
       });
     }
   }
+}
+
+function errorFactory(message: string, hasModalContainer: boolean) {
+  return { message, hasModal: () => hasModalContainer };
 }
 
 function initModal({
@@ -87,12 +92,12 @@ function initModal({
     $btnToCloseModal = document.querySelectorAll(closeSelector);
   } catch (err) {
     console.error(err);
-    return { message: err.message };
+    return errorFactory(err.message, false);
   }
 
   // validation
-  const hasModal = Boolean($modalContainer);
-  if (!hasModal) return errorMessageElement(modal);
+  const hasModalContainer = Boolean($modalContainer);
+  if (!hasModalContainer) return errorMessageElement(modal);
 
   const hasBtnClose = Boolean($btnToCloseModal.length);
   if (!hasBtnClose) return errorMessageElement(closeSelector);
@@ -104,35 +109,36 @@ function initModal({
   if (activeModalOnLoad) $modalContainer.classList.add(activeClass);
 
   $modalContainer.addEventListener("click", (event: Event) => {
-    if (event.target !== event.currentTarget) return;
-    $modalContainer.classList.toggle(activeClass);
+    const isOrverlay = event.target === event.currentTarget;
+    if (!isOrverlay) return;
+    $modalContainer.classList.remove(activeClass);
   });
 
   $btnToOpenModal.forEach((event: EventTarget) => {
-    event.addEventListener("click", () => {
-      $modalContainer.classList.add(activeClass);
-    });
+    event.addEventListener("click", open);
   });
 
   $btnToCloseModal.forEach((event: EventTarget) => {
-    event.addEventListener("click", () => {
-      $modalContainer.classList.remove(activeClass);
-    });
+    event.addEventListener("click", close);
   });
 
-  // trigger
-  handleTrigger(activeModalOnTrigger, activeClass);
-
-  // utils
+  // functions
   function open(): void {
     $modalContainer.classList.add(activeClass);
   }
   function close(): void {
     $modalContainer.classList.remove(activeClass);
   }
+  function hasModal(): boolean {
+    return hasModalContainer;
+  }
+
+  // trigger
+  handleTrigger(activeModalOnTrigger, activeClass);
 
   return {
     open,
     close,
+    hasModal,
   };
 }
