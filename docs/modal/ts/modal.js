@@ -1,16 +1,3 @@
-function errorMessageElement(elementName, debug) {
-    var message = "The element '".concat(elementName, "' does not exist!");
-    debug && console.error(message);
-    return errorFactory(message, false);
-}
-function errorMessageOpen(debug) {
-    var message = "There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.";
-    debug && console.error(message);
-    return errorFactory(message, false);
-}
-function errorFactory(message, hasModalContainer) {
-    return { message: message, hasModal: function () { return hasModalContainer; } };
-}
 function initModal(_a) {
     var _b = _a.selector, modalSelector = _b === void 0 ? "" : _b, _c = _a.activeModalOnLoad, activeModalOnLoad = _c === void 0 ? false : _c, _d = _a.activeClass, activeClass = _d === void 0 ? "active" : _d, _e = _a.debug, debug = _e === void 0 ? false : _e;
     // selectors
@@ -62,6 +49,20 @@ function initModal(_a) {
     }
     function hasModal() {
         return hasModalContainer;
+    }
+    // errors
+    function errorMessageElement(elementName, debug) {
+        var message = "The element '".concat(elementName, "' does not exist!");
+        debug && console.error(message);
+        return errorFactory(message, false);
+    }
+    function errorMessageOpen(debug) {
+        var message = "There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.";
+        debug && console.error(message);
+        return errorFactory(message, false);
+    }
+    function errorFactory(message, hasModalContainer) {
+        return { message: message, hasModal: function () { return hasModalContainer; } };
     }
     return {
         open: open,

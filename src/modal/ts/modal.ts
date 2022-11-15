@@ -12,22 +12,6 @@ interface Return {
   hasModal: () => boolean;
 }
 
-function errorMessageElement(elementName: string, debug: boolean) {
-  const message = `The element '${elementName}' does not exist!`;
-  debug && console.error(message);
-  return errorFactory(message, false);
-}
-
-function errorMessageOpen(debug: boolean) {
-  const message = `There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.`;
-  debug && console.error(message);
-  return errorFactory(message, false);
-}
-
-function errorFactory(message: string, hasModalContainer: boolean) {
-  return { message, hasModal: () => hasModalContainer };
-}
-
 function initModal({
   selector: modalSelector = "",
   activeModalOnLoad = false,
@@ -87,6 +71,21 @@ function initModal({
   }
   function hasModal(): boolean {
     return hasModalContainer;
+  }
+
+  // errors
+  function errorMessageElement(elementName: string, debug: boolean) {
+    const message = `The element '${elementName}' does not exist!`;
+    debug && console.error(message);
+    return errorFactory(message, false);
+  }
+  function errorMessageOpen(debug: boolean) {
+    const message = `There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.`;
+    debug && console.error(message);
+    return errorFactory(message, false);
+  }
+  function errorFactory(message: string, hasModalContainer: boolean) {
+    return { message, hasModal: () => hasModalContainer };
   }
 
   return {
