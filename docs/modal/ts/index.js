@@ -5,5 +5,5 @@ $modals.forEach(function (modal) {
         modalInit.open();
 });
 var modalInit = initModal({ selector: "#modalTest" });
-if (!modalInit.hasModal())
+if (!(modalInit === null || modalInit === void 0 ? void 0 : modalInit.hasModal()))
     console.log(modalInit.message);

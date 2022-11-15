@@ -5,4 +5,4 @@ $modals.forEach((modal) => {
 });
 
 const modalInit = initModal({ selector: `#modalTest` });
-if (!modalInit.hasModal()) console.log(modalInit.message);
+if (!modalInit?.hasModal()) console.log(modalInit.message);

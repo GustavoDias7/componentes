@@ -1,6 +1,6 @@
-interface Modal {
+interface ModalOptions {
   selector: string;
-  activeModalOnLoad?: boolean;
+  autoOpen?: boolean;
   activeClass?: string;
   debug?: boolean;
 }
@@ -12,12 +12,23 @@ interface Return {
   hasModal: () => boolean;
 }
 
-function initModal({
-  selector: modalSelector = "",
-  activeModalOnLoad = false,
-  activeClass = "active",
-  debug = true,
-}: Modal): Return {
+/**
+ * Initiate a modal
+ *
+ * @param {string} selector Select the html element to initiate the modal
+ * @param {boolean} autoOpen Show modal when declared
+ * @param {string} activeClass The class to open the modal
+ * @param {boolean} debug Show errors on console
+ * @return {Return} Return same heppers methods and a error message
+ */
+
+function initModal(options: ModalOptions): Return {
+  const {
+    selector: modalSelector = "",
+    autoOpen = false,
+    activeClass = "active",
+    debug = true,
+  } = options;
   // selectors
   let $modalContainer: HTMLElement;
   let $btnToOpenModal: NodeList;
@@ -41,12 +52,13 @@ function initModal({
   const hasBtnClose = Boolean($btnToCloseModal.length);
   if (!hasBtnClose) return errorMessageElement(closeSelector, debug);
 
-  const hasWayToOpen = Boolean($btnToOpenModal.length) || activeModalOnLoad;
+  const hasWayToOpen = Boolean($btnToOpenModal.length) || autoOpen;
   if (!hasWayToOpen) return errorMessageOpen(debug);
 
-  // listeners
-  if (activeModalOnLoad) open();
+  // auto open
+  if (autoOpen) open();
 
+  // listeners
   $modalContainer.addEventListener("click", (event: Event) => {
     const isOverlay = event.target === event.currentTarget;
     if (!isOverlay) return;
