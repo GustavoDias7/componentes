@@ -1,14 +1,6 @@
 interface Modal {
   modal: string;
   activeModalOnLoad?: boolean;
-  activeModalOnTrigger?: {
-    enable: boolean;
-    elements: {
-      trigger: string;
-      target: string;
-    };
-    eventListener: string;
-  };
   activeClass?: string;
 }
 
@@ -68,14 +60,6 @@ function errorFactory(message: string, hasModalContainer: boolean) {
 function initModal({
   modal = "",
   activeModalOnLoad = false,
-  activeModalOnTrigger = {
-    enable: false,
-    elements: {
-      trigger: "",
-      target: "",
-    },
-    eventListener: "click",
-  },
   activeClass = "active",
 }: Modal): Return {
   // selectors
@@ -106,7 +90,7 @@ function initModal({
   if (!hasWayToOpen) return errorMessageOpen();
 
   // listeners
-  if (activeModalOnLoad) $modalContainer.classList.add(activeClass);
+  if (activeModalOnLoad) open();
 
   $modalContainer.addEventListener("click", (event: Event) => {
     const isOrverlay = event.target === event.currentTarget;
@@ -132,9 +116,6 @@ function initModal({
   function hasModal(): boolean {
     return hasModalContainer;
   }
-
-  // trigger
-  handleTrigger(activeModalOnTrigger, activeClass);
 
   return {
     open,
