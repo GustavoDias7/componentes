@@ -32,27 +32,6 @@ function errorMessageOpen() {
   return errorFactory(message, false);
 }
 
-function handleTrigger(
-  activeModalOnTrigger: Trigger,
-  activeClass: string
-): void {
-  if (activeModalOnTrigger.enable) {
-    const triggerSelector = activeModalOnTrigger?.elements?.trigger;
-    const $modalTrigger = document.querySelector(triggerSelector);
-    const targetSelector = activeModalOnTrigger?.elements?.target;
-    const $modalTarget = document.querySelector(targetSelector);
-    const eventName = activeModalOnTrigger?.eventListener;
-
-    if ($modalTrigger && $modalTarget && eventName) {
-      $modalTrigger.addEventListener(eventName, (event: Event) => {
-        if (event.target === event.currentTarget) {
-          $modalTarget.classList.add(activeClass);
-        }
-      });
-    }
-  }
-}
-
 function errorFactory(message: string, hasModalContainer: boolean) {
   return { message, hasModal: () => hasModalContainer };
 }

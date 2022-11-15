@@ -8,23 +8,6 @@ function errorMessageOpen() {
     console.error(message);
     return errorFactory(message, false);
 }
-function handleTrigger(activeModalOnTrigger, activeClass) {
-    var _a, _b;
-    if (activeModalOnTrigger.enable) {
-        var triggerSelector = (_a = activeModalOnTrigger === null || activeModalOnTrigger === void 0 ? void 0 : activeModalOnTrigger.elements) === null || _a === void 0 ? void 0 : _a.trigger;
-        var $modalTrigger = document.querySelector(triggerSelector);
-        var targetSelector = (_b = activeModalOnTrigger === null || activeModalOnTrigger === void 0 ? void 0 : activeModalOnTrigger.elements) === null || _b === void 0 ? void 0 : _b.target;
-        var $modalTarget_1 = document.querySelector(targetSelector);
-        var eventName = activeModalOnTrigger === null || activeModalOnTrigger === void 0 ? void 0 : activeModalOnTrigger.eventListener;
-        if ($modalTrigger && $modalTarget_1 && eventName) {
-            $modalTrigger.addEventListener(eventName, function (event) {
-                if (event.target === event.currentTarget) {
-                    $modalTarget_1.classList.add(activeClass);
-                }
-            });
-        }
-    }
-}
 function errorFactory(message, hasModalContainer) {
     return { message: message, hasModal: function () { return hasModalContainer; } };
 }
