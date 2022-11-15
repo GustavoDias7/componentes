@@ -2,6 +2,7 @@ interface Modal {
   modal: string;
   activeModalOnLoad?: boolean;
   activeClass?: string;
+  debug?: boolean;
 }
 
 interface Return {
@@ -11,15 +12,15 @@ interface Return {
   hasModal: () => boolean;
 }
 
-function errorMessageElement(elementName: string) {
+function errorMessageElement(elementName: string, debug: boolean) {
   const message = `The element '${elementName}' does not exist!`;
-  console.error(message);
+  debug && console.error(message);
   return errorFactory(message, false);
 }
 
-function errorMessageOpen() {
+function errorMessageOpen(debug: boolean) {
   const message = `There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.`;
-  console.error(message);
+  debug && console.error(message);
   return errorFactory(message, false);
 }
 
@@ -31,6 +32,7 @@ function initModal({
   modal = "",
   activeModalOnLoad = false,
   activeClass = "active",
+  debug = false,
 }: Modal): Return {
   // selectors
   let $modalContainer: HTMLElement;
@@ -45,19 +47,19 @@ function initModal({
     $btnToOpenModal = document.querySelectorAll(openSelector);
     $btnToCloseModal = document.querySelectorAll(closeSelector);
   } catch (err) {
-    console.error(err);
+    debug && console.error(err);
     return errorFactory(err.message, false);
   }
 
   // validation
   const hasModalContainer = Boolean($modalContainer);
-  if (!hasModalContainer) return errorMessageElement(modal);
+  if (!hasModalContainer) return errorMessageElement(modal, debug);
 
   const hasBtnClose = Boolean($btnToCloseModal.length);
-  if (!hasBtnClose) return errorMessageElement(closeSelector);
+  if (!hasBtnClose) return errorMessageElement(closeSelector, debug);
 
   const hasWayToOpen = Boolean($btnToOpenModal.length) || activeModalOnLoad;
-  if (!hasWayToOpen) return errorMessageOpen();
+  if (!hasWayToOpen) return errorMessageOpen(debug);
 
   // listeners
   if (activeModalOnLoad) open();

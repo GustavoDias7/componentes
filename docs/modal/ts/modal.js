@@ -1,18 +1,18 @@
-function errorMessageElement(elementName) {
+function errorMessageElement(elementName, debug) {
     var message = "The element '".concat(elementName, "' does not exist!");
-    console.error(message);
+    debug && console.error(message);
     return errorFactory(message, false);
 }
-function errorMessageOpen() {
+function errorMessageOpen(debug) {
     var message = "There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.";
-    console.error(message);
+    debug && console.error(message);
     return errorFactory(message, false);
 }
 function errorFactory(message, hasModalContainer) {
     return { message: message, hasModal: function () { return hasModalContainer; } };
 }
 function initModal(_a) {
-    var _b = _a.modal, modal = _b === void 0 ? "" : _b, _c = _a.activeModalOnLoad, activeModalOnLoad = _c === void 0 ? false : _c, _d = _a.activeClass, activeClass = _d === void 0 ? "active" : _d;
+    var _b = _a.modal, modal = _b === void 0 ? "" : _b, _c = _a.activeModalOnLoad, activeModalOnLoad = _c === void 0 ? false : _c, _d = _a.activeClass, activeClass = _d === void 0 ? "active" : _d, _e = _a.debug, debug = _e === void 0 ? false : _e;
     // selectors
     var $modalContainer;
     var $btnToOpenModal;
@@ -25,19 +25,19 @@ function initModal(_a) {
         $btnToCloseModal = document.querySelectorAll(closeSelector);
     }
     catch (err) {
-        console.error(err);
+        debug && console.error(err);
         return errorFactory(err.message, false);
     }
     // validation
     var hasModalContainer = Boolean($modalContainer);
     if (!hasModalContainer)
-        return errorMessageElement(modal);
+        return errorMessageElement(modal, debug);
     var hasBtnClose = Boolean($btnToCloseModal.length);
     if (!hasBtnClose)
-        return errorMessageElement(closeSelector);
+        return errorMessageElement(closeSelector, debug);
     var hasWayToOpen = Boolean($btnToOpenModal.length) || activeModalOnLoad;
     if (!hasWayToOpen)
-        return errorMessageOpen();
+        return errorMessageOpen(debug);
     // listeners
     if (activeModalOnLoad)
         open();
