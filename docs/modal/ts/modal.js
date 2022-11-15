@@ -42,8 +42,8 @@ function initModal(_a) {
     if (activeModalOnLoad)
         open();
     $modalContainer.addEventListener("click", function (event) {
-        var isOrverlay = event.target === event.currentTarget;
-        if (!isOrverlay)
+        var isOverlay = event.target === event.currentTarget;
+        if (!isOverlay)
             return;
         $modalContainer.classList.remove(activeClass);
     });
