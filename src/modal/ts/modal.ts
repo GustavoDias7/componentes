@@ -3,6 +3,7 @@ interface ModalOptions {
   autoOpen?: boolean;
   activeClass?: string;
   debug?: boolean;
+  closeOverlay?: boolean;
 }
 
 interface Return {
@@ -28,6 +29,7 @@ function initModal(options: ModalOptions): Return {
     autoOpen = false,
     activeClass = "active",
     debug = true,
+    closeOverlay = true,
   } = options;
   // selectors
   let $modalContainer: HTMLElement;
@@ -59,11 +61,13 @@ function initModal(options: ModalOptions): Return {
   if (autoOpen) open();
 
   // listeners
-  $modalContainer.addEventListener("click", (event: Event) => {
-    const isOverlay = event.target === event.currentTarget;
-    if (!isOverlay) return;
-    $modalContainer.classList.remove(activeClass);
-  });
+  if (closeOverlay) {
+    $modalContainer.addEventListener("click", (event: Event) => {
+      const isOverlay = event.target === event.currentTarget;
+      if (!isOverlay) return;
+      $modalContainer.classList.remove(activeClass);
+    });
+  }
 
   $btnToOpenModal.forEach((event: EventTarget) => {
     event.addEventListener("click", open);

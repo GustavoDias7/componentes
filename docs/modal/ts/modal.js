@@ -8,7 +8,7 @@
  * @return {Return} Return same heppers methods and a error message
  */
 function initModal(options) {
-    var _a = options.selector, modalSelector = _a === void 0 ? "" : _a, _b = options.autoOpen, autoOpen = _b === void 0 ? false : _b, _c = options.activeClass, activeClass = _c === void 0 ? "active" : _c, _d = options.debug, debug = _d === void 0 ? true : _d;
+    var _a = options.selector, modalSelector = _a === void 0 ? "" : _a, _b = options.autoOpen, autoOpen = _b === void 0 ? false : _b, _c = options.activeClass, activeClass = _c === void 0 ? "active" : _c, _d = options.debug, debug = _d === void 0 ? true : _d, _e = options.closeOverlay, closeOverlay = _e === void 0 ? true : _e;
     // selectors
     var $modalContainer;
     var $btnToOpenModal;
@@ -37,12 +37,14 @@ function initModal(options) {
     if (autoOpen)
         open();
     // listeners
-    $modalContainer.addEventListener("click", function (event) {
-        var isOverlay = event.target === event.currentTarget;
-        if (!isOverlay)
-            return;
-        $modalContainer.classList.remove(activeClass);
-    });
+    if (closeOverlay) {
+        $modalContainer.addEventListener("click", function (event) {
+            var isOverlay = event.target === event.currentTarget;
+            if (!isOverlay)
+                return;
+            $modalContainer.classList.remove(activeClass);
+        });
+    }
     $btnToOpenModal.forEach(function (event) {
         event.addEventListener("click", open);
     });
