@@ -30,9 +30,6 @@ function initModal(options) {
     var hasBtnClose = Boolean($btnToCloseModal.length);
     if (!hasBtnClose)
         return errorMessageElement(closeSelector, debug);
-    var hasWayToOpen = Boolean($btnToOpenModal.length) || autoOpen;
-    if (!hasWayToOpen)
-        return errorMessageOpen(debug);
     // auto open
     if (autoOpen)
         open();
@@ -64,10 +61,6 @@ function initModal(options) {
     // errors
     function errorMessageElement(elementName, debug) {
         var message = "The element '".concat(elementName, "' does not exist!");
-        return errorFactory(message, false, debug);
-    }
-    function errorMessageOpen(debug) {
-        var message = "There's no way to open modal. Set a data-modal-open attribute in the html or set the property activeModalOnLoad as true.";
         return errorFactory(message, false, debug);
     }
     function errorFactory(message, hasModalContainer, errorDebug) {
