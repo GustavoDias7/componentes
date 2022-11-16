@@ -19,14 +19,6 @@
   .modal.active {
     opacity: 1;
     pointer-events: all; }
-  .modal .content {
-    position: relative;
-    width: 100%;
-    max-width: 352px;
-    min-height: 312px;
-    padding: 20px;
-    border-radius: 16px;
-    background-color: #ffffff; }
   .modal .close {
     position: absolute;
     top: 20px;
@@ -40,8 +32,16 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; }
-
-.modal-active .modal-content {
-  /* animation */ }
+    .modal .close:hover, .modal .close:focus {
+      opacity: 0.6;
+      transition: 0.2s; }
+  .modal .content {
+    position: relative;
+    width: 100%;
+    max-width: 352px;
+    min-height: 312px;
+    padding: 20px;
+    border-radius: 16px;
+    background-color: #ffffff; }
 
 /*# sourceMappingURL=modal.css.map */

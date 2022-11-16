@@ -10,45 +10,60 @@
   -ms-user-select: none;
   user-select: none;
   text-align: left;
-  background-color: transparent; }
-  .accordion:last-child {
-    margin-bottom: 0px; }
-  .accordion .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    transition: 0.2s; }
-    .accordion .header h3 {
-      transition: 0.2s; }
-    .accordion .header .arrow {
-      width: 22px;
-      height: 22px;
-      margin-left: 20px;
-      background-image: url(../accordion/arrow.svg);
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      transition: 0.2s; }
-  .accordion.active .header h3, .accordion:focus .header h3, .accordion:hover .header h3 {
-    color: #ffa600; }
-  .accordion.active .arrow {
-    transform: rotate(-180deg); }
-  .accordion .content {
-    height: 0;
-    overflow: hidden; }
-    .accordion .content > div {
-      padding: 0 20px 20px; }
-  .accordion.active .content {
-    height: auto;
-    animation: accordion-anima 0.4s forwards; }
+  background-color: transparent;
+}
+.accordion:last-child {
+  margin-bottom: 0px;
+}
+.accordion .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  transition: 0.2s;
+}
+.accordion .header h3 {
+  transition: 0.2s;
+}
+.accordion .header .arrow {
+  width: 22px;
+  height: 22px;
+  margin-left: 20px;
+  background-image: url(../accordion/arrow.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: 0.2s;
+}
+.accordion.active .header h3,
+.accordion:focus .header h3,
+.accordion:hover .header h3 {
+  color: #ffa600;
+}
+.accordion.active .arrow {
+  transform: rotate(-180deg);
+}
+.accordion .content {
+  height: 0;
+  overflow: hidden;
+}
+.accordion .content > div {
+  padding: 0 20px 20px;
+}
+.accordion.active .content {
+  height: auto;
+  animation: accordion-anima 0.4s forwards;
+}
 
 @keyframes accordion-anima {
   from {
     opacity: 0;
-    transform: translateY(-10px); }
+    transform: translateY(-10px);
+  }
   to {
     opacity: 1;
-    transform: translateY(0px); } }
+    transform: translateY(0px);
+  }
+}
 
 /*# sourceMappingURL=accordion.css.map */

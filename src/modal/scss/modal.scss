@@ -52,15 +52,6 @@ $neutral-color-light: #ffffff;
     @include opacity(true);
   }
 
-  .content {
-    position: relative;
-    @include max-width(352px);
-    min-height: 312px;
-    padding: 20px;
-    border-radius: 16px;
-    background-color: $neutral-color-light;
-  }
-
   .close {
     $spacing: 20px;
     $dimention: 20px;
@@ -74,9 +65,20 @@ $neutral-color-light: #ffffff;
     border: none;
     background-color: $transparent-color;
     @include background-image("/docs/modal/images/close.svg");
-  }
-}
 
-.modal-active .modal-content {
-  /* animation */
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+      transition: $primary-transition;
+    }
+  }
+
+  .content {
+    position: relative;
+    @include max-width(352px);
+    min-height: 312px;
+    padding: 20px;
+    border-radius: 16px;
+    background-color: $neutral-color-light;
+  }
 }
