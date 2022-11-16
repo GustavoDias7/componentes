@@ -1,8 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 .modal {
   position: fixed;
@@ -10,42 +9,39 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: 0.2s;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.modal.active {
-  opacity: 1;
-  pointer-events: all;
-}
-.modal .content {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  max-width: 500px;
-  max-height: 450px;
-  padding: 20px;
-  background-color: #fff;
-}
-.modal .close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 20px;
-  border: none;
-}
+  background-color: #00000099; }
+  .modal.active {
+    opacity: 1;
+    pointer-events: all; }
+  .modal .content {
+    position: relative;
+    width: 100%;
+    max-width: 352px;
+    min-height: 312px;
+    padding: 20px;
+    border-radius: 16px;
+    background-color: #ffffff; }
+  .modal .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #00000000;
+    background-image: url("/docs/modal/images/close.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; }
 
 .modal-active .modal-content {
-  /* animation */
-}
+  /* animation */ }
 
 /*# sourceMappingURL=modal.css.map */

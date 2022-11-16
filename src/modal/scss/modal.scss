@@ -4,46 +4,76 @@
   box-sizing: border-box;
 }
 
-.modal {
-  position: fixed;
+$transparent-color: #00000000;
+$opacity-color-main: #00000099;
+$primary-transition: 0.2s;
+$neutral-color-light: #ffffff;
+
+@mixin flex-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin opacity($value) {
+  @if ($value == false) {
+    opacity: 0;
+    pointer-events: none;
+  } @else {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+@mixin insert {
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.2s;
-  background-color: rgba(0, 0, 0, 0.6);
+}
+@mixin background-image($url: "") {
+  background-image: url($url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@mixin max-width($width) {
+  width: 100%;
+  max-width: $width;
+}
+
+.modal {
+  position: fixed;
+  @include insert;
+  @include flex-center-center;
+  @include opacity(false);
+  transition: $primary-transition;
+  background-color: $opacity-color-main;
 
   &.active {
-    opacity: 1;
-    pointer-events: all;
+    @include opacity(true);
   }
 
   .content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    max-width: 500px;
-    max-height: 450px;
+    position: relative;
+    @include max-width(352px);
+    min-height: 312px;
     padding: 20px;
-    background-color: #fff;
+    border-radius: 16px;
+    background-color: $neutral-color-light;
   }
 
   .close {
+    $spacing: 20px;
+    $dimention: 20px;
+
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 20px;
-    height: 20px;
+    top: $spacing;
+    right: $spacing;
+    width: $dimention;
+    height: $dimention;
     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 20px;
     border: none;
+    background-color: $transparent-color;
+    @include background-image("/docs/modal/images/close.svg");
   }
 }
 
