@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="./primary-form.css" />
+    <link rel="stylesheet" href="./checkbox.css" />
+  </head>
+  <body>
+    <form action="" class="primary-form">
+      <div class="row">
+        <label for="name" class="label">Name</label>
+        <input type="text" class="input" name="name" id="name" />
+        <p class="helpter-text error">error text</p>
+      </div>
+      <div class="row">
+        <input type="text" class="input outline" name="name" id="name" />
+        <label for="name" class="label">
+          <span>Name</span>
+        </label>
+        <p class="helpter-text success">success text</p>
+      </div>
+      <div class="row">
+        <label class="check" for="check">
+          <input type="checkbox" name="check" id="check" />
+          <span class="marker"></span>
+          <span class="text">Checkbox</span>
+        </label>
+      </div>
+    </form>
+
+    <script src="./form.js"></script>
+  </body>
+</html>

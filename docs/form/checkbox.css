@@ -1,0 +1,34 @@
+.check {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer; }
+  .check .marker {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    margin-right: 10px; }
+    .check .marker::before {
+      content: "";
+      transform: scale(0);
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      border-radius: 2px;
+      transition: 0.2s ease-in-out;
+      background-color: #7a5cfa; }
+  .check input {
+    display: none; }
+    .check input:checked ~ .marker::before {
+      transform: scale(1); }
+  .check .text {
+    line-height: 14px;
+    user-select: none; }
+
+/*# sourceMappingURL=checkbox.css.map */

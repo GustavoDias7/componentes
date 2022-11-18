@@ -1,0 +1,46 @@
+.check {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  .marker {
+    $dimentions: 16px;
+    $border-radius: 2px;
+
+    position: relative;
+    width: $dimentions;
+    height: $dimentions;
+    border-radius: $border-radius;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      left: 0px;
+      bottom: 0px;
+      margin: auto;
+      width: $dimentions - 6px;
+      height: $dimentions - 6px;
+      border-radius: $border-radius;
+      transform: scale(0);
+      transition: 0.2s ease-in-out;
+      background-color: #7a5cfa;
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked ~ .marker::before {
+      transform: scale(1);
+    }
+  }
+
+  .text {
+    line-height: 14px;
+    user-select: none;
+  }
+}

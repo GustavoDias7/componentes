@@ -1,7 +1,8 @@
 * {
   margin: 0px;
   padding: 0px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .modal {
   position: fixed;
@@ -15,33 +16,39 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.2s;
-  background-color: #00000099; }
-  .modal.active {
-    opacity: 1;
-    pointer-events: all; }
-  .modal .close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    border: none;
-    background-color: #00000000;
-    background-image: url("/docs/modal/images/close.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; }
-    .modal .close:hover, .modal .close:focus {
-      opacity: 0.6;
-      transition: 0.2s; }
-  .modal .content {
-    position: relative;
-    width: 100%;
-    max-width: 352px;
-    min-height: 312px;
-    padding: 20px;
-    border-radius: 16px;
-    background-color: #ffffff; }
+  background-color: #00000099;
+}
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #00000000;
+  background-image: url("/docs/modal/images/close.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.modal .close:hover,
+.modal .close:focus {
+  opacity: 0.6;
+  transition: 0.2s;
+}
+.modal .content {
+  position: relative;
+  width: 100%;
+  max-width: 352px;
+  min-height: 312px;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
 
 /*# sourceMappingURL=modal.css.map */
