@@ -3,7 +3,11 @@ function expire(_a) {
     var fromTime = from.getTime();
     var toTime = to.getTime();
     var $element = document.querySelector(selector);
-    if (fromTime > toTime)
-        $element === null || $element === void 0 ? void 0 : $element.remove();
+    if ($element && $element instanceof HTMLElement) {
+        if (fromTime > toTime)
+            $element.remove();
+        else
+            $element.style.display = "block";
+    }
 }
 expire({ selector: "h1", from: new Date(), to: new Date(2023, 0, 1) });
