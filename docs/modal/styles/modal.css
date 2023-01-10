@@ -16,7 +16,7 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.2s;
-  background-color: #00000099;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .modal.active {
   opacity: 1;
@@ -30,14 +30,13 @@
   height: 20px;
   cursor: pointer;
   border: none;
-  background-color: #00000000;
+  background-color: rgba(0, 0, 0, 0);
   background-image: url("/docs/modal/images/close.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.modal .close:hover,
-.modal .close:focus {
+.modal .close:hover, .modal .close:focus {
   opacity: 0.6;
   transition: 0.2s;
 }
@@ -46,6 +45,7 @@
   width: 100%;
   max-width: 352px;
   min-height: 312px;
+  max-height: 400px;
   padding: 20px;
   border-radius: 16px;
   background-color: #ffffff;

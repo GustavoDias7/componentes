@@ -1,3 +1,4 @@
+"use strict";
 // class Time {
 //   hour: number;
 //   minute: number;

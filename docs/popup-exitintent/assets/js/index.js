@@ -1,18 +1,17 @@
+"use strict";
 initExitIntent({
-  popup: ".initExitIntent",
-  closeButton: ".close",
-  activeClass: "active",
-  oneTime: true,
-  mobileBreakpoint: 768,
-  startDelay: 0,
+    popup: ".initExitIntent",
+    closeButton: ".close",
+    activeClass: "active",
+    oneTime: true,
+    mobileBreakpoint: 768,
+    startDelay: 0,
 });
-
 // $(document).ready(function () {
 //   var breakpoints = {
 //     desktop: [769],
 //     mobile: [0, 768],
 //   };
-
 // initExitIntent({
 //   popup: ".initExitIntent",
 //   closeButton: ".close",

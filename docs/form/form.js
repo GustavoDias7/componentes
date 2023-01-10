@@ -1,3 +1,4 @@
+"use strict";
 function initInput() {
     var primaryInput = document.querySelectorAll(".primary-form .input");
     primaryInput.forEach(function (input) {

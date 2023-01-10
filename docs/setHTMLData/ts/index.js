@@ -2,7 +2,7 @@ function errorMessage(elementName) {
     console.error("The element '".concat(elementName, "' does not exist!"));
     return false;
 }
-function setHTMLData(_a) {
+function setInnerText(_a) {
     var _b = _a.data, data = _b === void 0 ? "" : _b, _c = _a.selector, selector = _c === void 0 ? "" : _c;
     var strData = data === null || data === void 0 ? void 0 : data.toString();
     var elements = document.querySelectorAll(selector);
@@ -18,15 +18,15 @@ function setHTMLData(_a) {
     });
     return true;
 }
-setHTMLData({
+setInnerText({
     data: "TEST",
     selector: ".testing"
 });
-setHTMLData({
+setInnerText({
     data: "Content",
     selector: "[name=\"content\"]"
 });
-setHTMLData({
+setInnerText({
     data: "Title",
     selector: "#title"
 });
@@ -44,10 +44,10 @@ function setProduct() {
         quantity: "5"
     };
     function setDatas(obj) {
-        setHTMLData({ data: obj.name, selector: ".name" });
-        setHTMLData({ data: obj.productId, selector: ".productId" });
-        setHTMLData({ data: obj.price, selector: ".price" });
-        setHTMLData({ data: obj.quantity, selector: ".quantity" });
+        setInnerText({ data: obj.name, selector: ".name" });
+        setInnerText({ data: obj.productId, selector: ".productId" });
+        setInnerText({ data: obj.price, selector: ".price" });
+        setInnerText({ data: obj.quantity, selector: ".quantity" });
     }
     var button1 = document.querySelector("#product1");
     var button2 = document.querySelector("#product2");
@@ -62,7 +62,7 @@ function validateInput() {
     name === null || name === void 0 ? void 0 : name.addEventListener("input", function (e) {
         var activeError = e.target.value.length > 5;
         var newData = activeError ? "Max length" : "";
-        setHTMLData({ data: newData, selector: errorSelector });
+        setInnerText({ data: newData, selector: errorSelector });
         var $error = document.querySelector(errorSelector);
         $error === null || $error === void 0 ? void 0 : $error.classList[activeError ? "add" : "remove"]("active");
     });

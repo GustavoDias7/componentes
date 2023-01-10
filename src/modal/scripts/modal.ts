@@ -4,6 +4,10 @@ interface ModalOptions {
   activeClass?: string;
   debug?: boolean;
   closeOverlay?: boolean;
+  beforeOpen?: () => void;
+  afterOpen?: () => void;
+  beforeClose?: () => void;
+  afterClose?: () => void;
 }
 
 interface Return {
@@ -22,7 +26,6 @@ interface Return {
  * @param {boolean} debug Show errors on console
  * @return {Return} Return same heppers methods and a error message
  */
-
 function initModal(options: ModalOptions): Return {
   const {
     selector: modalSelector = "",
@@ -30,11 +33,15 @@ function initModal(options: ModalOptions): Return {
     activeClass = "active",
     debug = true,
     closeOverlay = true,
+    beforeOpen,
+    afterOpen,
+    beforeClose,
+    afterClose,
   } = options;
   // selectors
-  let $modalContainer: HTMLElement;
-  let $btnToOpenModal: NodeList;
-  let $btnToCloseModal: NodeList;
+  let $modalContainer: HTMLElement | null = null;
+  let $btnToOpenModal: NodeList | null = null;
+  let $btnToCloseModal: NodeList | null = null;
 
   const openSelector = `[data-modal-open="${modalSelector}"]`;
   const closeSelector = `[data-modal-close="${modalSelector}"]`;
@@ -44,14 +51,18 @@ function initModal(options: ModalOptions): Return {
     $btnToOpenModal = document.querySelectorAll(openSelector);
     $btnToCloseModal = document.querySelectorAll(closeSelector);
   } catch (err) {
-    return errorFactory(err.message, false, debug);
+    if (err && err instanceof Error) {
+      return errorFactory(err?.message, false, debug);
+    }
   }
 
   // validation
+  const isHTMLElement = $modalContainer instanceof HTMLElement;
   const hasModalContainer = Boolean($modalContainer);
-  if (!hasModalContainer) return errorMessageElement(modalSelector, debug);
+  if (!hasModalContainer || !isHTMLElement)
+    return errorMessageElement(modalSelector, debug);
 
-  const hasBtnClose = Boolean($btnToCloseModal.length);
+  const hasBtnClose = Boolean($btnToCloseModal?.length);
   if (!hasBtnClose) return errorMessageElement(closeSelector, debug);
 
   // auto open
@@ -59,27 +70,30 @@ function initModal(options: ModalOptions): Return {
 
   // listeners
   if (closeOverlay) {
-    $modalContainer.addEventListener("click", (event: Event) => {
+    $modalContainer?.addEventListener("click", (event: Event) => {
       const isOverlay = event.target === event.currentTarget;
-      if (!isOverlay) return;
-      $modalContainer.classList.remove(activeClass);
+      if (isOverlay) close();
     });
   }
 
-  $btnToOpenModal.forEach((event: EventTarget) => {
+  $btnToOpenModal?.forEach((event: EventTarget) => {
     event.addEventListener("click", open);
   });
 
-  $btnToCloseModal.forEach((event: EventTarget) => {
+  $btnToCloseModal?.forEach((event: EventTarget) => {
     event.addEventListener("click", close);
   });
 
   // functions
   function open(): void {
-    $modalContainer.classList.add(activeClass);
+    if (beforeOpen) beforeOpen();
+    $modalContainer?.classList.add(activeClass);
+    if (afterOpen) afterOpen();
   }
   function close(): void {
-    $modalContainer.classList.remove(activeClass);
+    if (beforeClose) beforeClose();
+    $modalContainer?.classList.remove(activeClass);
+    if (afterClose) afterClose();
   }
   function hasModal(): boolean {
     return hasModalContainer;

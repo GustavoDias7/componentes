@@ -6,59 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../generic-button/style.css" />
-    <link rel="stylesheet" href="./css/modal.css" />
-    <script src="./ts/modal.js" defer></script>
-    <script src="./ts/index.js" defer></script>
+    <link rel="stylesheet" href="./styles/modal.css" />
+    <script src="./scripts/modal.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
     <title>Modal</title>
   </head>
   <body>
-    <!-- <section>
-      <div class="container">
-        <h1>Modal</h1>
-        <br />
-        <h2>Regular modal</h2>
-        <div class="example">
-          <button id="modal-active1">Active modal</button>
-          <br />
-          <h4>Example HTML & JavaScript</h4>
-          <div>
-            <pre class="code">
-&#60;button id="modal-active1"&#62;Active modal&#60;/button&#62;
-&#60;div class="modal" id="modal1"&#62;
-  &#60;div class="modal-content"&#62;
-    &#60;a href="#" class="modal-close" id="modal-close1"&#62;&#60;/a&#62;
-    &#60;!-- put here your tags... --&#62;
-  &#60;/div&#62;
-&#60;/div&#62;
-
-&#60;script src="./modal/modal.js"&#62;&#60;/script&#62;
-&#60;script&#62;
-  initModal({
-    btnToActiveModal: "selectorName",
-    modalContainer: "selectorName",
-    btnToCloseModal: "selectorName",
-    activeModalOnLoad: boolean,
-    activeModalOnTrigger: {
-      enable: boolean,
-      elements: {
-        trigger: "selctorName",
-        target: "selectorName",
-      },
-      eventListener: "eventName",
-    },
-  })
-&#60;/script&#62;</pre
-            >
-          </div>
-          <small>Instructions and explanations in ./modal/README.md</small>
-        </div>
-      </div>
-    </section> -->
-
     <div>
       <h2>Modal 1</h2>
       <button class="gn-button" data-modal-open="#modal1">Modal 1</button>
-      <button class="gn-button" data-modal-open="#modal2">Modal 2</button>
+      <button class="gn-button" data-modal-open="#modal2">open()</button>
+      <button class="gn-button" data-modal-open="#modal3">Callback</button>
     </div>
 
     <!-- modal 1 -->
@@ -74,6 +32,16 @@
       <div class="content">
         <button class="close" data-modal-close="#modal2"></button>
         <h2>Regular modal 2</h2>
+        <div class="test"></div>
+      </div>
+    </div>
+
+    <!-- modal 3 -->
+    <div class="modal" id="modal3">
+      <div class="content">
+        <button class="close" data-modal-close="#modal3"></button>
+        <h2>Regular modal 3</h2>
+        <p>Callback</p>
       </div>
     </div>
   </body>

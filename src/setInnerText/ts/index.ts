@@ -1,5 +1,5 @@
 interface Data {
-  data: any;
+  innerText: string | number;
   selector: string;
 }
 
@@ -8,8 +8,8 @@ function errorMessage(elementName: string) {
   return false;
 }
 
-function setHTMLData({ data = "", selector = "" }: Data): boolean {
-  const strData = data?.toString();
+function setInnerText({ innerText = "", selector = "" }: Data): boolean {
+  const strData = innerText?.toString();
   const elements = document.querySelectorAll(selector);
 
   const hasElement = Boolean(elements.length);
@@ -24,18 +24,18 @@ function setHTMLData({ data = "", selector = "" }: Data): boolean {
   return true;
 }
 
-setHTMLData({
-  data: "TEST",
+setInnerText({
+  innerText: "TEST",
   selector: ".testing",
 });
 
-setHTMLData({
-  data: "Content",
+setInnerText({
+  innerText: "Content",
   selector: `[name="content"]`,
 });
 
-setHTMLData({
-  data: "Title",
+setInnerText({
+  innerText: "Title",
   selector: "#title",
 });
 
@@ -55,10 +55,10 @@ function setProduct() {
   };
 
   function setDatas(obj: any) {
-    setHTMLData({ data: obj.name, selector: `.name` });
-    setHTMLData({ data: obj.productId, selector: `.productId` });
-    setHTMLData({ data: obj.price, selector: `.price` });
-    setHTMLData({ data: obj.quantity, selector: `.quantity` });
+    setInnerText({ innerText: obj.name, selector: `.name` });
+    setInnerText({ innerText: obj.productId, selector: `.productId` });
+    setInnerText({ innerText: obj.price, selector: `.price` });
+    setInnerText({ innerText: obj.quantity, selector: `.quantity` });
   }
 
   const button1 = document.querySelector("#product1");
@@ -78,7 +78,7 @@ function validateInput(): void {
     const activeError = e.target.value.length > 5;
     const newData = activeError ? "Max length" : "";
 
-    setHTMLData({ data: newData, selector: errorSelector });
+    setInnerText({ innerText: newData, selector: errorSelector });
 
     const $error = document.querySelector(errorSelector);
     $error?.classList[activeError ? "add" : "remove"]("active");
