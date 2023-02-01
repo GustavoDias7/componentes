@@ -80,7 +80,7 @@
         position: absolute;
         top: calc(56px / 2 - 7px);
         left: 16px;
-        transition: 0.3s top; }
+        transition: top 0.3s, transform 0.3s; }
     .primary-form .input.outline.active ~ .label span, .primary-form .input.outline:focus ~ .label span, .primary-form .input.outline:hover ~ .label span {
       position: relative;
       top: -8px;

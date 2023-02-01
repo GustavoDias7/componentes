@@ -145,8 +145,7 @@ $primary-border: $primary-border-width solid;
         position: absolute;
         top: calc(#{$inputHeight} / 2 - #{$fontSize / 2}px);
         left: 16px;
-        transition: $primary-transition top;
-        // transition: transform 0.3s;
+        transition: top $primary-transition, transform $primary-transition;
       }
     }
 
