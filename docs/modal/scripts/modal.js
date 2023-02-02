@@ -66,9 +66,6 @@ function initModal(options) {
         if (afterClose)
             afterClose();
     }
-    function hasModal() {
-        return hasModalContainer;
-    }
     // errors
     function errorMessageElement(elementName, debug) {
         var message = "The element '".concat(elementName, "' does not exist!");
@@ -76,11 +73,11 @@ function initModal(options) {
     }
     function errorFactory(message, hasModalContainer, errorDebug) {
         Boolean(errorDebug) && console.error(message);
-        return { message: message, hasModal: function () { return hasModalContainer; } };
+        return { message: message, hasModal: hasModalContainer };
     }
     return {
         open: open,
         close: close,
-        hasModal: hasModal,
+        hasModal: hasModalContainer,
     };
 }

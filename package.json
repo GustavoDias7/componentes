@@ -6,7 +6,7 @@
   },
   "scripts": {
     "watch": "tsc -w",
-    "compile:scss": "sass ./src/modal/styles/modal.scss ./docs/modal/styles/modal.css"
+    "compile:scss": "sass -w ./src/modal/styles/modal.scss:./docs/modal/styles/modal.css ./src/scroll-animation/styles/scroll-animation.scss:./docs/scroll-animation/styles/scroll-animation.css"
   },
   "dependencies": {
     "fs": "^0.0.1-security",

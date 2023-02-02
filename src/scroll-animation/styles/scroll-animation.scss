@@ -1,0 +1,41 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &#section1 {
+    background-color: #e04c4c;
+  }
+  &#section2 {
+    background-color: #57dfab;
+  }
+  &#section3 {
+    background-color: #9059d8;
+  }
+
+  &.hidden {
+    transition: opacity 0.5s 0.5s;
+    opacity: 0;
+  }
+  &.active {
+    opacity: 1;
+  }
+
+  .container {
+    max-width: 400px;
+  }
+}
+@media (prefers-reduced-motion) {
+  section {
+    &.hidden {
+      transition: none;
+    }
+  }
+}

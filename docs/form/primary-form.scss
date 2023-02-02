@@ -19,7 +19,7 @@ $success-color-light: #00ca00;
 $primary-transition: 0.3s;
 
 // font
-$fontSize: 14;
+$fontSize: 16;
 
 // dimentions
 $inputHeight: 56px;
@@ -107,7 +107,7 @@ $primary-border: $primary-border-width solid;
     }
   }
 
-  $margin: 6px;
+  $margin: 4px;
   .input.outline {
     border-top: none;
 
@@ -119,9 +119,11 @@ $primary-border: $primary-border-width solid;
       max-width: $width;
       display: flex;
       font-size: #{$fontSize}px;
+      transition: font-size $primary-transition;
 
       padding: 0;
       background-color: transparent;
+      pointer-events: none;
 
       &::before,
       &::after {
@@ -133,30 +135,31 @@ $primary-border: $primary-border-width solid;
         border-left: $primary-border;
         border-top-left-radius: $border-radius;
         border-color: $primary-color-xlight;
-        width: 16px - $margin + $primary-border-width;
+        width: 11px;
       }
       &::after {
         border-right: $primary-border;
         border-top-right-radius: $border-radius;
         border-color: $primary-color-xlight;
-        width: 100%;
+        flex: 1;
       }
       span {
         position: absolute;
         top: calc(#{$inputHeight} / 2 - #{$fontSize / 2}px);
         left: 16px;
-        transition: top $primary-transition, transform $primary-transition;
+        transition: top $primary-transition;
       }
     }
 
     &.active ~ .label,
     &:focus ~ .label,
     &:hover ~ .label {
+      font-size: 14px;
+
       span {
         position: relative;
         top: -8px;
         left: 0px;
-        transform: scale(0.9);
       }
     }
 
@@ -175,7 +178,7 @@ $primary-border: $primary-border-width solid;
 
   .helpter-text {
     display: block;
-    font-size: 12px;
+    font-size: 0.75rem;
     padding: 2px 12px 0px;
 
     &.error {

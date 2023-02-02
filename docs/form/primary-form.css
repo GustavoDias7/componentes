@@ -29,7 +29,7 @@
     transition: 0.3s;
     border-color: #c4c4c4; }
     .primary-form .input:focus ~ .label, .primary-form .input:hover ~ .label {
-      top: -7px; }
+      top: -8px; }
     .primary-form .input:hover, .primary-form .input:focus {
       border-color: #c4c4c4; }
     .primary-form .input:disabled {
@@ -59,9 +59,11 @@
       width: 100%;
       max-width: 312px;
       display: flex;
-      font-size: 14px;
+      font-size: 16px;
+      transition: font-size 0.3s;
       padding: 0;
-      background-color: transparent; }
+      background-color: transparent;
+      pointer-events: none; }
       .primary-form .input.outline ~ .label::before, .primary-form .input.outline ~ .label::after {
         content: "";
         border-top: 1px solid;
@@ -75,24 +77,25 @@
         border-right: 1px solid;
         border-top-right-radius: 8px;
         border-color: #c4c4c4;
-        width: 100%; }
+        flex: 1; }
       .primary-form .input.outline ~ .label span {
         position: absolute;
-        top: calc(56px / 2 - 7px);
+        top: calc(56px / 2 - 8px);
         left: 16px;
-        transition: top 0.3s, transform 0.3s; }
-    .primary-form .input.outline.active ~ .label span, .primary-form .input.outline:focus ~ .label span, .primary-form .input.outline:hover ~ .label span {
-      position: relative;
-      top: -8px;
-      left: 0px;
-      transform: scale(0.9); }
+        transition: top 0.3s; }
+    .primary-form .input.outline.active ~ .label, .primary-form .input.outline:focus ~ .label, .primary-form .input.outline:hover ~ .label {
+      font-size: 14px; }
+      .primary-form .input.outline.active ~ .label span, .primary-form .input.outline:focus ~ .label span, .primary-form .input.outline:hover ~ .label span {
+        position: relative;
+        top: -8px;
+        left: 0px; }
     .primary-form .input.outline.active ~ .label::before, .primary-form .input.outline:hover ~ .label::before, .primary-form .input.outline:focus ~ .label::before {
-      margin-right: 6px; }
+      margin-right: 4px; }
     .primary-form .input.outline.active ~ .label::after, .primary-form .input.outline:hover ~ .label::after, .primary-form .input.outline:focus ~ .label::after {
-      margin-left: 6px; }
+      margin-left: 4px; }
   .primary-form .helpter-text {
     display: block;
-    font-size: 12px;
+    font-size: 0.75rem;
     padding: 2px 12px 0px; }
     .primary-form .helpter-text.error {
       color: #ff2115; }

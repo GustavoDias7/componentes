@@ -14,7 +14,7 @@ interface Return {
   open?: () => void;
   close?: () => void;
   message?: string;
-  hasModal: () => boolean;
+  hasModal: boolean;
 }
 
 /**
@@ -95,9 +95,6 @@ function initModal(options: ModalOptions): Return {
     $modalContainer?.classList.remove(activeClass);
     if (afterClose) afterClose();
   }
-  function hasModal(): boolean {
-    return hasModalContainer;
-  }
 
   // errors
   function errorMessageElement(elementName: string, debug: boolean) {
@@ -110,12 +107,12 @@ function initModal(options: ModalOptions): Return {
     errorDebug: boolean | undefined
   ) {
     Boolean(errorDebug) && console.error(message);
-    return { message, hasModal: () => hasModalContainer };
+    return { message, hasModal: hasModalContainer };
   }
 
   return {
     open,
     close,
-    hasModal,
+    hasModal: hasModalContainer,
   };
 }

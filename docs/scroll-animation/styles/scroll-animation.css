@@ -1,0 +1,39 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section#section1 {
+  background-color: #e04c4c;
+}
+section#section2 {
+  background-color: #57dfab;
+}
+section#section3 {
+  background-color: #9059d8;
+}
+section.hidden {
+  transition: opacity 0.5s 0.5s;
+  opacity: 0;
+}
+section.active {
+  opacity: 1;
+}
+section .container {
+  max-width: 400px;
+}
+
+@media (prefers-reduced-motion) {
+  section.hidden {
+    transition: none;
+  }
+}
+
+/*# sourceMappingURL=scroll-animation.css.map */
