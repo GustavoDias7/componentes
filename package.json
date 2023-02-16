@@ -2,11 +2,14 @@
   "devDependencies": {
     "nodemon": "^2.0.20",
     "sass": "^1.57.1",
+    "tailwindcss": "^3.2.6",
     "typescript": "^4.9.4"
   },
   "scripts": {
     "watch": "tsc -w",
-    "compile:scss": "sass -w ./src/modal/styles/modal.scss:./docs/modal/styles/modal.css ./src/scroll-animation/styles/scroll-animation.scss:./docs/scroll-animation/styles/scroll-animation.css"
+    "compile:tailwind": "npx tailwindcss -i ./src/styles/tailwind.css -o ./docs/styles/tailwind.css --watch",
+    "compile:scss": "sass -w ./src/modal/styles/modal.scss:./docs/modal/styles/modal.css ./src/scroll-animation/styles/scroll-animation.scss:./docs/scroll-animation/styles/scroll-animation.css ./src/tooltips/styles.scss:./docs/tooltips/styles.css ./src/tooltips/with-popper.scss:./docs/tooltips/with-popper.css ./src/tooltips/with-css.scss:./docs/tooltips/with-css.css",
+    "compile:styles": "yarn run compile:tailwind && yarn run compile:scss"
   },
   "dependencies": {
     "fs": "^0.0.1-security",

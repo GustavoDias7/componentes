@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Development version -->
+    <!-- <script
+      src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"
+      defer
+    ></script> -->
+
+    <!-- Production version -->
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="./script.js" defer></script>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Audiowide);
+      html {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="popper-container">
+      <div id="popcorn" aria-describedby="tooltip" tabindex="0"></div>
+      <!-- <div id="tooltip" role="tooltip">
+        My tooltip
+        <div id="arrow" data-popper-arrow></div>
+      </div> -->
+      <div id="tooltip" role="tooltip">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <div id="arrow" data-popper-arrow></div>
+      </div>
+
+      <div class="list">
+        <ul>
+          <li aria-describedby="tooltip" tabindex="0"></li>
+          <p class="tooltip" role="tooltip">Name 1</p>
+          <li aria-describedby="tooltip" tabindex="0"></li>
+          <p class="tooltip" role="tooltip">Name 2</p>
+          <li aria-describedby="tooltip" tabindex="0"></li>
+          <p class="tooltip" role="tooltip">Name 3</p>
+          <li aria-describedby="tooltip" tabindex="0"></li>
+          <p class="tooltip" role="tooltip">Name 4</p>
+          <li aria-describedby="tooltip" tabindex="0"></li>
+          <p class="tooltip" role="tooltip">Name 5</p>
+        </ul>
+      </div>
+    </div>
+
+    <!-- <div class="wrap">
+      <h1>Pure CSS Tooltips</h1>
+      <p>
+        To create a tooltip just add the
+        <strong
+          class="tooltip"
+          data-tip="By adding this class you can provide almost any element with a tool tip."
+          tabindex="1"
+          >tool</strong
+        >
+        class and the
+        <strong
+          class="tooltip"
+          data-tip="Use this data-tip attribute to store your tool tip message."
+          tabindex="2"
+          >data-tip</strong
+        >
+        attribute with your tooltip message.
+      </p>
+      <pre>&lt;span class="tooltip" data-tip="content..."&gt;</pre>
+    </div> -->
+  </body>
+</html>

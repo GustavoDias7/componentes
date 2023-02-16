@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.tool-container {
+  position: relative;
+}
+.tool-container .tool-element {
+  border: 1px solid #000;
+}
+.tool-container .tool-item {
+  opacity: 0;
+  pointer-events: none;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -38px;
+  width: max-content;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #ccc;
+}
+.tool-container .tool-element:focus + .tool-item,
+.tool-container .tool-element:hover + .tool-item {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/*# sourceMappingURL=with-css.css.map */

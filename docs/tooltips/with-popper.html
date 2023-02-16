@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/tailwind.css" />
+    <link rel="stylesheet" href="./with-popper.css" />
+    <style>
+      body {
+        background-color: #30263d;
+        font-family: -apple-system, Helvetica Neue, Segoe UI, Roboto, Oxygen,
+          Ubuntu, Cantarell, Open Sans, sans-serif;
+        text-transform: uppercase;
+        padding: 100px;
+        min-height: 300vh;
+      }
+    </style>
+  </head>
+
+  <body id="app">
+    <div class="py-20 px-10 flex gap-4">
+      <div v-for="(item, index) in items" :key="item.name">
+        <div
+          :id="item.trigger"
+          aria-describedby="tooltip"
+          tabindex="0"
+          class="popcorn"
+        ></div>
+        <div :id="item.tooltip" class="tooltip" role="tooltip">
+          My tooltip {{index + 1}}
+          <div :id="'arrow' + index" class="arrow" data-popper-arrow></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./popper-2.11.6.js"></script>
+    <script src="./initiTooltip.js"></script>
+    <script>
+      const items = [
+        { name: "item1", trigger: "trigger1", tooltip: "tooltip1" },
+        { name: "item2", trigger: "trigger2", tooltip: "tooltip2" },
+        { name: "item3", trigger: "trigger3", tooltip: "tooltip3" },
+        { name: "item4", trigger: "trigger4", tooltip: "tooltip4" },
+        { name: "item5", trigger: "trigger5", tooltip: "tooltip5" },
+      ];
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return { items };
+        },
+      }).mount("#app");
+
+      items.forEach(({ trigger, tooltip }) => {
+        initTooltip({ trigger, tooltip });
+      });
+    </script>
+  </body>
+</html>
