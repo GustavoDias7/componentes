@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../input-digits/styles.css" />
+    <style>
+      input.error {
+        border-color: red;
+      }
+      input.valid {
+        border-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" name="cpf" placeholder="CPF" />
+    <div>
+      <label for="digit1">Digits</label>
+      <div class="digits">
+        <input type="tel" class="digit" name="digit1" id="digit1" />
+        <input type="tel" class="digit" name="digit2" id="digit2" />
+        <input type="tel" class="digit" name="digit3" id="digit3" />
+      </div>
+      <input type="hidden" name="digits" id="digits" />
+      <button id="validate-digits" disabled>Validate</button>
+    </div>
+
+    <script src="../input-digits/index.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+      var element = document.querySelector("input[name='cpf']");
+      var maskOptions = {
+        mask: "000.000.000-00",
+      };
+      var mask = IMask(element, maskOptions);
+    </script>
+    <script>
+      const clientCPFDigits = 123;
+    </script>
+    <script src="./form-validation.js"></script>
+  </body>
+</html>
