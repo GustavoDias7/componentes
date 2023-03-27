@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../input-digits/styles.css" />
+    <link rel="stylesheet" href="../form/primary-form.css" />
     <style>
       input.error {
         border-color: red;
@@ -15,8 +16,14 @@
       }
     </style>
   </head>
-  <body>
-    <input type="text" name="cpf" placeholder="CPF" />
+  <body class="primary-form">
+    <input
+      class="input"
+      type="text"
+      name="cpf"
+      placeholder="CPF"
+      autocomplete="off"
+    />
     <div>
       <label for="digit1">Digits</label>
       <div class="digits">
@@ -25,21 +32,16 @@
         <input type="tel" class="digit" name="digit3" id="digit3" />
       </div>
       <input type="hidden" name="digits" id="digits" />
+      <button>Validate</button>
       <button id="validate-digits" disabled>Validate</button>
     </div>
 
     <script src="../input-digits/index.js"></script>
+
     <script src="https://unpkg.com/imask"></script>
-    <script>
-      var element = document.querySelector("input[name='cpf']");
-      var maskOptions = {
-        mask: "000.000.000-00",
-      };
-      var mask = IMask(element, maskOptions);
-    </script>
-    <script>
-      const clientCPFDigits = 123;
-    </script>
-    <script src="./form-validation.js"></script>
+    <script src="./schema.js"></script>
+    <script src="./handleField.js"></script>
+
+    <script src="./index.js"></script>
   </body>
 </html>

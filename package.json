@@ -8,7 +8,7 @@
   "scripts": {
     "watch": "tsc -w",
     "compile:tailwind": "npx tailwindcss -i ./src/styles/tailwind.css -o ./docs/styles/tailwind.css --watch",
-    "compile:scss": "sass -w ./src/modal/styles/modal.scss:./docs/modal/styles/modal.css ./src/scroll-animation/styles/scroll-animation.scss:./docs/scroll-animation/styles/scroll-animation.css ./src/tooltips/styles.scss:./docs/tooltips/styles.css ./src/tooltips/with-popper.scss:./docs/tooltips/with-popper.css ./src/tooltips/with-css.scss:./docs/tooltips/with-css.css",
+    "compile:scss": "sass -w ./src/modal/styles/modal.scss:./docs/modal/styles/modal.css ./src/scroll-animation/styles/scroll-animation.scss:./docs/scroll-animation/styles/scroll-animation.css ./src/tooltips/styles.scss:./docs/tooltips/styles.css ./src/tooltips/with-popper.scss:./docs/tooltips/with-popper.css ./src/tooltips/with-css.scss:./docs/tooltips/with-css.css ./docs/form/:./docs/form",
     "compile:styles": "yarn run compile:tailwind && yarn run compile:scss"
   },
   "dependencies": {

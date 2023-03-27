@@ -64,7 +64,7 @@ $primary-border: $primary-border-width solid;
 
     &:focus ~ .label,
     &:hover ~ .label {
-      top: -(#{$fontSize / 2}px);
+      top: -(#{$fontSize}px / 2);
     }
 
     border-color: $primary-color-xlight;
@@ -145,7 +145,7 @@ $primary-border: $primary-border-width solid;
       }
       span {
         position: absolute;
-        top: calc(#{$inputHeight} / 2 - #{$fontSize / 2}px);
+        top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
         left: 16px;
         transition: top $primary-transition;
       }
@@ -176,7 +176,7 @@ $primary-border: $primary-border-width solid;
     }
   }
 
-  .helpter-text {
+  .helper-text {
     display: block;
     font-size: 0.75rem;
     padding: 2px 12px 0px;
