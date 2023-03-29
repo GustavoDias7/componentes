@@ -66,8 +66,8 @@ function setErrorMessage(fieldName = "", message, isValid) {
   if ($err && isValid) {
     $err.remove();
   } else if ($err && !isValid) {
-    $err.innerText = message;
-  } else if (!$err && !isValid) {
+    if ($err.innerText !== message) $err.innerText = message;
+  } else if (!$err && !isValid && message !== null) {
     // create error element
     const $error = document.createElement("p");
     $error.classList.add("helper-text", "error");
@@ -98,7 +98,6 @@ function handleField({
   const {
     setError,
     setIsTouched,
-    validate,
     onChange,
     onBlur,
     error,
@@ -114,7 +113,7 @@ function handleField({
   }
 
   $field.addEventListener("input", (event) => {
-    if (event.target.value.length === indexToValidate) validate();
+    if (event.target.value.length === indexToValidate) setIsTouched(true);
     onChange(event);
     setErrorMessage(fieldName, error(), isValid());
     if (isTouched()) setClass(fieldName, isValid());

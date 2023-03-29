@@ -6,7 +6,7 @@ var mask = IMask(element, maskOptions);
 
 handleField({
   fieldName: "cpf",
-  initialError: "Initial error",
+  // initialError: "Initial error",
   indexToValidate: 14,
 });
 
