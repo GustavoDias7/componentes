@@ -35,9 +35,7 @@
   background-position: center;
   transition: 0.2s;
 }
-.accordion.active .header h3,
-.accordion:focus .header h3,
-.accordion:hover .header h3 {
+.accordion.active .header h3, .accordion:focus .header h3, .accordion:hover .header h3 {
   color: #ffa600;
 }
 .accordion.active .arrow {
@@ -65,5 +63,3 @@
     transform: translateY(0px);
   }
 }
-
-/*# sourceMappingURL=accordion.css.map */
