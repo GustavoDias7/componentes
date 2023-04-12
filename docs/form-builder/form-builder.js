@@ -89,43 +89,54 @@ function setClass(fieldName = "", isValid) {
   }
 }
 
-function handleField({
-  fieldName = "",
-  initialError = "",
-  indexToValidate = -1,
+function formBuilder({
+  initialValues = {},
+  initialErrors = {},
+  indexToValidate = {},
 }) {
-  const $field = document.querySelector(`input[name='${fieldName}']`);
-  const {
-    setError,
-    setIsTouched,
-    onChange,
-    onBlur,
-    error,
-    isValid,
-    isTouched,
-  } = validation(fieldName);
+  const $fields = Object.entries(initialValues).map((val) =>
+    document.querySelector(`input[name='${val[0]}']`)
+  );
 
-  if (initialError?.length > 0) {
-    setIsTouched(true);
-    setError(initialError);
-    setErrorMessage(fieldName, initialError, isValid());
-    setClass(fieldName, isValid());
-  }
+  $fields.forEach(($field) => {
+    const { name: fieldName } = $field;
+    const {
+      setError,
+      setIsTouched,
+      onChange,
+      onBlur,
+      error,
+      isValid,
+      isTouched,
+    } = validation(fieldName);
 
-  $field.addEventListener("input", (event) => {
-    if (event.target.value.length === indexToValidate) setIsTouched(true);
-    onChange(event);
-    setErrorMessage(fieldName, error(), isValid());
-    if (isTouched()) setClass(fieldName, isValid());
+    if (initialErrors[fieldName]?.length > 0) {
+      setIsTouched(true);
+      setError(initialErrors[fieldName]);
+      setErrorMessage(fieldName, initialErrors[fieldName], isValid());
+      setClass(fieldName, isValid());
+    }
+
+    $field.addEventListener("input", (event) => {
+      if (event.target.value.length === indexToValidate[fieldName])
+        setIsTouched(true);
+      onChange(event);
+      setErrorMessage(fieldName, error(), isValid());
+      if (isTouched()) setClass(fieldName, isValid());
+    });
+
+    $field.addEventListener("blur", () => {
+      onBlur();
+      setErrorMessage(fieldName, error(), isValid());
+      setClass(fieldName, isValid());
+    });
   });
 
-  $field.addEventListener("blur", () => {
-    onBlur();
-    setErrorMessage(fieldName, error(), isValid());
-    setClass(fieldName, isValid());
-  });
-
-  return { isValid };
+  return {
+    isValidForm: true,
+    onFormSubmit: () => ({ ...initialValues }),
+    validateForm: () => {},
+  };
 }
 
 function handleDigits({

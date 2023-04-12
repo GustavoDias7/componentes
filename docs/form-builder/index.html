@@ -17,13 +17,30 @@
     </style>
   </head>
   <body class="primary-form">
-    <input
-      class="input"
-      type="text"
-      name="cpf"
-      placeholder="CPF"
-      autocomplete="off"
-    />
+    <form id="form" action="">
+      <input
+        class="input"
+        type="text"
+        name="email"
+        placeholder="Email"
+        autocomplete="off"
+      />
+      <input
+        class="input"
+        type="text"
+        name="number"
+        placeholder="Number"
+        autocomplete="off"
+      />
+      <input
+        class="input"
+        type="text"
+        name="cpf"
+        placeholder="CPF"
+        autocomplete="off"
+      />
+      <button>Submit</button>
+    </form>
     <div>
       <label for="digit1">Digits</label>
       <div class="digits">
@@ -40,7 +57,7 @@
 
     <script src="https://unpkg.com/imask"></script>
     <script src="./schema.js"></script>
-    <script src="./handleField.js"></script>
+    <script src="./form-builder.js"></script>
 
     <script src="./index.js"></script>
   </body>
