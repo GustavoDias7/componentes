@@ -85,7 +85,7 @@ var maskOptions = {
 };
 var mask = IMask(element, maskOptions);
 
-formBuilder({
+window.formBuilder({
   initialValues: {
     email: "test@test.com",
     number: "1234e",
@@ -102,14 +102,3 @@ formBuilder({
   formButton: "button",
   onFormSubmit: (value) => console.log(value),
 });
-
-// handleField({
-//   fieldName: "cpf",
-//   // initialError: "Initial error",
-//   indexToValidate: 14,
-// });
-
-// handleDigits({
-//   fieldName: "digits",
-//   // initialError: "Initial error",
-// });

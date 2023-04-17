@@ -196,3 +196,5 @@ function formBuilder({
     if (onFormSubmit) onFormSubmit(isValidForm() ? values() : null);
   });
 }
+
+module.exports = formBuilder;
