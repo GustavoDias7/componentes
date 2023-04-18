@@ -9,11 +9,9 @@ $primary-color-xlight: #c4c4c4;
 $primary-color-light: #c4c4c4;
 $primary-color-main: #1a1a1a;
 
-$error-color-light: #f84b42;
 $error-color-main: #ff2115;
 
 $success-color-main: #008000;
-$success-color-light: #00ca00;
 
 // transitions
 $primary-transition: 0.3s;
@@ -30,13 +28,12 @@ $border-radius: 8px;
 $primary-border-width: 1px;
 $primary-border: $primary-border-width solid;
 
-.primary-form {
-  padding: 64px;
-
+.form {
   .row {
     position: relative;
     width: 100%;
-    margin-bottom: 24px;
+    max-width: $width;
+    margin-bottom: 12px;
 
     &:last-of-type {
       margin-bottom: 0px;
@@ -92,18 +89,10 @@ $primary-border: $primary-border-width solid;
 
     &.error {
       border-color: $error-color-main;
-      &:hover,
-      &:focus {
-        border-color: $error-color-light;
-      }
     }
 
     &.success {
       border-color: $success-color-main;
-      &:hover,
-      &:focus {
-        border-color: $success-color-light;
-      }
     }
   }
 
@@ -119,6 +108,7 @@ $primary-border: $primary-border-width solid;
       max-width: $width;
       display: flex;
       font-size: #{$fontSize}px;
+      line-height: #{$fontSize}px;
       transition: font-size $primary-transition;
 
       padding: 0;
@@ -154,7 +144,8 @@ $primary-border: $primary-border-width solid;
     &.active ~ .label,
     &:focus ~ .label,
     &:hover ~ .label {
-      font-size: 14px;
+      font-size: #{$fontSize - 2}px;
+      line-height: #{$fontSize - 2}px;
 
       span {
         position: relative;
@@ -173,6 +164,46 @@ $primary-border: $primary-border-width solid;
     &:hover ~ .label::after,
     &:focus ~ .label::after {
       margin-left: $margin;
+    }
+
+    &.error {
+      ~ .label::before,
+      ~ .label::after {
+        border-color: $error-color-main;
+      }
+    }
+
+    &.success {
+      ~ .label::before,
+      ~ .label::after {
+        border-color: $success-color-main;
+      }
+    }
+  }
+
+  .input.filled {
+    padding: 24px 16px 8px;
+
+    & ~ .label {
+      margin-bottom: 0;
+      position: absolute;
+      top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
+      left: 16px;
+      transition: $primary-transition;
+      width: 100%;
+      max-width: $width;
+      display: flex;
+      font-size: #{$fontSize}px;
+      line-height: #{$fontSize}px;
+      background-color: transparent;
+      pointer-events: none;
+    }
+
+    &.active ~ .label,
+    &:focus ~ .label,
+    &:hover ~ .label {
+      font-size: #{$fontSize - 2}px;
+      top: 8px;
     }
   }
 

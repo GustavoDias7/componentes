@@ -5,16 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
-    <link rel="stylesheet" href="./primary-form.css" />
+    <link rel="stylesheet" href="../styles/tailwind.css" />
+    <link rel="stylesheet" href="./form.css" />
     <link rel="stylesheet" href="./checkbox.css" />
   </head>
-  <body>
-    <form action="" class="primary-form">
+  <body class="p-12">
+    <form action="" class="form">
       <div class="row">
         <label for="name" class="label">Name</label>
         <input type="text" class="input" name="name" id="name" />
-        <p class="helpter-text error">error text</p>
+        <p class="helper-text error">error text</p>
       </div>
+
       <div class="row">
         <input
           type="text"
@@ -26,8 +28,21 @@
         <label for="name" class="label">
           <span>Label test here Label test here</span>
         </label>
-        <p class="helpter-text success">success text</p>
+        <p class="helper-text success">success text</p>
       </div>
+
+      <div class="row">
+        <input
+          type="text"
+          class="input filled"
+          name="filled"
+          id="filled"
+          autocomplete="off"
+        />
+        <label for="filled" class="label">Filled</label>
+        <p class="helper-text error">success text</p>
+      </div>
+
       <div class="row">
         <label class="check" for="check">
           <input type="checkbox" name="check" id="check" />
@@ -35,8 +50,16 @@
           <span class="text">Checkbox</span>
         </label>
       </div>
+
+      <div class="row">
+        <label for="box-text" class="label">Box</label>
+        <input type="text" class="input" name="box-text" id="box-text" />
+        <p class="box-text primary">Box text</p>
+        <p class="box-text secondary">Box text</p>
+      </div>
     </form>
 
-    <script src="./form.js"></script>
+    <script src="../initInput/initInput.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

@@ -5,40 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/tailwind.css" />
     <link rel="stylesheet" href="../input-digits/styles.css" />
-    <link rel="stylesheet" href="../form/primary-form.css" />
-    <style>
-      input.error {
-        border-color: red;
-      }
-      input.valid {
-        border-color: green;
-      }
-    </style>
+    <link rel="stylesheet" href="../form/form.css" />
   </head>
-  <body class="primary-form">
-    <form id="form-id" action="">
-      <input
-        class="input"
-        type="text"
-        name="email"
-        placeholder="Email"
-        autocomplete="off"
-      />
-      <input
-        class="input"
-        type="text"
-        name="number"
-        placeholder="Number"
-        autocomplete="off"
-      />
-      <input
-        class="input"
-        type="text"
-        name="cpf"
-        placeholder="CPF"
-        autocomplete="off"
-      />
+  <body class="p-12">
+    <form class="form" id="form-id">
+      <div class="row">
+        <input
+          class="input filled"
+          type="text"
+          name="email"
+          autocomplete="off"
+        />
+        <label for="name" class="label">
+          <span>E-mail</span>
+        </label>
+      </div>
+      <div class="row">
+        <input
+          class="input outline"
+          type="text"
+          name="number"
+          autocomplete="off"
+        />
+        <label for="name" class="label">
+          <span>Number</span>
+        </label>
+      </div>
+      <div class="row">
+        <input
+          class="input"
+          type="text"
+          name="cpf"
+          placeholder="CPF"
+          autocomplete="off"
+        />
+      </div>
       <button>Submit</button>
       <button>Submit</button>
     </form>
@@ -54,10 +57,10 @@
       <button id="validate-digits" disabled>Validate</button>
     </div>
 
+    <script src="../initInput/initInput.js"></script>
     <script src="../input-digits/index.js"></script>
 
     <script src="https://unpkg.com/imask"></script>
-    <!-- <script src="./schema.js"></script> -->
     <script src="./formBuilder.js"></script>
     <script src="./index.js"></script>
   </body>

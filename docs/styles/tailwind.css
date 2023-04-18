@@ -559,6 +559,10 @@ video {
   position: absolute;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .block {
   display: block;
 }
@@ -593,6 +597,14 @@ video {
 
 .gap-5 {
   gap: 1.25rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.p-12 {
+  padding: 3rem;
 }
 
 .p-5 {

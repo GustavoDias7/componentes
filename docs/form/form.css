@@ -1,0 +1,155 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.form .row {
+  position: relative;
+  width: 100%;
+  max-width: 312px;
+  margin-bottom: 12px;
+}
+.form .row:last-of-type {
+  margin-bottom: 0px;
+}
+.form .label {
+  display: block;
+  margin-bottom: 4px;
+}
+.form .input {
+  display: block;
+  width: 100%;
+  max-width: 312px;
+  height: 56px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  border-radius: 8px;
+  padding: 16px;
+  outline: none;
+  border: 1px solid;
+  transition: 0.3s;
+  border-color: #c4c4c4;
+}
+.form .input:focus ~ .label, .form .input:hover ~ .label {
+  top: -16px/2;
+}
+.form .input:hover, .form .input:focus {
+  border-color: #c4c4c4;
+}
+.form .input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.form .input::placeholder {
+  color: #c4c4c4;
+}
+.form .input.transparent {
+  color: transparent;
+  user-select: none;
+}
+.form .input.transparent::placeholder {
+  color: #c4c4c4;
+}
+.form .input.error {
+  border-color: #ff2115;
+}
+.form .input.success {
+  border-color: #008000;
+}
+.form .input.outline {
+  border-top: none;
+}
+.form .input.outline ~ .label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  max-width: 312px;
+  display: flex;
+  font-size: 16px;
+  line-height: 16px;
+  transition: font-size 0.3s;
+  padding: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+.form .input.outline ~ .label::before, .form .input.outline ~ .label::after {
+  content: "";
+  border-top: 1px solid;
+  height: 8px;
+}
+.form .input.outline ~ .label::before {
+  border-left: 1px solid;
+  border-top-left-radius: 8px;
+  border-color: #c4c4c4;
+  width: 11px;
+}
+.form .input.outline ~ .label::after {
+  border-right: 1px solid;
+  border-top-right-radius: 8px;
+  border-color: #c4c4c4;
+  flex: 1;
+}
+.form .input.outline ~ .label span {
+  position: absolute;
+  top: calc(56px / 2 - (16px / 2));
+  left: 16px;
+  transition: top 0.3s;
+}
+.form .input.outline.active ~ .label, .form .input.outline:focus ~ .label, .form .input.outline:hover ~ .label {
+  font-size: 14px;
+  line-height: 14px;
+}
+.form .input.outline.active ~ .label span, .form .input.outline:focus ~ .label span, .form .input.outline:hover ~ .label span {
+  position: relative;
+  top: -8px;
+  left: 0px;
+}
+.form .input.outline.active ~ .label::before, .form .input.outline:hover ~ .label::before, .form .input.outline:focus ~ .label::before {
+  margin-right: 4px;
+}
+.form .input.outline.active ~ .label::after, .form .input.outline:hover ~ .label::after, .form .input.outline:focus ~ .label::after {
+  margin-left: 4px;
+}
+.form .input.outline.error ~ .label::before,
+.form .input.outline.error ~ .label::after {
+  border-color: #ff2115;
+}
+.form .input.outline.success ~ .label::before,
+.form .input.outline.success ~ .label::after {
+  border-color: #008000;
+}
+.form .input.filled {
+  padding: 24px 16px 8px;
+}
+.form .input.filled ~ .label {
+  margin-bottom: 0;
+  position: absolute;
+  top: calc(56px / 2 - (16px / 2));
+  left: 16px;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 312px;
+  display: flex;
+  font-size: 16px;
+  line-height: 16px;
+  background-color: transparent;
+  pointer-events: none;
+}
+.form .input.filled.active ~ .label, .form .input.filled:focus ~ .label, .form .input.filled:hover ~ .label {
+  font-size: 14px;
+  top: 8px;
+}
+.form .helper-text {
+  display: block;
+  font-size: 0.75rem;
+  padding: 2px 12px 0px;
+}
+.form .helper-text.error {
+  color: #ff2115;
+}
+.form .helper-text.success {
+  color: #008000;
+}

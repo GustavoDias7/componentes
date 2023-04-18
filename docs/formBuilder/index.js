@@ -88,12 +88,12 @@ var mask = IMask(element, maskOptions);
 window.formBuilder({
   initialValues: {
     email: "test@test.com",
-    number: "1234e",
+    number: "",
     cpf: "",
   },
   initialErrors: {
     email: "Initial email error",
-    number: "Initial email error",
+    number: "",
     cpf: "",
   },
   schemas: types,
@@ -102,3 +102,5 @@ window.formBuilder({
   formButton: "button",
   onFormSubmit: (value) => console.log(value),
 });
+
+window.initInput({ selector: ".input.filled, .input.outline" });
