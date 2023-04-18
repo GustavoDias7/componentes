@@ -153,3 +153,22 @@
 .form .helper-text.success {
   color: #008000;
 }
+.form .input-container {
+  position: relative;
+}
+.form .input-container .right-element {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 16px;
+  margin: auto;
+  height: min-content;
+}
+.form .input-container .right-element p {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+  padding: 4px;
+}
+.form .input-container input[name=right] {
+  padding-right: 64px;
+}

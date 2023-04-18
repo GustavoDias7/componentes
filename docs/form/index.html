@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./checkbox.css" />
   </head>
   <body class="p-12">
-    <form action="" class="form">
+    <form action="" class="form" id="form-id">
       <div class="row">
         <label for="name" class="label">Name</label>
         <input type="text" class="input" name="name" id="name" />
@@ -40,7 +40,7 @@
           autocomplete="off"
         />
         <label for="filled" class="label">Filled</label>
-        <p class="helper-text error">success text</p>
+        <p class="helper-text success">success text</p>
       </div>
 
       <div class="row">
@@ -52,13 +52,19 @@
       </div>
 
       <div class="row">
-        <label for="box-text" class="label">Box</label>
-        <input type="text" class="input" name="box-text" id="box-text" />
-        <p class="box-text primary">Box text</p>
-        <p class="box-text secondary">Box text</p>
+        <label for="right" class="label">Right element</label>
+        <div class="input-container">
+          <input type="text" class="input" name="right" id="right" />
+          <div class="right-element">
+            <p>right</p>
+          </div>
+        </div>
       </div>
+
+      <button>button</button>
     </form>
 
+    <script src="../formBuilder/formBuilder.js"></script>
     <script src="../initInput/initInput.js"></script>
     <script src="./index.js"></script>
   </body>

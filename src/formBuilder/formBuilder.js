@@ -100,7 +100,12 @@ function setErrorMessage(fieldName = "", message, isValid, classNames) {
     $error.innerText = message;
     $error.id = errorId;
     // where to create the error element
-    $field.after($error);
+
+    if ($field.parentElement.classList.contains("input-container")) {
+      $field.parentElement.after($error);
+    } else {
+      $field.after($error);
+    }
   }
 }
 
