@@ -14,7 +14,7 @@
     "compile:scss": "sass -w --no-source-map ./src/modal/styles/:./docs/modal/styles/ ./src/scroll-animation/styles/:./docs/scroll-animation/styles/ ./src/tooltips/:./docs/tooltips/ ./docs/form:./docs/form ./docs/accordion:./docs/accordion ./src/steps:./docs/steps ./docs/animation-scroll:./docs/animation-scroll ./docs/fixed-header:./docs/fixed-header",
     "compile:styles": "concurrently \"yarn run compile:tailwind\" \"yarn run compile:scss\"",
     "watch:webpack": "npx webpack --watch",
-    "watch": "concurrently \"npx webpack --watch\"",
+    "watch": "concurrently \"yarn run watch:webpack\" \"yarn run compile:styles\"",
     "test": "jest"
   },
   "dependencies": {
