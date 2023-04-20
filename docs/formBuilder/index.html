@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Form Builder</title>
     <link rel="stylesheet" href="../styles/tailwind.css" />
     <link rel="stylesheet" href="../input-digits/styles.css" />
     <link rel="stylesheet" href="../form/form.css" />
@@ -18,9 +18,7 @@
           name="email"
           autocomplete="off"
         />
-        <label for="name" class="label">
-          <span>E-mail</span>
-        </label>
+        <label for="name" class="label">E-mail</label>
       </div>
       <div class="row">
         <input
@@ -42,8 +40,14 @@
           autocomplete="off"
         />
       </div>
-      <button>Submit</button>
-      <button>Submit</button>
+      <div class="row">
+        <button class="py-2 px-8 bg-yellow-400 disabled:bg-gray-200">
+          Submit
+        </button>
+        <button class="py-2 px-8 bg-yellow-400 disabled:bg-gray-200">
+          Submit
+        </button>
+      </div>
     </form>
     <div>
       <label for="digit1">Digits</label>
@@ -60,6 +64,7 @@
     <script src="../initInput/initInput.js"></script>
     <script src="../input-digits/index.js"></script>
 
+    <script src="../schemas/schemas.js"></script>
     <script src="https://unpkg.com/imask"></script>
     <script src="./formBuilder.js"></script>
     <script src="./index.js"></script>

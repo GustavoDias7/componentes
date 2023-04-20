@@ -1,13 +1,14 @@
 function validation({ initialValues = {}, initialErrors = {}, schemas }) {
   const states = {
     values: { ...initialValues },
-    errors: { ...initialErrors },
+    errors: {},
     isValid: {},
     isTouched: {},
     isValidForm: false,
   };
 
   for (const key in states.values) {
+    states.errors[key] = initialErrors[key] || null;
     states.isValid[key] = false;
     states.isTouched[key] = false;
   }
@@ -120,8 +121,8 @@ function setClass(fieldName = "", isValid, classNames) {
   }
 }
 
-function setButtonState(isFormValid, formId, formButton) {
-  const $button = document.querySelector(`#${formId} ${formButton}`);
+function setDisabledButton(isFormValid, formId, buttonSelector) {
+  const $button = document.querySelector(`#${formId} ${buttonSelector}`);
   $button.disabled = !isFormValid;
 }
 
@@ -132,7 +133,7 @@ function formBuilder({
   schemas = {},
   classNames = { error: "error", valid: "success" },
   formId = "",
-  formButton = "",
+  formButton = { selector: "button", disabled: true },
   onFormSubmit = null,
 }) {
   const fields = Object.entries(initialValues).map((val) => val[0]);
@@ -146,8 +147,10 @@ function formBuilder({
     isTouched,
     isValidForm,
     values,
+    validate,
   } = validation({ initialValues, schemas });
-  setButtonState(isValidForm(), formId, formButton);
+  if (formButton.disabled)
+    setDisabledButton(isValidForm(), formId, formButton.selector);
 
   fields.forEach((fieldName) => {
     if (initialErrors[fieldName]?.length > 0) {
@@ -159,7 +162,8 @@ function formBuilder({
         isValid(fieldName),
         classNames
       );
-      setButtonState(isValidForm(), formId, formButton);
+      if (formButton.disabled)
+        setDisabledButton(isValidForm(), formId, formButton.selector);
       setClass(fieldName, isValid(fieldName), classNames);
     }
 
@@ -171,15 +175,17 @@ function formBuilder({
         setIsTouched(fieldName, true);
       }
       onChange(event);
-      setErrorMessage(
-        fieldName,
-        errors(fieldName),
-        isValid(fieldName),
-        classNames
-      );
-      setButtonState(isValidForm(), formId, formButton);
-      if (isTouched(fieldName))
+      if (isTouched(fieldName)) {
+        setErrorMessage(
+          fieldName,
+          errors(fieldName),
+          isValid(fieldName),
+          classNames
+        );
         setClass(fieldName, isValid(fieldName), classNames);
+      }
+      if (formButton.disabled)
+        setDisabledButton(isValidForm(), formId, formButton.selector);
     });
 
     $field.addEventListener("blur", (event) => {
@@ -190,14 +196,28 @@ function formBuilder({
         isValid(fieldName),
         classNames
       );
-      setButtonState(isValidForm(), formId, formButton);
       setClass(fieldName, isValid(fieldName), classNames);
+      if (formButton.disabled)
+        setDisabledButton(isValidForm(), formId, formButton.selector);
     });
   });
 
   const $form = document.getElementById(formId);
   $form.addEventListener("submit", (event) => {
     event.preventDefault();
+    fields.forEach((fieldName) => {
+      if (!isValid(fieldName)) {
+        setIsTouched(fieldName, true);
+        validate(fieldName);
+        setErrorMessage(
+          fieldName,
+          errors(fieldName),
+          isValid(fieldName),
+          classNames
+        );
+        setClass(fieldName, isValid(fieldName), classNames);
+      }
+    });
     if (onFormSubmit) onFormSubmit(isValidForm() ? values() : null);
   });
 }
