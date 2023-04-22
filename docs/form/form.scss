@@ -238,7 +238,7 @@ $primary-border: $primary-border-width solid;
       }
     }
 
-    input[name="right"] {
+    input[name^="right"] {
       padding-right: 64px;
     }
   }

@@ -10,60 +10,17 @@
     <link rel="stylesheet" href="./checkbox.css" />
   </head>
   <body class="p-12">
-    <form action="" class="form" id="form-id">
-      <div class="row">
-        <label for="name" class="label">Name</label>
-        <input type="text" class="input" name="name" id="name" />
-        <p class="helper-text error">error text</p>
+    <div class="flex">
+      <div class="w-1/2">
+        <form class="form" action="" id="form-js"></form>
       </div>
-
-      <div class="row">
-        <input
-          type="text"
-          class="input outline"
-          name="name"
-          id="name"
-          autocomplete="off"
-        />
-        <label for="name" class="label">
-          <span>Label test here Label test here</span>
-        </label>
-        <p class="helper-text success">success text</p>
+      <div class="w-1/2">
+        <h2 class="text-2xl mb-8">Código HTML do form</h2>
+        <div id="form-code" class="px-8 py-6 bg-gray-800 text-gray-100"></div>
       </div>
+    </div>
 
-      <div class="row">
-        <input
-          type="text"
-          class="input filled"
-          name="filled"
-          id="filled"
-          autocomplete="off"
-        />
-        <label for="filled" class="label">Filled</label>
-        <p class="helper-text success">success text</p>
-      </div>
-
-      <div class="row">
-        <label class="check" for="check">
-          <input type="checkbox" name="check" id="check" />
-          <span class="marker"></span>
-          <span class="text">Checkbox</span>
-        </label>
-      </div>
-
-      <div class="row">
-        <label for="right" class="label">Right element</label>
-        <div class="input-container">
-          <input type="text" class="input" name="right" id="right" />
-          <div class="right-element">
-            <p>right</p>
-          </div>
-        </div>
-      </div>
-
-      <button>button</button>
-    </form>
-
+    <script src="./form.js"></script>
     <script src="../formBuilder/formBuilder.js"></script>
     <script src="../initInput/initInput.js"></script>
     <script src="./index.js"></script>
