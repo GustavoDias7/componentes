@@ -114,6 +114,12 @@ const types = {
     },
     message: "Digitos inválidos",
   },
+  agree: {
+    validation(value) {
+      return value;
+    },
+    message: "Selecione para prosseguir",
+  },
 };
 
 const formBuilderSchema = yup.object().shape({

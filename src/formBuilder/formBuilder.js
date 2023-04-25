@@ -36,34 +36,33 @@ function validation({ initialValues = {}, initialErrors = {}, schemas }) {
 
   function onBlur({ target }) {
     if (!states.isTouched[target.name]) setIsTouched(target.name, true);
-    return validate(target.name, states.values[target.name]);
+    validate(target.name, states.values[target.name]);
+  }
+
+  function onCheck({ target }) {
+    validate(target.name, target.checked);
+    setValue(target.name, target.checked);
   }
 
   function validate(type, value) {
     if (Boolean(schemas[type]) === false) {
-      setIsValid(true);
+      setIsValid(type, true);
       setIsValidForm();
-      return true;
-    }
-
-    if (value.length === 0) {
+    } else if (value.length === 0) {
       // it has no value
       setError(type, "Preencha um valor");
       setIsValid(type, false);
       setIsValidForm();
-      return false;
     } else if (schemas[type] && !schemas[type].validation(value)) {
       // is not valid
       setError(type, schemas[type].message);
       setIsValid(type, false);
       setIsValidForm();
-      return false;
     } else {
       // is valid
       setError(type, null);
       setIsValid(type, true);
       setIsValidForm();
-      return true;
     }
   }
 
@@ -75,6 +74,7 @@ function validation({ initialValues = {}, initialErrors = {}, schemas }) {
     setIsValidForm,
     onChange,
     onBlur,
+    onCheck,
     isValidForm: () => states.isValidForm,
     values: () => states.values,
     value: (name) => states.values[name],
@@ -94,15 +94,17 @@ function setErrorMessage(fieldName = "", message, isValid, classNames) {
     $err.remove();
   } else if ($err && !isValid) {
     if ($err.innerText !== message) $err.innerText = message;
-  } else if (!$err && !isValid && message !== null) {
+  } else if (!$err && !isValid && message) {
     // create error element
     const $error = document.createElement("p");
     $error.classList.add("helper-text", classNames.error);
     $error.innerText = message;
     $error.id = errorId;
-    // where to create the error element
 
+    // where to create the error element
     if ($field.parentElement.classList.contains("input-container")) {
+      $field.parentElement.after($error);
+    } else if ($field.type === "checkbox") {
       $field.parentElement.after($error);
     } else {
       $field.after($error);
@@ -139,9 +141,11 @@ function formBuilder({
   const fields = Object.entries(initialValues).map((val) => val[0]);
   const {
     setError,
+    setIsValid,
     setIsTouched,
     onChange,
     onBlur,
+    onCheck,
     errors,
     isValid,
     isTouched,
@@ -168,14 +172,29 @@ function formBuilder({
     }
 
     const $field = document.querySelector(`input[name='${fieldName}']`);
-    $field.value = initialValues[fieldName];
 
-    $field.addEventListener("input", (event) => {
-      if (event.target.value.length === indexToValidate[fieldName]) {
-        setIsTouched(fieldName, true);
-      }
-      onChange(event);
-      if (isTouched(fieldName)) {
+    if ($field.type !== "checkbox") {
+      $field.value = initialValues[fieldName];
+      $field.addEventListener("input", (event) => {
+        if (event.target.value.length === indexToValidate[fieldName]) {
+          setIsTouched(fieldName, true);
+        }
+        onChange(event);
+        if (isTouched(fieldName)) {
+          setErrorMessage(
+            fieldName,
+            errors(fieldName),
+            isValid(fieldName),
+            classNames
+          );
+          setClass(fieldName, isValid(fieldName), classNames);
+        }
+        if (formButton.disabled)
+          setDisabledButton(isValidForm(), formId, formButton.selector);
+      });
+
+      $field.addEventListener("blur", (event) => {
+        onBlur(event);
         setErrorMessage(
           fieldName,
           errors(fieldName),
@@ -183,23 +202,29 @@ function formBuilder({
           classNames
         );
         setClass(fieldName, isValid(fieldName), classNames);
+        if (formButton.disabled)
+          setDisabledButton(isValidForm(), formId, formButton.selector);
+      });
+    } else if ($field.type === "checkbox") {
+      $field.checked = initialValues[fieldName];
+      if (!schemas[fieldName]) {
+        setIsTouched(fieldName, true);
+        setIsValid(fieldName, true);
       }
-      if (formButton.disabled)
-        setDisabledButton(isValidForm(), formId, formButton.selector);
-    });
-
-    $field.addEventListener("blur", (event) => {
-      onBlur(event);
-      setErrorMessage(
-        fieldName,
-        errors(fieldName),
-        isValid(fieldName),
-        classNames
-      );
-      setClass(fieldName, isValid(fieldName), classNames);
-      if (formButton.disabled)
-        setDisabledButton(isValidForm(), formId, formButton.selector);
-    });
+      $field.addEventListener("input", (event) => {
+        onCheck(event);
+        if (schemas[fieldName]) {
+          setErrorMessage(
+            fieldName,
+            errors(fieldName),
+            isValid(fieldName),
+            classNames
+          );
+        }
+        if (formButton.disabled)
+          setDisabledButton(isValidForm(), formId, formButton.selector);
+      });
+    }
   });
 
   const $form = document.getElementById(formId);

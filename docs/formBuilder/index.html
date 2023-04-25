@@ -8,37 +8,34 @@
     <link rel="stylesheet" href="../styles/tailwind.css" />
     <link rel="stylesheet" href="../input-digits/styles.css" />
     <link rel="stylesheet" href="../form/form.css" />
+    <link rel="stylesheet" href="../form/checkbox.css" />
   </head>
   <body class="p-12">
     <form class="form" id="form-id">
       <div class="row">
-        <input
-          class="input filled"
-          type="text"
-          name="email"
-          autocomplete="off"
-        />
+        <input class="input filled" type="text" name="email" />
         <label for="name" class="label">E-mail</label>
       </div>
       <div class="row">
-        <input
-          class="input outline"
-          type="text"
-          name="number"
-          autocomplete="off"
-        />
-        <label for="name" class="label">
-          <span>Number</span>
+        <input class="input outline" type="text" name="number" />
+        <label for="name" class="label"><span>Number</span></label>
+      </div>
+      <div class="row">
+        <input class="input" type="text" name="cpf" placeholder="CPF" />
+      </div>
+      <div class="row">
+        <label for="bike" class="check">
+          <input id="bike" name="bike" type="checkbox" />
+          <span class="marker"></span>
+          <span class="text">I have a bike</span>
         </label>
       </div>
       <div class="row">
-        <input
-          class="input"
-          type="text"
-          name="cpf"
-          placeholder="CPF"
-          autocomplete="off"
-        />
+        <label for="agree" class="check">
+          <input id="agree" name="agree" type="checkbox" />
+          <span class="marker"></span>
+          <span class="text">Do you agree?</span>
+        </label>
       </div>
       <div class="row">
         <button class="py-2 px-8 bg-yellow-400 disabled:bg-gray-200">

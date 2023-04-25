@@ -9,6 +9,8 @@ window.formBuilder({
     email: "",
     number: "",
     cpf: "",
+    bike: true,
+    agree: false,
   },
   initialErrors: {
     email: "",
@@ -19,6 +21,10 @@ window.formBuilder({
   indexToValidate: { number: 4, cpf: 14 },
   formId: "form-id",
   formButton: { selector: "button", disabled: true },
+  // disableField: {
+  //   targetField: "email",
+  //   triggerElement: "#disable-email",
+  // },
   onFormSubmit: (values) => console.log(values),
 });
 
