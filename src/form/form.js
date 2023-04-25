@@ -9,10 +9,6 @@ function form({ formSelector = "", fields = [] }) {
     const $inputContainer = document.createElement("div");
 
     $row.classList.add("row");
-    $field.classList.add("input");
-    $label.classList.add("label");
-    $rightElement.classList.add("right-element");
-    $inputContainer.classList.add("input-container");
 
     $field.setAttribute("id", field?.id || field.name);
     $field.setAttribute("name", field.name);
@@ -20,58 +16,79 @@ function form({ formSelector = "", fields = [] }) {
 
     $label.setAttribute("for", field.name);
 
-    const $rightText = document.createElement("p");
-    $rightText.innerText = "Right";
-    $rightElement.appendChild($rightText);
+    if (field.type === "checkbox") {
+      $label.classList.add("check");
 
-    switch (field.variant || "") {
-      case "filled":
-        $field.classList.add(field.variant);
-        $label.innerText = field.label;
+      const $marker = document.createElement("span");
+      $marker.classList.add("marker");
 
-        if (field?.rightElement) {
-          $inputContainer.appendChild($field);
-          $inputContainer.appendChild($label);
-          $inputContainer.appendChild($rightElement);
-          $row.appendChild($inputContainer);
-        } else {
-          $row.appendChild($field);
+      const $text = document.createElement("span");
+      $text.classList.add("text");
+      $text.innerText = field.label;
+
+      $label.appendChild($field);
+      $label.appendChild($marker);
+      $label.appendChild($text);
+      $row.appendChild($label);
+    } else {
+      $label.classList.add("label");
+      $field.classList.add("input");
+      $rightElement.classList.add("right-element");
+      $inputContainer.classList.add("input-container");
+
+      const $rightText = document.createElement("p");
+      $rightText.innerText = "Right";
+      $rightElement.appendChild($rightText);
+
+      switch (field.variant || "") {
+        case "filled":
+          $field.classList.add(field.variant);
+          $label.innerText = field.label;
+
+          if (field?.rightElement) {
+            $inputContainer.appendChild($field);
+            $inputContainer.appendChild($label);
+            $inputContainer.appendChild($rightElement);
+            $row.appendChild($inputContainer);
+          } else {
+            $row.appendChild($field);
+            $row.appendChild($label);
+          }
+          break;
+        case "outline":
+          $field.classList.add(field.variant);
+
+          const $span = document.createElement("span");
+          $span.innerText = field.label;
+
+          if (field?.rightElement) {
+            $inputContainer.appendChild($field);
+            $label.appendChild($span);
+            $inputContainer.appendChild($label);
+            $inputContainer.appendChild($rightElement);
+            $row.appendChild($inputContainer);
+          } else {
+            $row.appendChild($field);
+            $label.appendChild($span);
+            $row.appendChild($label);
+          }
+          break;
+
+        default:
+          $label.innerText = field.label;
+
           $row.appendChild($label);
-        }
-        break;
-      case "outline":
-        $field.classList.add(field.variant);
 
-        const $span = document.createElement("span");
-        $span.innerText = field.label;
+          if (field?.rightElement) {
+            $inputContainer.appendChild($field);
+            $inputContainer.appendChild($rightElement);
+            $row.appendChild($inputContainer);
+          } else {
+            $row.appendChild($field);
+          }
 
-        if (field?.rightElement) {
-          $inputContainer.appendChild($field);
-          $label.appendChild($span);
-          $inputContainer.appendChild($label);
-          $inputContainer.appendChild($rightElement);
-          $row.appendChild($inputContainer);
-        } else {
-          $row.appendChild($field);
-          $label.appendChild($span);
-          $row.appendChild($label);
-        }
-        break;
-
-      default:
-        $label.innerText = field.label;
-
-        $row.appendChild($label);
-
-        if (field?.rightElement) {
-          $inputContainer.appendChild($field);
-          $inputContainer.appendChild($rightElement);
-          $row.appendChild($inputContainer);
-        } else {
-          $row.appendChild($field);
-        }
-
-        break;
+          break;
+      }
     }
 
     $form.appendChild($row);

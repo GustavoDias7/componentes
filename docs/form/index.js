@@ -29,6 +29,11 @@ window.form({
       type: "text",
       rightElement: true,
     },
+    {
+      name: "check",
+      label: "Checkbox",
+      type: "checkbox",
+    },
   ],
 });
 

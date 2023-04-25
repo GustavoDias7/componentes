@@ -24,7 +24,7 @@
   border-radius: 2px;
   transform: scale(0);
   transition: 0.2s ease-in-out;
-  background-color: #7a5cfa;
+  background-color: rgb(250, 204, 21);
 }
 .check input {
   display: none;
