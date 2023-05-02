@@ -98,20 +98,39 @@
   left: 16px;
   transition: top 0.3s;
 }
-.form .input.outline.active ~ .label, .form .input.outline:focus ~ .label, .form .input.outline:hover ~ .label {
+.form .input.outline:disabled:focus ~ .label, .form .input.outline:disabled:hover ~ .label {
+  font-size: 16px;
+  line-height: 16px;
+}
+.form .input.outline:disabled:focus ~ .label span, .form .input.outline:disabled:hover ~ .label span {
+  position: absolute;
+  top: calc(56px / 2 - (16px / 2));
+  left: 16px;
+  transition: top 0.3s;
+}
+.form .input.outline.active ~ .label, .form .input.outline:disabled.active ~ .label, .form .input.outline:focus ~ .label, .form .input.outline:hover ~ .label {
   font-size: 14px;
   line-height: 14px;
 }
-.form .input.outline.active ~ .label span, .form .input.outline:focus ~ .label span, .form .input.outline:hover ~ .label span {
+.form .input.outline.active ~ .label span, .form .input.outline:disabled.active ~ .label span, .form .input.outline:focus ~ .label span, .form .input.outline:hover ~ .label span {
   position: relative;
   top: -8px;
   left: 0px;
 }
-.form .input.outline.active ~ .label::before, .form .input.outline:hover ~ .label::before, .form .input.outline:focus ~ .label::before {
+.form .input.outline:disabled:hover ~ .label::before {
+  margin-right: 0px;
+}
+.form .input.outline.active ~ .label::before, .form .input.outline:disabled.active ~ .label::before, .form .input.outline:hover ~ .label::before, .form .input.outline:focus ~ .label::before {
   margin-right: 4px;
 }
-.form .input.outline.active ~ .label::after, .form .input.outline:hover ~ .label::after, .form .input.outline:focus ~ .label::after {
+.form .input.outline:disabled:hover ~ .label::after {
+  margin-left: 0px;
+}
+.form .input.outline.active ~ .label::after, .form .input.outline:disabled.active ~ .label::after, .form .input.outline:hover ~ .label::after, .form .input.outline:focus ~ .label::after {
   margin-left: 4px;
+}
+.form .input.outline:disabled ~ .label {
+  opacity: 0.4;
 }
 .form .input.outline.error ~ .label::before,
 .form .input.outline.error ~ .label::after {
@@ -138,7 +157,14 @@
   background-color: transparent;
   pointer-events: none;
 }
-.form .input.filled.active ~ .label, .form .input.filled:focus ~ .label, .form .input.filled:hover ~ .label {
+.form .input.filled:disabled ~ .label {
+  opacity: 0.4;
+}
+.form .input.filled:disabled:hover ~ .label {
+  top: calc(56px / 2 - (16px / 2));
+  font-size: 16px;
+}
+.form .input.filled.active ~ .label, .form .input.filled:disabled.active ~ .label, .form .input.filled:focus ~ .label, .form .input.filled:hover ~ .label {
   font-size: 14px;
   top: 8px;
 }

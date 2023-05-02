@@ -1,3 +1,30 @@
+function setErrorMessage(fieldName = "", message, isValid, classNames) {
+  const errorId = `${fieldName}-error-message`;
+  const $err = document.querySelector(`#${errorId}`);
+  const $field = document.querySelector(`input[name='${fieldName}']`);
+
+  if ($err && isValid) {
+    $err.remove();
+  } else if ($err && !isValid) {
+    if ($err.innerText !== message) $err.innerText = message;
+  } else if (!$err && !isValid && message) {
+    // create error element
+    const $error = document.createElement("p");
+    $error.classList.add("helper-text", classNames.error);
+    $error.innerText = message;
+    $error.id = errorId;
+
+    // where to create the error element
+    if ($field.parentElement.classList.contains("input-container")) {
+      $field.parentElement.after($error);
+    } else if ($field.type === "checkbox") {
+      $field.parentElement.after($error);
+    } else {
+      $field.after($error);
+    }
+  }
+}
+
 function form({ formSelector = "", fields = [] }) {
   const $form = document.querySelector(formSelector);
 
@@ -13,6 +40,9 @@ function form({ formSelector = "", fields = [] }) {
     $field.setAttribute("id", field?.id || field.name);
     $field.setAttribute("name", field.name);
     $field.setAttribute("type", field?.type || "text");
+    if (field.disabled) {
+      $field.setAttribute("disabled", field.disabled);
+    }
 
     $label.setAttribute("for", field.name);
 
@@ -35,6 +65,9 @@ function form({ formSelector = "", fields = [] }) {
       $field.classList.add("input");
       $rightElement.classList.add("right-element");
       $inputContainer.classList.add("input-container");
+      if (field.active) $field.classList.add("active");
+
+      if (field?.defaultValue?.length) $field.value = field.defaultValue;
 
       const $rightText = document.createElement("p");
       $rightText.innerText = "Right";
@@ -88,6 +121,23 @@ function form({ formSelector = "", fields = [] }) {
           }
 
           break;
+      }
+    }
+
+    if (field.errorMessage) {
+      $field.classList.add("error");
+      // create error element
+      const $error = document.createElement("p");
+      $error.classList.add("helper-text", "error");
+      $error.innerText = field.errorMessage;
+
+      // where to create the error element
+      if ($field.parentElement.classList.contains("input-container")) {
+        $field.parentElement.after($error);
+      } else if ($field.type === "checkbox") {
+        $field.parentElement.after($error);
+      } else {
+        $field.after($error);
       }
     }
 

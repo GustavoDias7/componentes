@@ -141,7 +141,21 @@ $primary-border: $primary-border-width solid;
       }
     }
 
+    &:disabled:focus ~ .label,
+    &:disabled:hover ~ .label {
+      font-size: #{$fontSize}px;
+      line-height: #{$fontSize}px;
+
+      span {
+        position: absolute;
+        top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
+        left: 16px;
+        transition: top $primary-transition;
+      }
+    }
+
     &.active ~ .label,
+    &:disabled.active ~ .label,
     &:focus ~ .label,
     &:hover ~ .label {
       font-size: #{$fontSize - 2}px;
@@ -154,16 +168,28 @@ $primary-border: $primary-border-width solid;
       }
     }
 
+    &:disabled:hover ~ .label::before {
+      margin-right: 0px;
+    }
     &.active ~ .label::before,
+    &:disabled.active ~ .label::before,
     &:hover ~ .label::before,
     &:focus ~ .label::before {
       margin-right: $margin;
     }
 
+    &:disabled:hover ~ .label::after {
+      margin-left: 0px;
+    }
     &.active ~ .label::after,
+    &:disabled.active ~ .label::after,
     &:hover ~ .label::after,
     &:focus ~ .label::after {
       margin-left: $margin;
+    }
+
+    &:disabled ~ .label {
+      opacity: 0.4;
     }
 
     &.error {
@@ -199,7 +225,17 @@ $primary-border: $primary-border-width solid;
       pointer-events: none;
     }
 
+    &:disabled ~ .label {
+      opacity: 0.4;
+    }
+
+    &:disabled:hover ~ .label {
+      top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
+      font-size: #{$fontSize}px;
+    }
+
     &.active ~ .label,
+    &:disabled.active ~ .label,
     &:focus ~ .label,
     &:hover ~ .label {
       font-size: #{$fontSize - 2}px;
