@@ -1,30 +1,3 @@
-function setErrorMessage(fieldName = "", message, isValid, classNames) {
-  const errorId = `${fieldName}-error-message`;
-  const $err = document.querySelector(`#${errorId}`);
-  const $field = document.querySelector(`input[name='${fieldName}']`);
-
-  if ($err && isValid) {
-    $err.remove();
-  } else if ($err && !isValid) {
-    if ($err.innerText !== message) $err.innerText = message;
-  } else if (!$err && !isValid && message) {
-    // create error element
-    const $error = document.createElement("p");
-    $error.classList.add("helper-text", classNames.error);
-    $error.innerText = message;
-    $error.id = errorId;
-
-    // where to create the error element
-    if ($field.parentElement.classList.contains("input-container")) {
-      $field.parentElement.after($error);
-    } else if ($field.type === "checkbox") {
-      $field.parentElement.after($error);
-    } else {
-      $field.after($error);
-    }
-  }
-}
-
 function form({ formSelector = "", fields = [] }) {
   const $form = document.querySelector(formSelector);
 
